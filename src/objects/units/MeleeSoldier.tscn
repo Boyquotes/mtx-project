@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/objects/units/Unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/objects/units/MeleeSoldier.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29, 30 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 58.1378
+
+[node name="MeleeSoldier" instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+attack_damage = 3
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 1, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="CheckEnemies" index="0"]
+shape = SubResource( 2 )
+
+[node name="Label" parent="." index="5"]
+margin_left = -8.0
+margin_top = -50.0
+margin_right = 118.0
+margin_bottom = -4.0
+text = "10"
