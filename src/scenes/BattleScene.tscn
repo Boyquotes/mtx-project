@@ -5,7 +5,7 @@
 [ext_resource path="res://src/scenes/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://src/objects/bases/EnemyBase.tscn" type="PackedScene" id=4]
 
-[node name="GameScreen" type="Node2D"]
+[node name="BattleScene" type="Node2D"]
 
 [node name="Ground" parent="." instance=ExtResource( 1 )]
 position = Vector2( 35, 194 )

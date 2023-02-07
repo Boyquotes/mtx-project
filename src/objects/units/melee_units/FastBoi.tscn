@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/objects/units/MeleeSoldier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/objects/units/melee_units/BasicMeleeUnit.tscn" type="PackedScene" id=1]
 
 [node name="FastBoi" instance=ExtResource( 1 )]
 move_speed = 150

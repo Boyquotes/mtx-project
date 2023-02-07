@@ -9,7 +9,11 @@ var _type = side.ALLY;
 
 func _spawn_unit(unit: PackedScene):
 	var new_unit : UnitTypes.UNIT_TYPE = unit.instance()
-	new_unit.set_ally_or_enemy(_type == side.ALLY)
+	if _type == side.ALLY:
+		print(new_unit)
+		new_unit.make_unit_ally()
+	else:
+		new_unit.make_unit_enemy()
 	get_parent().get_node("Units").add_child(new_unit)
 	new_unit.global_position = $Spawnpoint.global_position
 	

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/objects/units/melee_units/BasicMeleeUnit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/objects/units/melee_units/HeavyHitter.gd" type="Script" id=2]
+
+[node name="HeavyHitter" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+attack_cooldown = 2.0
+attack_damage = 5
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = true
+
+[node name="CheckEnemies" parent="." index="1"]
+visible = true
+
+[node name="AnimatedSprite" parent="." index="5"]
+modulate = Color( 1, 0.0196078, 0.0196078, 1 )
