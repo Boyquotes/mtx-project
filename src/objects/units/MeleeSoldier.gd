@@ -1,7 +1,10 @@
 extends "res://src/objects/units/Unit.gd"
 
 func _attack():
-	scale.y *= 3
+	$AnimatedSprite.play("attack")
 	_deal_damage()
-	yield(get_tree().create_timer(0.5), "timeout")
-	scale.y /= 3
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "attack":
+		$AnimatedSprite.play("idle")
