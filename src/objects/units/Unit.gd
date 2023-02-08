@@ -1,11 +1,16 @@
 extends KinematicBody2D
 
+const DEATH_TEXT_SCENE = preload("res://src/user_interface/DeathText.tscn")
+
 export var move_speed = 100
 export var attack_cooldown = 1.0;
 export var attack_damage = 1
 export var max_health_points = 10;
 export var cost = 100;
-export var money_on_death = 100;
+
+export var min_money_on_death = 10;
+export var max_money_on_death = 100;
+
 
 onready var _initial_hp_bar_size = $ColorRect.rect_size.x
 
@@ -17,7 +22,7 @@ var _dead = false
 func _ready():
 	$AttackCooldown.one_shot = true
 	_current_health_points = max_health_points
-
+	
 # MOVEMENT
 func _physics_process(delta):
 	if _is_attacking: return
@@ -39,11 +44,6 @@ func take_damage(damage):
 	$ColorRect.rect_size = Vector2(_current_health_points * (_initial_hp_bar_size/max_health_points), $ColorRect.rect_size.y)
 	if _current_health_points <= 0:
 		_die()
-
-func _die():
-	if _dead: return
-	_dead = true
-	Global.GameManager.remove_unit(self)
 
 func _start_attack():
 	_is_attacking = true
@@ -99,3 +99,21 @@ func switch_sides():
 		make_unit_ally()
 	scale.x *= -1
 
+# DYING
+func _die():
+	if _dead: return
+	_dead = true
+	
+	# drop money if unit is an enemy aka moves left
+	if move_speed < 0:
+		_drop_money()
+	
+	queue_free()
+	
+func _drop_money():
+	var new_text = DEATH_TEXT_SCENE.instance()
+	new_text.global_position = self.global_position
+	var money_dropped = randi()%(max_money_on_death-min_money_on_death) + min_money_on_death
+	new_text.play(money_dropped)
+	get_parent().add_child(new_text)
+	Global.GameManager.change_money_by(money_dropped)

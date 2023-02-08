@@ -1,6 +1,6 @@
 extends Node2D
 
-export var starting_money = 1000
+export var starting_money = 50
 
 var _money
 
@@ -21,6 +21,3 @@ func change_money_by(value):
 func add_unit(unit: UnitTypes.UNIT_TYPE):
 	add_child(unit)
 	
-func remove_unit(unit: UnitTypes.UNIT_TYPE):
-	change_money_by(unit.money_on_death)
-	unit.queue_free()

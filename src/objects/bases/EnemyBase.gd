@@ -2,7 +2,7 @@ extends "res://src/objects/bases/Base.gd"
 
 func _ready():
 	$Timer.one_shot = false
-	$Timer.start(5)
+	$Timer.start(4)
 	
 func _create_unit(unit: PackedScene):
 	var new_unit : UnitTypes.UNIT_TYPE = unit.instance()
@@ -18,7 +18,7 @@ func _on_Timer_timeout():
 		0:
 			unit_type = UnitTypes.MELEE_UNIT
 		1:
-			unit_type = UnitTypes.TANKY_UNIT
+			unit_type = UnitTypes.FAST_UNIT
 		2:
 			unit_type = UnitTypes.FAST_UNIT
 		3:

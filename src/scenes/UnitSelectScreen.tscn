@@ -4,6 +4,7 @@
 [ext_resource path="res://src/user_interface/UnitSelectingManager.gd" type="Script" id=2]
 
 [node name="UnitSelectScreen" type="Node2D"]
+position = Vector2( 0, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -13,14 +14,14 @@ position = Vector2( -153, -2 )
 script = ExtResource( 2 )
 
 [node name="UnitSelectButton" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -99, -23 )
+position = Vector2( -102, -20 )
 
 [node name="UnitSelectButton5" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -100, 11 )
+position = Vector2( -102, 10 )
 unit_type = 1
 
 [node name="UnitSelectButton6" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -97, 50 )
+position = Vector2( -101, 47 )
 unit_type = 2
 
 [node name="UnitSelectButton2" parent="UnitSelectingManager" instance=ExtResource( 1 )]
@@ -44,11 +45,11 @@ position = Vector2( 242, 39 )
 unit_type = 2
 
 [node name="UnitSelectButton11" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 335, 20 )
-unit_type = 8
+position = Vector2( 341, 19 )
+unit_type = 9
 
 [node name="UnitSelectButton4" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 131, -1 )
+position = Vector2( 133, 2 )
 unit_type = 5
 
 [node name="UnitSelectButton9" parent="UnitSelectingManager" instance=ExtResource( 1 )]
@@ -61,5 +62,11 @@ margin_top = 117.0
 margin_right = 319.0
 margin_bottom = 137.0
 text = "Play"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -318.0
+margin_top = -181.0
+margin_right = 319.0
+margin_bottom = -155.0
 
 [connection signal="pressed" from="UnitSelectingManager/PlayButton" to="UnitSelectingManager" method="_on_PlayButton_pressed"]

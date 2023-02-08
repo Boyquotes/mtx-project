@@ -13,6 +13,8 @@ radius = 46.0
 [node name="BasicMeleeUnit" instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
+cost = 25
+max_money_on_death = 25
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( 0, -16 )

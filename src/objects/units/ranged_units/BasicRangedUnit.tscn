@@ -37,7 +37,9 @@ animations = [ {
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 attack_cooldown = 0.5
-max_health_points = 5
+max_health_points = 3
+cost = 25
+max_money_on_death = 25
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -2, -16 )

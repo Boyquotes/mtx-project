@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/user_interface/Fonts/EricaFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/user_interface/DeathText.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DeathAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("DeathText/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DeathText/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="DeathText" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -19.0
+margin_top = -49.0
+margin_right = 19.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 1 )
+text = "Test
+"
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+anims/DeathAnimation = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="animation_finished" from="DeathAnimation" to="." method="_on_DeathAnimation_animation_finished"]
