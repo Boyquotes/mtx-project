@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="Age of Gacha"
-run/main_scene="res://src/scenes/UnitSelectScreen.tscn"
+run/main_scene="res://src/scenes/BattleScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 UnitTypes="*res://src/utility/UnitTypes.gd"
+Global="*res://src/utility/Global.gd"
 
 [display]
 

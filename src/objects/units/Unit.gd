@@ -4,11 +4,14 @@ export var move_speed = 100
 export var attack_cooldown = 1.0;
 export var attack_damage = 1
 export var max_health_points = 10;
+export var cost = 100;
+export var money_on_death = 100;
 
 onready var _initial_hp_bar_size = $ColorRect.rect_size.x
 
 var _is_attacking = false
 var _current_health_points 
+var _dead = false
 
 # INITIALIZING
 func _ready():
@@ -35,7 +38,12 @@ func take_damage(damage):
 	_current_health_points -= damage
 	$ColorRect.rect_size = Vector2(_current_health_points * (_initial_hp_bar_size/max_health_points), $ColorRect.rect_size.y)
 	if _current_health_points <= 0:
-		queue_free()
+		_die()
+
+func _die():
+	if _dead: return
+	_dead = true
+	Global.GameManager.remove_unit(self)
 
 func _start_attack():
 	_is_attacking = true
@@ -53,9 +61,10 @@ func _find_closest_target():
 	var target
 	var min_distance = 100000
 	for unit in $CheckEnemies.get_overlapping_bodies():
-		var distance = unit.global_position.x - global_position.x
+		var distance = abs(unit.global_position.x - global_position.x)
 		if distance < min_distance:
 			target = unit
+			min_distance = distance
 	return target
 
 # UNIT SIDES

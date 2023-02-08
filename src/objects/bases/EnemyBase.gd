@@ -1,11 +1,14 @@
 extends "res://src/objects/bases/Base.gd"
 
 func _ready():
-	_type = side.ENEMY
 	$Timer.one_shot = false
 	$Timer.start(5)
 	
-	
+func _create_unit(unit: PackedScene):
+	var new_unit : UnitTypes.UNIT_TYPE = unit.instance()
+	new_unit.make_unit_enemy()
+	new_unit.global_position = $Spawnpoint.global_position
+	_spawn_unit(new_unit)
 
 func _on_Timer_timeout():
 	var r = randi()%4
@@ -23,4 +26,4 @@ func _on_Timer_timeout():
 		_:
 			unit_type = UnitTypes.MELEE_UNIT
 			
-	_spawn_unit(unit_type)
+	_create_unit(unit_type)
