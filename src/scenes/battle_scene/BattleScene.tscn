@@ -22,8 +22,6 @@ script = ExtResource( 4 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1189, 562 )
-min_delay_between_waves = 1
-time_for_level_increase = 1.0
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
 position = Vector2( 101, 562 )
