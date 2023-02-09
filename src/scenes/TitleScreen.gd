@@ -5,4 +5,8 @@ export var unitBuyScreen : PackedScene
 
 
 func _on_PlayButton_button_up():
-	get_tree().change_scene(unitSelectScreen.resource_path)
+	get_tree().change_scene("res://src/scenes/UnitSelectScreen.tscn")
+
+
+func _on_BuyUnitButton_button_up():
+	get_tree().change_scene("res://src/scenes/BuyScreen.tscn")
