@@ -6,10 +6,16 @@
 [node name="EnemyBase" instance=ExtResource( 1 )]
 collision_layer = 8
 script = ExtResource( 2 )
+min_delay_between_waves = 7
+max_delay_between_waves = 10
+time_for_level_increase = 50
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.85098, 0, 1, 1 )
 
-[node name="Timer" type="Timer" parent="." index="4"]
+[node name="WaveTimer" type="Timer" parent="." index="4"]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="LevelIncreaseTimer" type="Timer" parent="." index="5"]
+
+[connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
+[connection signal="timeout" from="LevelIncreaseTimer" to="." method="_on_LevelIncreaseTimer_timeout"]

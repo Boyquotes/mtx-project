@@ -1,7 +1,8 @@
 extends "res://src/objects/bases/Base.gd"
 
 var _units: Array
-	
+
+signal game_over	
 
 func _create_unit(unit: PackedScene):
 	var new_unit : UnitTypes.UNIT_TYPE = unit.instance()
@@ -21,3 +22,6 @@ func _process(delta):
 	elif Input.is_action_just_pressed("spawn_3"):
 		_create_unit(UnitTypes.selected_units[2]);
 
+func _die():
+	emit_signal("game_over")
+	queue_free()
