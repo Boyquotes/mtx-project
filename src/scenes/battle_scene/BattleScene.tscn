@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://src/scenes/battle_scene/StartBattleText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/battle_scene/MoneyTracker.gd" type="Script" id=2]
-[ext_resource path="res://src/user_interface/Fonts/EricaOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/data/Fonts/EricaOne-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/utility/GameManager.gd" type="Script" id=4]
 [ext_resource path="res://src/objects/enviroment/Ground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/objects/bases/AllyBase.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/objects/bases/EnemyBase.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/user_interface/Fonts/EricaFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://src/data/Fonts/EricaFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://src/scenes/battle_scene/GameOver.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
@@ -21,10 +22,10 @@ position = Vector2( 748, 703 )
 script = ExtResource( 4 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1189, 562 )
+position = Vector2( 1219, 621 )
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
-position = Vector2( 101, 562 )
+position = Vector2( 73, 621 )
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -32,9 +33,12 @@ pause_mode = 2
 [node name="MoneyTracker" type="Label" parent="UserInterface"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_top = 19.0
-margin_bottom = 44.0
+margin_left = -27.0
+margin_right = 28.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 1 )
+text = "Dough"
+align = 1
 script = ExtResource( 2 )
 
 [node name="GameOver" type="Control" parent="UserInterface"]
@@ -60,6 +64,9 @@ margin_bottom = -7.0
 custom_fonts/font = ExtResource( 8 )
 text = "You lost!"
 align = 1
+
+[node name="StartBattleText" parent="." instance=ExtResource( 1 )]
+position = Vector2( 649, 360 )
 
 [connection signal="money_changed" from="GameManager" to="UserInterface/MoneyTracker" method="_on_GameManager_money_changed"]
 [connection signal="game_over" from="EnemyBase" to="UserInterface/GameOver" method="_on_EnemyBase_game_over"]

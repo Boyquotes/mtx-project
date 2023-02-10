@@ -54,10 +54,13 @@ position = Vector2( 22, -16 )
 cast_to = Vector2( 31, 0 )
 
 [node name="ColorRect" parent="." index="4"]
-margin_top = -44.0
-margin_bottom = -36.0
+margin_left = -28.0
+margin_top = -80.0
+margin_right = 32.0
+margin_bottom = -72.0
 
 [node name="AnimatedSprite" parent="." index="5"]
-position = Vector2( 13, -32 )
+position = Vector2( 12, -70 )
+scale = Vector2( 0.920001, 2.2 )
 frames = SubResource( 3 )
 animation = "attack"

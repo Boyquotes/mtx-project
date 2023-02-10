@@ -2,19 +2,6 @@ extends Node2D
 
 enum unit_names {PLAIN_BAGEL, NEW_YORK_BAGEL, POPPY_SEED_BAGEL, CYMBAGEL, BAGELATINE, GRENADEL, BAEGEL, TREBUCHAGEL, BLANK, EVERYTHING_BAGEL}
 
-var name_to_unit_dict = {
-	unit_names.PLAIN_BAGEL: UnitTypes.MELEE_UNIT,
-	unit_names.NEW_YORK_BAGEL: UnitTypes.TANKY_UNIT,
-	unit_names.POPPY_SEED_BAGEL: UnitTypes.BASIC_RANGED_UNIT,
-	unit_names.CYMBAGEL: UnitTypes.HEAVY_UNIT,
-	unit_names.BAGELATINE: UnitTypes.FAST_UNIT,
-	unit_names.GRENADEL: UnitTypes.MELEE_UNIT,
-	unit_names.BAEGEL: UnitTypes.SEDUCE_UNIT,
-	unit_names.TREBUCHAGEL: UnitTypes.HEAVY_RANGED_UNIT,
-	unit_names.BLANK: UnitTypes.MELEE_UNIT,
-	unit_names.EVERYTHING_BAGEL: UnitTypes.MELEE_UNIT,
-}
-
 var _selected_units: Array
 
 func _ready():
@@ -38,7 +25,7 @@ func _on_PlayButton_pressed():
 	var selected_units: Array
 	
 	for unit_type in _selected_units:
-		selected_units.append(name_to_unit_dict[unit_type])
+		selected_units.append(UnitTypes.name_to_unit_dict[UnitTypes.unit_names[unit_type]])
 		
 	UnitTypes.selected_units = selected_units
-	get_tree().change_scene("res://src/scenes/BattleScene.tscn")
+	get_tree().change_scene("res://src/scenes/battle_scene/BattleScene.tscn")

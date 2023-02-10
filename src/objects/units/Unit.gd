@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const DEATH_TEXT_SCENE = preload("res://src/user_interface/DeathText.tscn")
+const DEATH_TEXT_SCENE = preload("res://src/scenes/battle_scene/DeathText.tscn")
 
 export var move_speed = 100
 export var attack_cooldown = 1.0;
@@ -11,6 +11,7 @@ export var cost = 100;
 export var min_money_on_death = 10;
 export var max_money_on_death = 100;
 
+var no_collision_with_allies = false
 
 onready var _initial_hp_bar_size = $ColorRect.rect_size.x
 
@@ -28,7 +29,7 @@ func _physics_process(delta):
 	if _is_attacking: return
 	if _can_attack():
 		_start_attack()
-	elif not $CheckForAlliesInFront.get_collider() is UnitTypes.UNIT_TYPE:
+	elif not _check_for_ally_in_front():
 		move_and_slide(Vector2(move_speed, 0))
 
 # COMBAT
@@ -66,6 +67,10 @@ func _find_closest_target():
 			target = unit
 			min_distance = distance
 	return target
+	
+func _check_for_ally_in_front():
+	var collider = $CheckForAlliesInFront.get_collider()
+	return collider is UnitTypes.UNIT_TYPE and not collider.no_collision_with_allies
 
 # UNIT SIDES
 func make_unit_ally():

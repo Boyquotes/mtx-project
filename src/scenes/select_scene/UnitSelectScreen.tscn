@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/user_interface/UnitSelectButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/user_interface/UnitSelectingManager.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/select_scene/UnitSelectButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/select_scene/UnitSelectingManager.gd" type="Script" id=2]
 
 [node name="UnitSelectScreen" type="Node2D"]
 position = Vector2( 0, 1 )
@@ -15,53 +15,49 @@ position = Vector2( -153, -2 )
 script = ExtResource( 2 )
 
 [node name="UnitSelectButton" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -102, -20 )
+position = Vector2( -139, -122 )
 
 [node name="UnitSelectButton5" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -102, 10 )
-unit_type = 1
+position = Vector2( 235, 44 )
+unit_type = 8
 
 [node name="UnitSelectButton6" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -101, 47 )
+position = Vector2( -141, -71 )
 unit_type = 2
 
 [node name="UnitSelectButton2" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 15, -22 )
-unit_type = 3
+position = Vector2( -126, 96 )
+unit_type = 4
 
 [node name="UnitSelectButton8" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 16, 50 )
-unit_type = 4
-
-[node name="UnitSelectButton7" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 15, 13 )
-unit_type = 4
-
-[node name="UnitSelectButton3" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 242, 0 )
-unit_type = 7
-
-[node name="UnitSelectButton10" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 242, 39 )
-unit_type = 2
-
-[node name="UnitSelectButton11" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 341, 19 )
-unit_type = 9
-
-[node name="UnitSelectButton4" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 133, 2 )
+position = Vector2( 218, -105 )
 unit_type = 5
 
-[node name="UnitSelectButton9" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 133, 41 )
+[node name="UnitSelectButton7" parent="UnitSelectingManager" instance=ExtResource( 1 )]
+position = Vector2( 224, -56 )
 unit_type = 6
 
+[node name="UnitSelectButton3" parent="UnitSelectingManager" instance=ExtResource( 1 )]
+position = Vector2( -128, 40 )
+unit_type = 3
+
+[node name="UnitSelectButton11" parent="UnitSelectingManager" instance=ExtResource( 1 )]
+position = Vector2( 228, -8 )
+unit_type = 7
+
+[node name="UnitSelectButton4" parent="UnitSelectingManager" instance=ExtResource( 1 )]
+position = Vector2( 235, 102 )
+unit_type = 9
+
+[node name="UnitSelectButton9" parent="UnitSelectingManager" instance=ExtResource( 1 )]
+position = Vector2( -136, -15 )
+unit_type = 1
+
 [node name="PlayButton" type="Button" parent="UnitSelectingManager"]
-margin_left = 242.0
-margin_top = 117.0
-margin_right = 319.0
-margin_bottom = 137.0
+margin_left = 114.0
+margin_top = -9.0
+margin_right = 191.0
+margin_bottom = 11.0
 text = "Play"
 
 [node name="ColorRect" type="ColorRect" parent="."]

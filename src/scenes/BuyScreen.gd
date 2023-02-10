@@ -14,7 +14,6 @@ func _ready():
 func _on_BuyLB_c0_button_up():
 	pass # Replace with function body.
 
-
 func _on_BuyLB_c1_button_up():
 	pass # Replace with function body.
 
