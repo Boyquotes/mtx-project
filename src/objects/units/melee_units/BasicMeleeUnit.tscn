@@ -33,7 +33,8 @@ margin_top = -46.0
 margin_bottom = -38.0
 
 [node name="AnimatedSprite" parent="." index="5"]
-position = Vector2( 14, -32 )
+position = Vector2( 6, -6 )
+scale = Vector2( 0.340984, 0.340984 )
 frames = ExtResource( 2 )
 animation = "idle"
 
