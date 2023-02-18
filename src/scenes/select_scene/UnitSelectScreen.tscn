@@ -8,62 +8,62 @@ position = Vector2( 0, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 0.5 )
 
 [node name="UnitSelectingManager" type="Node2D" parent="."]
 position = Vector2( -153, -2 )
 script = ExtResource( 2 )
 
 [node name="UnitSelectButton" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -139, -122 )
+position = Vector2( -422, -231 )
 
 [node name="UnitSelectButton5" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 235, 44 )
+position = Vector2( 129, -55 )
 unit_type = 8
 
 [node name="UnitSelectButton6" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -141, -71 )
+position = Vector2( -239, -231 )
 unit_type = 2
 
 [node name="UnitSelectButton2" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -126, 96 )
+position = Vector2( 313, -231 )
 unit_type = 4
 
 [node name="UnitSelectButton8" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 218, -105 )
+position = Vector2( -422, -55 )
 unit_type = 5
 
 [node name="UnitSelectButton7" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 224, -56 )
+position = Vector2( -239, -55 )
 unit_type = 6
 
 [node name="UnitSelectButton3" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -128, 40 )
+position = Vector2( 129, -231 )
 unit_type = 3
 
 [node name="UnitSelectButton11" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 228, -8 )
+position = Vector2( -55, -55 )
 unit_type = 7
 
 [node name="UnitSelectButton4" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( 235, 102 )
+position = Vector2( 313, -55 )
 unit_type = 9
 
 [node name="UnitSelectButton9" parent="UnitSelectingManager" instance=ExtResource( 1 )]
-position = Vector2( -136, -15 )
+position = Vector2( -55, -231 )
 unit_type = 1
 
 [node name="PlayButton" type="Button" parent="UnitSelectingManager"]
-margin_left = 114.0
-margin_top = -9.0
-margin_right = 191.0
-margin_bottom = 11.0
+margin_left = 691.0
+margin_top = 322.0
+margin_right = 768.0
+margin_bottom = 342.0
+rect_pivot_offset = Vector2( 39, 10 )
 text = "Play"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -318.0
-margin_top = -181.0
-margin_right = 319.0
-margin_bottom = -155.0
+margin_left = -640.0
+margin_top = -359.0
+margin_right = 640.0
+margin_bottom = -283.0
 
 [connection signal="pressed" from="UnitSelectingManager/PlayButton" to="UnitSelectingManager" method="_on_PlayButton_pressed"]

@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/data/Fonts/EricaOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/scenes/TitleScreen.gd" type="Script" id=3]
-[ext_resource path="res://src/scenes/select_scene/UnitSelectScreen.tscn" type="PackedScene" id=4]
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -69,7 +67,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
-unitSelectScreen = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
