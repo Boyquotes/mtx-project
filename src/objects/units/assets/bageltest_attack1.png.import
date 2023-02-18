@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bageltest2.png-867d16d821126bfdbd755e38b345556a.stex"
+path="res://.import/bageltest_attack1.png-5a59035d646a7afa98113928d146f20e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/objects/units/assets/bageltest2.png"
-dest_files=[ "res://.import/bageltest2.png-867d16d821126bfdbd755e38b345556a.stex" ]
+source_file="res://src/objects/units/assets/bageltest_attack1.png"
+dest_files=[ "res://.import/bageltest_attack1.png-5a59035d646a7afa98113928d146f20e.stex" ]
 
 [params]
 
