@@ -21,7 +21,7 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "attack",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
@@ -35,12 +35,12 @@ animations = [ {
 } ]
 
 [node name="TankySoldier" instance=ExtResource( 1 )]
-move_speed = 70
-max_health_points = 20
+move_speed = 100
+max_health_points = 25
 cost = 50
 min_money_on_death = 25
 max_money_on_death = 50
 
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 1, 0.772549, 0, 1 )
 frames = SubResource( 3 )

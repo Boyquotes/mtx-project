@@ -19,7 +19,6 @@ var _dead = false
 
 # INITIALIZING
 func _ready():
-	$AttackCooldown.one_shot = true
 	_current_health_points = max_health_points
 	
 # STATE MACHINE

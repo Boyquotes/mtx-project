@@ -129,7 +129,12 @@ func _on_LevelIncreaseTimer_timeout():
 		$LevelIncreaseTimer.stop()
 	else:
 		_update_possible_waves()
+
+func _check_if_room_for_unit():
+	for unit in $CheckForUnits.get_overlapping_bodies():
+		if not unit.no_collision_with_allies: return false
+	return true
 	
 func _process(delta):
-	if not _unit_queue.empty() and $CheckForUnits.get_overlapping_bodies().size() == 0:
+	if not _unit_queue.empty() and _check_if_room_for_unit():
 		_spawn_next_unit_in_queue()

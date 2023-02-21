@@ -26,7 +26,7 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "attack",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
@@ -41,6 +41,7 @@ animations = [ {
 
 [node name="BasicMeleeUnit" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+move_speed = 125
 cost = 25
 max_money_on_death = 25
 damage_frame = 1
@@ -62,18 +63,17 @@ shape = SubResource( 2 )
 position = Vector2( 20, 33 )
 cast_to = Vector2( 45, 0 )
 
-[node name="ColorRect" parent="." index="4"]
+[node name="ColorRect" parent="." index="3"]
 margin_left = -33.0
 margin_top = -77.0
 margin_right = 27.0
 margin_bottom = -69.0
 
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
 position = Vector2( 6, -6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 5 )
 animation = "move"
-frame = 1
 playing = true
 
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

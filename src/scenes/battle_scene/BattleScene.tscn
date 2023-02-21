@@ -22,6 +22,7 @@ script = ExtResource( 4 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1742, 951 )
+health_points = 100
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
 position = Vector2( 190, 951 )
@@ -58,38 +59,46 @@ anchor_bottom = 0.5
 script = ExtResource( 9 )
 
 [node name="BackToMenuButton" type="Button" parent="UserInterface/GameOver"]
-margin_left = -232.0
-margin_top = -41.0
-margin_right = 326.0
-margin_bottom = 61.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -279.0
+margin_top = -50.0
+margin_right = 279.0
+margin_bottom = 52.0
 custom_fonts/font = ExtResource( 3 )
 text = "Return to menu"
 
 [node name="GameOverText" type="Label" parent="UserInterface/GameOver"]
-margin_left = -119.0
-margin_top = -121.0
-margin_right = 202.0
-margin_bottom = -25.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.5
+margin_top = -150.0
+margin_right = 160.5
+margin_bottom = -54.0
 custom_fonts/font = ExtResource( 3 )
 text = "You lost!"
 align = 1
 
 [node name="StartBattleText" parent="." instance=ExtResource( 1 )]
-position = Vector2( 937, 261 )
-disable_countdown = true
+position = Vector2( 968, 442 )
 
 [node name="BackGround" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="BackGround"]
-margin_left = -23.0
-margin_top = -51.0
-margin_right = 17.0
-margin_bottom = -11.0
+margin_left = -22.0
+margin_top = -66.0
+margin_right = 18.0
+margin_bottom = -26.0
 rect_scale = Vector2( 50, 30 )
 color = Color( 0.0431373, 0.345098, 0, 1 )
 
 [connection signal="money_changed" from="GameManager" to="UserInterface/MoneyTracker" method="_on_GameManager_money_changed"]
 [connection signal="game_over" from="EnemyBase" to="UserInterface/GameOver" method="_on_EnemyBase_game_over"]
+[connection signal="game_over" from="AllyBase" to="UserInterface/GameOver" method="_on_AllyBase_game_over"]
 [connection signal="queue_changed" from="AllyBase" to="UserInterface/Queue" method="_on_AllyBase_queue_changed"]
 [connection signal="pressed" from="UserInterface/GameOver/BackToMenuButton" to="UserInterface/GameOver" method="_on_BackToMenuButton_pressed"]

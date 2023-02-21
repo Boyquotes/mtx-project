@@ -19,10 +19,10 @@ region = Rect2( 0, 0, 342, 305 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "attack",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
@@ -37,10 +37,10 @@ animations = [ {
 
 [node name="HeavyHitter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-attack_damage = 10
-damage_frame = 6
+attack_damage = 15
+damage_frame = 5
 
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 1, 0.0196078, 0.0196078, 1 )
 frames = SubResource( 5 )
-frame = 0
+frame = 1

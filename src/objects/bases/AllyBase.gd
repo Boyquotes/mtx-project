@@ -41,9 +41,13 @@ func _process(delta):
 	elif Input.is_action_just_pressed("spawn_3"):
 		_create_unit(UnitTypes.selected_units[2]);
 		
-
+func _check_if_room_for_unit():
+	for unit in $CheckForAllyUnits.get_overlapping_bodies():
+		if not unit.no_collision_with_allies: return false
+	return true
+		
 func _physics_process(delta):
-	if $CheckForAllyUnits.get_overlapping_bodies().size() == 0 and not _unit_queue.empty():
+	if not _unit_queue.empty() and _check_if_room_for_unit():
 		_spawn_next_unit_in_queue()
 		
 func _die():

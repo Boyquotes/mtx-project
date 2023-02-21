@@ -8,9 +8,12 @@
 radius = 14.0
 
 [node name="PoppySeed" instance=ExtResource( 1 )]
+z_index = -5
+z_as_relative = false
 script = ExtResource( 2 )
 hspeed = 5
-curve_height = 10
+max_lifespan = 3
+curve_height = 8
 gravity_strenght = 0.2
 
 [node name="Sprite" parent="." index="0"]

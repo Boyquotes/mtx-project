@@ -39,4 +39,4 @@ var units_unlocked = {
 	"EVERYTHING_BAGEL": false,
 }
 
-var selected_units: Array = [BASIC_RANGED_UNIT, FAST_UNIT, TANKY_UNIT]
+var selected_units: Array = [FAST_UNIT, BASIC_RANGED_UNIT, TANKY_UNIT]

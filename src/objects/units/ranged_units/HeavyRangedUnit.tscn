@@ -1,17 +1,52 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/objects/units/ranged_units/BasicRangedUnit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/units/ranged_units/HeavyRangedUnit.gd" type="Script" id=2]
+[ext_resource path="res://src/objects/units/ranged_units/HeavyRangedProjectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=4]
+[ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=5]
+[ext_resource path="res://src/objects/units/assets/bageltest1.png" type="Texture" id=6]
+[ext_resource path="res://src/objects/units/assets/poppyattack2.png" type="Texture" id=7]
+[ext_resource path="res://src/objects/units/assets/poppyattack.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 147, 16 )
+extents = Vector2( 414, 16 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
 
 [node name="HeavyRangedUnit" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+move_speed = 70
+attack_damage = 3
+max_health_points = 10
+no_collision_with_allies = true
+shoot_projectile_frame = 5
+projectile = ExtResource( 3 )
+
+[node name="CheckEnemies" parent="." index="1"]
+position = Vector2( -1, 1 )
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]
-position = Vector2( 155, -16 )
+position = Vector2( 422, -16 )
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
+frames = SubResource( 2 )
+frame = 0

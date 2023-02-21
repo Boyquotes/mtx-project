@@ -18,7 +18,7 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "attack",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
@@ -33,10 +33,12 @@ animations = [ {
 
 [node name="BasicRangedUnit" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+move_speed = 125
 attack_damage = 2
 max_health_points = 4
 cost = 25
 max_money_on_death = 25
+no_collision_with_allies = true
 shoot_projectile_frame = 1
 projectile = ExtResource( 4 )
 
@@ -56,17 +58,18 @@ shape = SubResource( 5 )
 position = Vector2( 19, 29 )
 cast_to = Vector2( 45, 0 )
 
-[node name="ColorRect" parent="." index="4"]
+[node name="ColorRect" parent="." index="3"]
 margin_left = -28.0
 margin_top = -80.0
 margin_right = 32.0
 margin_bottom = -72.0
 
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
 position = Vector2( 6, -6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
 animation = "move"
+frame = 1
 playing = true
 
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
