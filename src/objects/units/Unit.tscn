@@ -3,6 +3,7 @@
 [ext_resource path="res://src/objects/units/Unit.gd" type="Script" id=1]
 
 [node name="Unit" type="KinematicBody2D"]
+z_as_relative = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 1 )
@@ -33,4 +34,8 @@ color = Color( 0.427451, 0.992157, 0, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
+[node name="DeathTextSpawnPoint" type="Node2D" parent="."]
+position = Vector2( 0, -76 )
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

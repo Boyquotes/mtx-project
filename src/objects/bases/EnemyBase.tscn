@@ -1,21 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/objects/bases/Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/bases/EnemyBase.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 38.5, 24.5 )
 
 [node name="EnemyBase" instance=ExtResource( 1 )]
 collision_layer = 8
 script = ExtResource( 2 )
 min_delay_between_waves = 7
 max_delay_between_waves = 10
-time_for_level_increase = 50
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.85098, 0, 1, 1 )
 
+[node name="Spawnpoint" parent="." index="2"]
+position = Vector2( 82, -30 )
+
 [node name="WaveTimer" type="Timer" parent="." index="4"]
 
 [node name="LevelIncreaseTimer" type="Timer" parent="." index="5"]
+
+[node name="CheckForUnits" type="Area2D" parent="." index="6"]
+position = Vector2( 81, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckForUnits" index="0"]
+position = Vector2( -0.5, -24.5 )
+shape = SubResource( 1 )
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
 [connection signal="timeout" from="LevelIncreaseTimer" to="." method="_on_LevelIncreaseTimer_timeout"]

@@ -1,31 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/scenes/battle_scene/StartBattleText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/battle_scene/MoneyTracker.gd" type="Script" id=2]
-[ext_resource path="res://src/data/Fonts/EricaOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://data/Fonts/InGameFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/utility/GameManager.gd" type="Script" id=4]
 [ext_resource path="res://src/objects/enviroment/Ground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/objects/bases/AllyBase.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/objects/bases/EnemyBase.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/data/Fonts/EricaFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://src/scenes/battle_scene/GameOver.gd" type="Script" id=9]
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 3 )
+[ext_resource path="res://src/scenes/battle_scene/Queue.gd" type="Script" id=10]
 
 [node name="BattleScene" type="Node2D"]
+position = Vector2( -1, 0 )
 
 [node name="Ground" parent="." instance=ExtResource( 5 )]
-position = Vector2( 748, 703 )
+position = Vector2( 950, 1030 )
+scale = Vector2( 2, 16 )
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1219, 621 )
+position = Vector2( 1742, 951 )
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
-position = Vector2( 73, 621 )
+position = Vector2( 190, 951 )
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -33,13 +32,23 @@ pause_mode = 2
 [node name="MoneyTracker" type="Label" parent="UserInterface"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -27.0
-margin_right = 28.0
-margin_bottom = 25.0
-custom_fonts/font = SubResource( 1 )
+margin_left = -928.0
+margin_top = 78.0
+margin_right = -706.0
+margin_bottom = 174.0
+custom_fonts/font = ExtResource( 3 )
 text = "Dough"
 align = 1
 script = ExtResource( 2 )
+
+[node name="Queue" type="Label" parent="UserInterface"]
+margin_left = 23.0
+margin_right = 243.0
+margin_bottom = 195.0
+custom_fonts/font = ExtResource( 3 )
+text = "Queue
+"
+script = ExtResource( 10 )
 
 [node name="GameOver" type="Control" parent="UserInterface"]
 anchor_left = 0.5
@@ -49,26 +58,38 @@ anchor_bottom = 0.5
 script = ExtResource( 9 )
 
 [node name="BackToMenuButton" type="Button" parent="UserInterface/GameOver"]
-margin_left = -65.0
-margin_top = -7.0
-margin_right = 84.0
-margin_bottom = 24.0
-custom_fonts/font = ExtResource( 8 )
+margin_left = -232.0
+margin_top = -41.0
+margin_right = 326.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 3 )
 text = "Return to menu"
 
 [node name="GameOverText" type="Label" parent="UserInterface/GameOver"]
-margin_left = -36.0
-margin_top = -32.0
-margin_right = 45.0
-margin_bottom = -7.0
-custom_fonts/font = ExtResource( 8 )
+margin_left = -119.0
+margin_top = -121.0
+margin_right = 202.0
+margin_bottom = -25.0
+custom_fonts/font = ExtResource( 3 )
 text = "You lost!"
 align = 1
 
 [node name="StartBattleText" parent="." instance=ExtResource( 1 )]
-position = Vector2( 649, 360 )
+position = Vector2( 937, 261 )
+disable_countdown = true
+
+[node name="BackGround" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackGround"]
+margin_left = -23.0
+margin_top = -51.0
+margin_right = 17.0
+margin_bottom = -11.0
+rect_scale = Vector2( 50, 30 )
+color = Color( 0.0431373, 0.345098, 0, 1 )
 
 [connection signal="money_changed" from="GameManager" to="UserInterface/MoneyTracker" method="_on_GameManager_money_changed"]
 [connection signal="game_over" from="EnemyBase" to="UserInterface/GameOver" method="_on_EnemyBase_game_over"]
-[connection signal="game_over" from="AllyBase" to="UserInterface/GameOver" method="_on_AllyBase_game_over"]
+[connection signal="queue_changed" from="AllyBase" to="UserInterface/Queue" method="_on_AllyBase_queue_changed"]
 [connection signal="pressed" from="UserInterface/GameOver/BackToMenuButton" to="UserInterface/GameOver" method="_on_BackToMenuButton_pressed"]

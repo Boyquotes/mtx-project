@@ -1,16 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://src/data/Fonts/EricaOne-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://src/data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://data/Fonts/TitleScreen.tres" type="DynamicFont" id=1]
+[ext_resource path="res://data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/scenes/TitleScreen.gd" type="Script" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 120
-outline_size = 10
-outline_color = Color( 0.290196, 0.129412, 0.376471, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 60
@@ -86,30 +78,30 @@ custom_constants/margin_bottom = 45
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1270.0
-margin_bottom = 675.0
+margin_right = 1910.0
+margin_bottom = 1035.0
 custom_constants/separation = 60
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_right = 1260.0
-margin_bottom = 302.0
+margin_right = 1900.0
+margin_bottom = 482.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Bagels of War"
 align = 1
 valign = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 362.0
-margin_right = 1260.0
-margin_bottom = 665.0
+margin_top = 542.0
+margin_right = 1900.0
+margin_bottom = 1025.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_right = 1260.0
-margin_bottom = 149.0
+margin_right = 1900.0
+margin_bottom = 239.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 800
@@ -119,8 +111,8 @@ custom_constants/margin_left = 30
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 margin_left = 30.0
 margin_top = 30.0
-margin_right = 460.0
-margin_bottom = 149.0
+margin_right = 1100.0
+margin_bottom = 239.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
@@ -134,9 +126,9 @@ __meta__ = {
 }
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 153.0
-margin_right = 1260.0
-margin_bottom = 303.0
+margin_top = 243.0
+margin_right = 1900.0
+margin_bottom = 483.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 800
@@ -146,8 +138,8 @@ custom_constants/margin_left = 30
 [node name="BuyUnitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
 margin_left = 30.0
 margin_top = 30.0
-margin_right = 460.0
-margin_bottom = 150.0
+margin_right = 1100.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )

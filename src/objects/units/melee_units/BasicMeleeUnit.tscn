@@ -1,41 +1,79 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/objects/units/Unit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/objects/units/assets/MeleeSoldier.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://src/objects/units/assets/bageltest_attack1.png" type="Texture" id=2]
 [ext_resource path="res://src/objects/units/melee_units/BasicMeleeUnit.gd" type="Script" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.5, 16 )
+[ext_resource path="res://src/objects/units/assets/bageltest2.png" type="Texture" id=4]
+[ext_resource path="res://src/objects/units/assets/bageltest_attack2.png" type="Texture" id=5]
+[ext_resource path="res://src/objects/units/assets/bageltest1.png" type="Texture" id=6]
+[ext_resource path="res://src/objects/units/melee_units/BasicBagelHitbox.tres" type="Shape2D" id=7]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 46.0
+radius = 55.0
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 342, 305 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 342, 305 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "attack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 1 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
 
 [node name="BasicMeleeUnit" instance=ExtResource( 1 )]
-scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 cost = 25
 max_money_on_death = 25
+damage_frame = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
+visible = true
 position = Vector2( 0, -16 )
-shape = SubResource( 1 )
+shape = ExtResource( 7 )
+
+[node name="CheckEnemies" parent="." index="1"]
+visible = true
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]
 position = Vector2( 0, -16 )
+z_as_relative = false
 shape = SubResource( 2 )
 
 [node name="CheckForAlliesInFront" parent="." index="2"]
-position = Vector2( 22, -16 )
-cast_to = Vector2( 30, 0 )
+position = Vector2( 20, 33 )
+cast_to = Vector2( 45, 0 )
 
 [node name="ColorRect" parent="." index="4"]
-margin_top = -46.0
-margin_bottom = -38.0
+margin_left = -33.0
+margin_top = -77.0
+margin_right = 27.0
+margin_bottom = -69.0
 
 [node name="AnimatedSprite" parent="." index="5"]
 position = Vector2( 6, -6 )
-scale = Vector2( 0.340984, 0.340984 )
-frames = ExtResource( 2 )
-animation = "idle"
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 5 )
+animation = "move"
+frame = 1
+playing = true
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

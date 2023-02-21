@@ -1,10 +1,16 @@
 extends Node2D
 
+export var disable_countdown = false
+
 var _stage = 0
 
 func _ready():
-	get_tree().paused = true
 	$AnimationPlayer.play("Play")
+	if disable_countdown:
+		visible = false
+		return
+	get_tree().paused = true
+	
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name != "Play": return

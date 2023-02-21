@@ -3,7 +3,6 @@ extends KinematicBody2D
 const DEATH_TEXT_SCENE = preload("res://src/scenes/battle_scene/DeathText.tscn")
 
 export var move_speed = 100
-export var attack_cooldown = 1.0;
 export var attack_damage = 1
 export var max_health_points = 10;
 export var cost = 100;
@@ -11,11 +10,10 @@ export var cost = 100;
 export var min_money_on_death = 10;
 export var max_money_on_death = 100;
 
-var no_collision_with_allies = false
+export var no_collision_with_allies = false
 
 onready var _initial_hp_bar_size = $ColorRect.rect_size.x
 
-var _is_attacking = false
 var _current_health_points 
 var _dead = false
 
@@ -24,38 +22,41 @@ func _ready():
 	$AttackCooldown.one_shot = true
 	_current_health_points = max_health_points
 	
-# MOVEMENT
-func _physics_process(delta):
-	if _is_attacking: return
-	if _can_attack():
-		_start_attack()
-	elif not _check_for_ally_in_front():
+# STATE MACHINE
+func _take_action():
+	if _enemy_in_range():
+		if $AnimatedSprite.animation != "attack": 
+			set_physics_process(false)
+			$AnimatedSprite.play("attack")
+	elif _check_for_ally_in_front():
+		if $AnimatedSprite.animation != "idle": 
+			$AnimatedSprite.play("idle")
+	else:
+		if $AnimatedSprite.animation != "move": 
+			$AnimatedSprite.play("move")
 		move_and_slide(Vector2(move_speed, 0))
-
+		
+func _physics_process(delta):
+	_take_action()
+		
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "attack":
+		_take_action()
+		set_physics_process(true)
+		
 # COMBAT
 func _deal_damage():
-	if _can_attack():
+	if _enemy_in_range():
 		_find_closest_target().take_damage(attack_damage)
 	
-func _on_AttackCooldown_timeout():
-	_is_attacking = false
-
 func take_damage(damage):
 	_current_health_points -= damage
 	$ColorRect.rect_size = Vector2(_current_health_points * (_initial_hp_bar_size/max_health_points), $ColorRect.rect_size.y)
 	if _current_health_points <= 0:
 		_die()
-
-func _start_attack():
-	_is_attacking = true
-	$AttackCooldown.start(attack_cooldown)
-	_attack()
-	
-func _attack():
-	pass
-	
+		
 # UTILITY
-func _can_attack():
+func _enemy_in_range():
 	return $CheckEnemies.get_overlapping_bodies().size() != 0
 
 func _find_closest_target():
@@ -69,6 +70,7 @@ func _find_closest_target():
 	return target
 	
 func _check_for_ally_in_front():
+	$CheckForAlliesInFront.update()
 	var collider = $CheckForAlliesInFront.get_collider()
 	return collider is UnitTypes.UNIT_TYPE and not collider.no_collision_with_allies
 
@@ -117,8 +119,10 @@ func _die():
 	
 func _drop_money():
 	var new_text = DEATH_TEXT_SCENE.instance()
-	new_text.global_position = self.global_position
+	new_text.global_position = $DeathTextSpawnPoint.global_position
 	var money_dropped = randi()%(max_money_on_death-min_money_on_death) + min_money_on_death
 	new_text.play(money_dropped)
 	get_parent().add_child(new_text)
 	Global.GameManager.change_money_by(money_dropped)
+
+

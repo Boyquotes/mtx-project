@@ -1,13 +1,7 @@
 extends "res://src/objects/units/Unit.gd"
 
-func _ready():
-	$AnimatedSprite.play("idle")
+export var damage_frame = 1
 
-func _attack():
-	$AnimatedSprite.play("attack")
-	_deal_damage()
-
-
-func _on_AnimatedSprite_animation_finished():
-	if $AnimatedSprite.animation == "attack":
-		$AnimatedSprite.play("idle")
+func _on_AnimatedSprite_frame_changed():
+	if $AnimatedSprite.animation == "attack" and $AnimatedSprite.frame == damage_frame:
+		_deal_damage()

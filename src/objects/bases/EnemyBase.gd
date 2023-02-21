@@ -4,14 +4,15 @@ export var min_delay_between_waves = 7
 export var max_delay_between_waves = 10
 
 
-const _wave_data_file = "res://src/data/WaveData.txt"
-const _level_data_file = "res://src/data/LevelData.txt"
+const _wave_data_file = "res://data/WaveData.txt"
+const _level_data_file = "res://data/LevelData.txt"
 
 
 var _current_level: int
 var _all_possible_waves: Array
 var _current_possible_waves: Array
 var _levels: Dictionary
+var _unit_queue: Array
 
 signal game_over
 
@@ -54,9 +55,13 @@ func _parse_level_data():
 	file.close()
 		
 # SPAWNING UNITS 
+func _spawn_next_unit_in_queue():
+	var unit = _unit_queue.front()
+	_spawn_unit(unit)
+	_unit_queue.remove(0)
+	
 func _update_possible_waves():
 	_current_possible_waves = []
-	print(_current_level)
 	for wave in _all_possible_waves:
 		if _current_level >= wave.min_level and _current_level <= wave.max_level:
 			_current_possible_waves.append(wave)
@@ -65,16 +70,20 @@ func _send_out_wave():
 	if _current_possible_waves.size() == 0: 
 		print("no wave to send out at level ", _current_level)
 		return
-		
+	
+	# we discard any units left from the previous wave
+	_unit_queue = []
+	
+	# choose a random wave from the ones possible at this level
 	var w = randi()%_current_possible_waves.size()
 	var wave: Wave = _current_possible_waves[w]
 	
-	#print("at level " + str(_current_level) + ", sending out wave: ", wave.enemies)
-	
+	# add every enemy in the wave to the queue
 	for unit_name in wave.enemies:
 		var unit = _create_unit_from_name(unit_name)
-		_spawn_unit(unit)
+		_unit_queue.append(unit)
 		yield(get_tree().create_timer(wave.delay_between_enemies), "timeout")
+	
 	
 	var time_until_next_wave = (2 - randi()%4) + wave.time_to_next_wave_average
 	$WaveTimer.start(time_until_next_wave)
@@ -121,3 +130,6 @@ func _on_LevelIncreaseTimer_timeout():
 	else:
 		_update_possible_waves()
 	
+func _process(delta):
+	if not _unit_queue.empty() and $CheckForUnits.get_overlapping_bodies().size() == 0:
+		_spawn_next_unit_in_queue()
