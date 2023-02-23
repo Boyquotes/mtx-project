@@ -9,4 +9,4 @@ func _on_PlayButton_button_up():
 
 
 func _on_BuyUnitButton_button_up():
-	get_tree().change_scene("res://src/scenes/BuyScreen.tscn")
+	get_tree().change_scene("res://src/scenes/LootboxMenu.tscn")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scenes/BuyScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/TitleScreen.tscn" type="PackedScene" id=2]
+
+[node name="BuyScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+TitleScreen = ExtResource( 2 )
+
+[node name="MainSelect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.168627, 0.807843, 0.584314, 1 )
+
+[node name="Buy_c1" type="Button" parent="MainSelect"]
+margin_left = 741.0
+margin_top = 152.0
+margin_right = 1210.0
+margin_bottom = 353.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy Currency 1"
+
+[node name="BuyLB" type="Button" parent="MainSelect"]
+margin_left = 111.0
+margin_top = 152.0
+margin_right = 580.0
+margin_bottom = 601.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy Lootbox (C0/C1)"
+
+[node name="Buy_c2" type="Button" parent="MainSelect"]
+margin_left = 741.0
+margin_top = 399.0
+margin_right = 1210.0
+margin_bottom = 601.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy Currency 2"
+
+[node name="LootBox_Purchase" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 174.0
+margin_top = 98.0
+margin_right = -174.0
+margin_bottom = -98.0
+color = Color( 0.180392, 0.458824, 0.360784, 1 )
+
+[node name="BuyLB_c0" type="Button" parent="LootBox_Purchase"]
+margin_left = 19.0
+margin_top = 54.0
+margin_right = 471.0
+margin_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy Lootbox For Currency 0"
+
+[node name="BuyLB_c1" type="Button" parent="LootBox_Purchase"]
+margin_left = 471.0
+margin_top = 54.0
+margin_right = 913.0
+margin_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy Lootbox For Currency 1"
+
+[node name="LB_close" type="Button" parent="LootBox_Purchase"]
+margin_left = 890.0
+margin_right = 931.0
+margin_bottom = 41.0
+text = "X"
+
+[node name="Back" type="Button" parent="."]
+margin_right = 40.0
+margin_bottom = 41.0
+text = "<-"
+
+[connection signal="button_up" from="MainSelect/Buy_c1" to="." method="_on_Buy_c1_button_up"]
+[connection signal="button_up" from="MainSelect/BuyLB" to="." method="_on_BuyLB_button_up"]
+[connection signal="button_up" from="MainSelect/Buy_c2" to="." method="_on_Buy_c2_button_up"]
+[connection signal="button_up" from="LootBox_Purchase/BuyLB_c0" to="." method="_on_BuyLB_c0_button_up"]
+[connection signal="button_up" from="LootBox_Purchase/BuyLB_c1" to="." method="_on_BuyLB_c1_button_up"]
+[connection signal="button_up" from="LootBox_Purchase/LB_close" to="." method="_on_LB_close_button_up"]
+[connection signal="button_up" from="Back" to="." method="_on_Back_button_up"]
