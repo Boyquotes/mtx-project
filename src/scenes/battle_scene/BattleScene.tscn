@@ -85,15 +85,16 @@ align = 1
 
 [node name="StartBattleText" parent="." instance=ExtResource( 1 )]
 position = Vector2( 968, 442 )
+disable_countdown = true
 
 [node name="BackGround" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="BackGround"]
-margin_left = -22.0
-margin_top = -66.0
-margin_right = 18.0
-margin_bottom = -26.0
+margin_left = -23.0
+margin_top = -65.0
+margin_right = 17.0
+margin_bottom = -25.0
 rect_scale = Vector2( 50, 30 )
 color = Color( 0.0431373, 0.345098, 0, 1 )
 

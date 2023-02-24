@@ -22,7 +22,6 @@ var name_to_unit_dict = {
 	"GRENADEL": MELEE_UNIT,
 	"BAEGEL": SEDUCE_UNIT,
 	"TREBUCHAGEL": HEAVY_RANGED_UNIT,
-	"BLANK": MELEE_UNIT,
 	"EVERYTHING_BAGEL": MELEE_UNIT,
 }
 
@@ -39,4 +38,4 @@ var units_unlocked = {
 	"EVERYTHING_BAGEL": false,
 }
 
-var selected_units: Array = [FAST_UNIT, BASIC_RANGED_UNIT, TANKY_UNIT]
+var selected_units: Array = [MELEE_UNIT, BASIC_RANGED_UNIT, TANKY_UNIT]

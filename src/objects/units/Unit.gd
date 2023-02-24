@@ -23,13 +23,19 @@ func _ready():
 	
 # STATE MACHINE
 func _take_action():
-	if _enemy_in_range():
-		if $AnimatedSprite.animation != "attack": 
-			set_physics_process(false)
-			$AnimatedSprite.play("attack")
-	elif _check_for_ally_in_front():
-		if $AnimatedSprite.animation != "idle": 
-			$AnimatedSprite.play("idle")
+	#print(self, ", ", _check_if_unit_in_front())
+	# if there is a unit in front we stop moving
+	if _check_if_unit_in_front():
+		# check if we can attack
+		if _enemy_in_range():
+			if $AnimatedSprite.animation != "attack": 
+				set_physics_process(false)
+				$AnimatedSprite.play("attack")
+		# else idle
+		else:	
+			if $AnimatedSprite.animation != "idle": 
+				$AnimatedSprite.play("idle")
+	# else move
 	else:
 		if $AnimatedSprite.animation != "move": 
 			$AnimatedSprite.play("move")
@@ -68,10 +74,12 @@ func _find_closest_target():
 			min_distance = distance
 	return target
 	
-func _check_for_ally_in_front():
+func _check_if_unit_in_front():
 	$CheckForAlliesInFront.update()
 	var collider = $CheckForAlliesInFront.get_collider()
-	return collider is UnitTypes.UNIT_TYPE and not collider.no_collision_with_allies
+	if collider is UnitTypes.UNIT_TYPE:
+		print(self, ", ", collider)
+	return collider is UnitTypes.UNIT_TYPE and not (sign(move_speed) == sign(collider.move_speed) and collider.no_collision_with_allies)
 
 # UNIT SIDES
 func make_unit_ally():
@@ -79,8 +87,6 @@ func make_unit_ally():
 	set_collision_layer_bit(3, false)
 	$CheckEnemies.set_collision_mask_bit(3, true)
 	$CheckEnemies.set_collision_mask_bit(2, false)
-	$CheckForAlliesInFront.set_collision_mask_bit(2, true)
-	$CheckForAlliesInFront.set_collision_mask_bit(3, false)
 	$ColorRect.color = Color.green
 	move_speed = abs(move_speed)
 	scale.x = abs(scale.x)
@@ -91,8 +97,6 @@ func make_unit_enemy():
 	set_collision_layer_bit(2, false)
 	$CheckEnemies.set_collision_mask_bit(2, true)
 	$CheckEnemies.set_collision_mask_bit(3, false)
-	$CheckForAlliesInFront.set_collision_mask_bit(3, true)
-	$CheckForAlliesInFront.set_collision_mask_bit(2, false)
 	$ColorRect.color = Color.red
 	move_speed = abs(move_speed) * -1
 	scale.x = abs(scale.x) * -1
