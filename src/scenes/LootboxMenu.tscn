@@ -15,28 +15,28 @@ anchor_bottom = 1.0
 color = Color( 0.168627, 0.807843, 0.584314, 1 )
 
 [node name="Buy_c1" type="Button" parent="MainSelect"]
-margin_left = 741.0
-margin_top = 152.0
-margin_right = 1210.0
-margin_bottom = 353.0
+margin_left = 1008.0
+margin_top = 624.0
+margin_right = 1648.0
+margin_bottom = 931.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Buy Currency 1"
 
 [node name="BuyLB" type="Button" parent="MainSelect"]
-margin_left = 111.0
-margin_top = 152.0
-margin_right = 580.0
-margin_bottom = 601.0
+margin_left = 240.0
+margin_top = 312.0
+margin_right = 861.0
+margin_bottom = 902.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Buy Lootbox (C0/C1)"
 
 [node name="Buy_c2" type="Button" parent="MainSelect"]
-margin_left = 741.0
-margin_top = 399.0
-margin_right = 1210.0
-margin_bottom = 601.0
+margin_left = 1008.0
+margin_top = 288.0
+margin_right = 1648.0
+margin_bottom = 595.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Buy Currency 2"
@@ -47,36 +47,36 @@ anchor_bottom = 1.0
 margin_left = 174.0
 margin_top = 98.0
 margin_right = -174.0
-margin_bottom = -98.0
-color = Color( 0.180392, 0.458824, 0.360784, 1 )
+margin_bottom = -109.0
+color = Color( 0.180392, 0.458824, 0.360784, 0.827451 )
 
 [node name="BuyLB_c0" type="Button" parent="LootBox_Purchase"]
-margin_left = 19.0
-margin_top = 54.0
-margin_right = 471.0
-margin_bottom = 477.0
+margin_left = 102.0
+margin_top = 112.0
+margin_right = 777.0
+margin_bottom = 781.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Buy Lootbox For Currency 0"
 
 [node name="BuyLB_c1" type="Button" parent="LootBox_Purchase"]
-margin_left = 471.0
-margin_top = 54.0
-margin_right = 913.0
-margin_bottom = 477.0
+margin_left = 777.0
+margin_top = 112.0
+margin_right = 1452.0
+margin_bottom = 781.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Buy Lootbox For Currency 1"
 
 [node name="LB_close" type="Button" parent="LootBox_Purchase"]
-margin_left = 890.0
-margin_right = 931.0
-margin_bottom = 41.0
+margin_left = 1461.0
+margin_right = 1573.0
+margin_bottom = 112.0
 text = "X"
 
 [node name="Back" type="Button" parent="."]
-margin_right = 40.0
-margin_bottom = 41.0
+margin_right = 97.0
+margin_bottom = 98.0
 text = "<-"
 
 [connection signal="button_up" from="MainSelect/Buy_c1" to="." method="_on_Buy_c1_button_up"]
