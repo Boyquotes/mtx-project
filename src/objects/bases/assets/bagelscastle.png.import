@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bad_bagelscastle.png-d9def99b7eafdd47d8d6288bfd587bfc.stex"
+path="res://.import/bagelscastle.png-76b94b2d7819efd861e8b2b2585dd3f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/battle_scene/bad_bagelscastle.png"
-dest_files=[ "res://.import/bad_bagelscastle.png-d9def99b7eafdd47d8d6288bfd587bfc.stex" ]
+source_file="res://src/objects/bases/assets/bagelscastle.png"
+dest_files=[ "res://.import/bagelscastle.png-76b94b2d7819efd861e8b2b2585dd3f4.stex" ]
 
 [params]
 
