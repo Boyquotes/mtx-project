@@ -4,10 +4,12 @@ enum side {ALLY, ENEMY}
 
 export var health_points = 10
 
+export var no_collision_with_allies = true
+
 func _ready():
 	$Label.text = str(max(health_points, 0))
 
-func _spawn_unit(unit: UnitTypes.UNIT_TYPE):
+func _spawn_unit(unit: KinematicBody2D):
 	Global.GameManager.add_unit(unit)
 
 func _create_unit(unit: PackedScene):
@@ -21,3 +23,6 @@ func take_damage(damage):
 
 func _die():
 	pass
+	
+func is_enemy():
+	return false

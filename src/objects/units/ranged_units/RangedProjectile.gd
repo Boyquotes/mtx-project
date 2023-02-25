@@ -34,5 +34,4 @@ func _on_RangedProjectile_body_entered(body):
 	_hit()
 
 func _on_Timer_timeout():
-	print("free")
 	queue_free()

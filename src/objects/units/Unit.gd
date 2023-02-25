@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const DEATH_TEXT_SCENE = preload("res://src/scenes/battle_scene/DeathText.tscn")
+const BASE = preload("res://src/objects/bases/Base.gd")
 
 export var move_speed = 100
 export var attack_damage = 1
@@ -23,7 +24,6 @@ func _ready():
 	
 # STATE MACHINE
 func _take_action():
-	#print(self, ", ", _check_if_unit_in_front())
 	# if there is a unit in front we stop moving
 	if _check_if_unit_in_front():
 		# check if we can attack
@@ -33,8 +33,7 @@ func _take_action():
 				$AnimatedSprite.play("attack")
 		# else idle
 		else:	
-			if $AnimatedSprite.animation != "idle": 
-				$AnimatedSprite.play("idle")
+			pass
 	# else move
 	else:
 		if $AnimatedSprite.animation != "move": 
@@ -77,9 +76,17 @@ func _find_closest_target():
 func _check_if_unit_in_front():
 	$CheckForAlliesInFront.update()
 	var collider = $CheckForAlliesInFront.get_collider()
+	if collider == null: return
+	
+	var same_side = is_enemy() == collider.is_enemy()
+	print($CheckEnemies.get_overlapping_bodies(), ", ", same_side)
 	if collider is UnitTypes.UNIT_TYPE:
-		print(self, ", ", collider)
-	return collider is UnitTypes.UNIT_TYPE and not (sign(move_speed) == sign(collider.move_speed) and collider.no_collision_with_allies)
+		# return true if enemy or same side and ally with collision
+		return not same_side or (not collider.no_collision_with_allies and same_side)
+	else:
+		# return true if enemy base
+		return not same_side
+		
 
 # UNIT SIDES
 func make_unit_ally():
@@ -87,6 +94,8 @@ func make_unit_ally():
 	set_collision_layer_bit(3, false)
 	$CheckEnemies.set_collision_mask_bit(3, true)
 	$CheckEnemies.set_collision_mask_bit(2, false)
+	$CheckForAlliesInFront.set_collision_mask_bit(3, true)
+	$CheckForAlliesInFront.set_collision_mask_bit(2, false)
 	$ColorRect.color = Color.green
 	move_speed = abs(move_speed)
 	scale.x = abs(scale.x)
@@ -97,13 +106,15 @@ func make_unit_enemy():
 	set_collision_layer_bit(2, false)
 	$CheckEnemies.set_collision_mask_bit(2, true)
 	$CheckEnemies.set_collision_mask_bit(3, false)
+	$CheckForAlliesInFront.set_collision_mask_bit(2, true)
+	$CheckForAlliesInFront.set_collision_mask_bit(3, false)
 	$ColorRect.color = Color.red
 	move_speed = abs(move_speed) * -1
 	scale.x = abs(scale.x) * -1
 
 		
 func switch_sides():
-	if move_speed >= 0:
+	if not is_enemy():
 		make_unit_enemy()
 	else:
 		make_unit_ally()
@@ -128,4 +139,5 @@ func _drop_money():
 	get_parent().add_child(new_text)
 	Global.GameManager.change_money_by(money_dropped)
 
-
+func is_enemy():
+	return true if sign(move_speed) == -1 else false

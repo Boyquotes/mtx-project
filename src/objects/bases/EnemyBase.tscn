@@ -13,7 +13,7 @@ min_delay_between_waves = 7
 max_delay_between_waves = 10
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 0.85098, 0, 1, 1 )
+modulate = Color( 0.921569, 0.921569, 0.921569, 1 )
 
 [node name="Spawnpoint" parent="." index="2"]
 position = Vector2( 82, -30 )

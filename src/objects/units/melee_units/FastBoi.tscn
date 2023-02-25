@@ -39,9 +39,7 @@ move_speed = 175
 min_money_on_death = 15
 max_money_on_death = 40
 
-[node name="CheckForAlliesInFront" parent="." index="2"]
-cast_to = Vector2( 65, 0 )
-
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0, 1, 0.623529, 1 )
 frames = SubResource( 3 )
+frame = 1

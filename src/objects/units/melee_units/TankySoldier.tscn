@@ -18,7 +18,7 @@ region = Rect2( 0, 0, 342, 305 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "attack",
 "speed": 4.0
@@ -40,6 +40,7 @@ max_health_points = 25
 cost = 50
 min_money_on_death = 25
 max_money_on_death = 50
+damage_frame = 3
 
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 1, 0.772549, 0, 1 )

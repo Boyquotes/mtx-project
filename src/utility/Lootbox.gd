@@ -16,7 +16,7 @@ func _ready():
 	
 	_make_intervals()
 	
-	_test_rng(1000000)
+	#_test_rng(1000000)
 
 func _make_intervals():
 	var total = 0

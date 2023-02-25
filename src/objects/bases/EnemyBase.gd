@@ -4,7 +4,7 @@ export var min_delay_between_waves = 7
 export var max_delay_between_waves = 10
 
 
-const _wave_data_file = "res://data/WaveData.txt"
+const _wave_data_file = "res://data/SingleEnemy.txt"
 const _level_data_file = "res://data/LevelData.txt"
 
 
@@ -138,3 +138,6 @@ func _check_if_room_for_unit():
 func _process(delta):
 	if not _unit_queue.empty() and _check_if_room_for_unit():
 		_spawn_next_unit_in_queue()
+
+func is_enemy():
+	return true
