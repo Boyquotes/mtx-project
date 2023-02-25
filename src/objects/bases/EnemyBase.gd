@@ -4,7 +4,7 @@ export var min_delay_between_waves = 7
 export var max_delay_between_waves = 10
 
 
-const _wave_data_file = "res://data/SingleEnemy.txt"
+const _wave_data_file = "res://data/WaveData.txt"
 const _level_data_file = "res://data/LevelData.txt"
 
 

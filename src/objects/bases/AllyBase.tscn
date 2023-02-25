@@ -11,6 +11,9 @@ position = Vector2( 0, -1 )
 collision_layer = 4
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="0"]
+visible = false
+
 [node name="Spawnpoint" parent="." index="2"]
 position = Vector2( -103, -30 )
 
