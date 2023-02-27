@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/scenes/BuyScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/TitleScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/lootbox_scene/LootboxManager.gd" type="Script" id=3]
+[ext_resource path="res://data/Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/objects/Styles/RoundRed.tres" type="StyleBox" id=5]
+[ext_resource path="res://src/scenes/lootbox_scene/bagelboxad.png" type="Texture" id=6]
+[ext_resource path="res://src/scenes/lootbox_scene/crystalad.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/lootbox_scene/crystalad4.png" type="Texture" id=8]
+[ext_resource path="res://src/scenes/lootbox_scene/crystalad3.png" type="Texture" id=9]
+[ext_resource path="res://src/scenes/lootbox_scene/crystalad2.png" type="Texture" id=10]
+[ext_resource path="res://src/objects/Styles/RoundPrpl.tres" type="StyleBox" id=11]
+[ext_resource path="res://data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://src/objects/Styles/RoundOrange.tres" type="StyleBox" id=13]
+[ext_resource path="res://src/scenes/lootbox_scene/coingel_img.png" type="Texture" id=14]
+[ext_resource path="res://src/scenes/lootbox_scene/crystal_img.png" type="Texture" id=15]
+[ext_resource path="res://src/scenes/CurrencyMonitor.tscn" type="PackedScene" id=16]
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+use_filter = true
+extra_spacing_bottom = 500
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 149
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 87
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 53
+font_data = ExtResource( 4 )
 
 [node name="BuyScreen" type="Control"]
 anchor_right = 1.0
@@ -15,41 +46,95 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.168627, 0.807843, 0.584314, 1 )
 
-[node name="Buy_c1" type="Button" parent="MainSelect"]
-margin_left = 1008.0
-margin_top = 624.0
-margin_right = 1648.0
-margin_bottom = 931.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Buy Currency 1"
+[node name="CurrencyMonitor" parent="MainSelect" instance=ExtResource( 16 )]
 
 [node name="BuyLB" type="Button" parent="MainSelect"]
-margin_left = 240.0
-margin_top = 312.0
-margin_right = 861.0
-margin_bottom = 902.0
+margin_left = 113.0
+margin_top = 271.0
+margin_right = 795.0
+margin_bottom = 914.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Buy Lootbox (C0/C1)"
+flat = true
 
-[node name="Buy_c2" type="Button" parent="MainSelect"]
-margin_left = 1008.0
-margin_top = 288.0
-margin_right = 1648.0
-margin_bottom = 595.0
+[node name="Bagelboxad" type="Sprite" parent="MainSelect/BuyLB"]
+position = Vector2( 341, 318 )
+scale = Vector2( 1.48889, 1.48889 )
+texture = ExtResource( 6 )
+
+[node name="Buy20" type="Button" parent="MainSelect"]
+margin_left = 1374.0
+margin_top = 606.0
+margin_right = 1831.0
+margin_bottom = 825.0
+rect_pivot_offset = Vector2( 227, -141 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Buy Currency 2"
+text = "Buy20Eur"
+flat = true
+
+[node name="Crystalad4" type="Sprite" parent="MainSelect/Buy20"]
+position = Vector2( 238, 122 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 8 )
+
+[node name="Buy10" type="Button" parent="MainSelect"]
+margin_left = 884.0
+margin_top = 606.0
+margin_right = 1341.0
+margin_bottom = 825.0
+rect_pivot_offset = Vector2( 227, 116 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy10Eur"
+flat = true
+
+[node name="Crystalad3" type="Sprite" parent="MainSelect/Buy10"]
+position = Vector2( 242, 113 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+
+[node name="Buy5" type="Button" parent="MainSelect"]
+margin_left = 1374.0
+margin_top = 351.0
+margin_right = 1831.0
+margin_bottom = 570.0
+rect_pivot_offset = Vector2( 227, -141 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy5Eur"
+flat = true
+
+[node name="Crystalad2" type="Sprite" parent="MainSelect/Buy5"]
+position = Vector2( 235, 111 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 10 )
+
+[node name="Buy2" type="Button" parent="MainSelect"]
+margin_left = 884.0
+margin_top = 351.0
+margin_right = 1341.0
+margin_bottom = 570.0
+rect_pivot_offset = Vector2( 227, 116 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy2Eur"
+flat = true
+
+[node name="Crystalad" type="Sprite" parent="MainSelect/Buy2"]
+position = Vector2( 232, 109 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 7 )
 
 [node name="LootBox_Purchase" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 174.0
-margin_top = 98.0
-margin_right = -174.0
-margin_bottom = -109.0
-color = Color( 0.180392, 0.458824, 0.360784, 0.827451 )
+margin_left = 294.0
+margin_top = 194.0
+margin_right = -54.0
+margin_bottom = -13.0
+rect_scale = Vector2( 0.854587, 0.854587 )
+color = Color( 0.580392, 0.27451, 0.807843, 0.952941 )
 
 [node name="BuyLB_c0" type="Button" parent="LootBox_Purchase"]
 margin_left = 102.0
@@ -58,7 +143,27 @@ margin_right = 777.0
 margin_bottom = 781.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Buy Lootbox For Currency 0"
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/disabled = ExtResource( 11 )
+custom_styles/normal = ExtResource( 11 )
+text = "Buy BAGELBOX for 50 CRYSTALS"
+clip_text = true
+
+[node name="CrystalImg" type="Sprite" parent="LootBox_Purchase/BuyLB_c0"]
+position = Vector2( 209, 340 )
+scale = Vector2( 1.24865, 1.24865 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="LootBox_Purchase/BuyLB_c0"]
+margin_left = 358.0
+margin_top = 268.0
+margin_right = 659.0
+margin_bottom = 466.0
+custom_fonts/font = SubResource( 4 )
+text = "X50"
 
 [node name="BuyLB_c1" type="Button" parent="LootBox_Purchase"]
 margin_left = 777.0
@@ -67,25 +172,63 @@ margin_right = 1452.0
 margin_bottom = 781.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Buy Lootbox For Currency 1"
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "Buy BAGELBOX for 100 COINGELS"
+clip_text = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CoingelImg" type="Sprite" parent="LootBox_Purchase/BuyLB_c1"]
+position = Vector2( 135, 360 )
+scale = Vector2( 1.25598, 1.25598 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="LootBox_Purchase/BuyLB_c1"]
+margin_left = 272.0
+margin_top = 268.0
+margin_right = 670.0
+margin_bottom = 466.0
+custom_fonts/font = SubResource( 4 )
+text = "X100"
 
 [node name="LB_close" type="Button" parent="LootBox_Purchase"]
-margin_left = 1461.0
-margin_right = 1573.0
+margin_left = 1460.0
+margin_right = 1572.0
 margin_bottom = 112.0
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "X"
 
 [node name="Back" type="Button" parent="."]
-margin_right = 97.0
-margin_bottom = 98.0
-text = "<-"
+margin_left = 16.0
+margin_top = 17.0
+margin_right = 113.0
+margin_bottom = 115.0
+hint_tooltip = "Return to Menu"
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "<<<"
 
 [node name="LootboxManager" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[connection signal="button_up" from="MainSelect/Buy_c1" to="." method="_on_Buy_c1_button_up"]
 [connection signal="button_up" from="MainSelect/BuyLB" to="." method="_on_BuyLB_button_up"]
-[connection signal="button_up" from="MainSelect/Buy_c2" to="." method="_on_Buy_c2_button_up"]
 [connection signal="button_up" from="LootBox_Purchase/BuyLB_c0" to="." method="_on_BuyLB_c0_button_up"]
 [connection signal="pressed" from="LootBox_Purchase/BuyLB_c0" to="LootboxManager" method="_on_BuyLB_c0_pressed"]
 [connection signal="button_up" from="LootBox_Purchase/BuyLB_c1" to="." method="_on_BuyLB_c1_button_up"]

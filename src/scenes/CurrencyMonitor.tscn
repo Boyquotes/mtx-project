@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/scenes/lootbox_scene/currency.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 98
+font_data = ExtResource( 1 )
+
+[node name="CurrencyMonitor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Currency" type="Sprite" parent="."]
+position = Vector2( 1531, 86 )
+scale = Vector2( 0.702206, 0.702206 )
+texture = ExtResource( 2 )
+
+[node name="Coingels" type="Label" parent="Currency"]
+margin_left = -270.576
+margin_top = -54.1152
+margin_right = -213.576
+margin_bottom = 60.8848
+rect_pivot_offset = Vector2( -1398.45, -56.9633 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Crystals" type="Label" parent="Currency"]
+margin_left = 183.707
+margin_top = -54.1152
+margin_right = 240.707
+margin_bottom = 60.8848
+rect_pivot_offset = Vector2( -1398.45, -56.9633 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
