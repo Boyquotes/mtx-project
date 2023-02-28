@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coingel_img.png-f9fa33610ea9cc67c2873f49ef14e2af.stex"
+path="res://.import/box_B.png-281d51315058999308bef709f37ae50e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/coingel_img.png"
-dest_files=[ "res://.import/coingel_img.png-f9fa33610ea9cc67c2873f49ef14e2af.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/box_B.png"
+dest_files=[ "res://.import/box_B.png-281d51315058999308bef709f37ae50e.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box_S.png-fe7f4a7673308dca2d3f59d425c3fdb5.stex"
+path="res://.import/crystalad2.png-08d412e42677a67c4359788c6c3761a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/box_S.png"
-dest_files=[ "res://.import/box_S.png-fe7f4a7673308dca2d3f59d425c3fdb5.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/crystalad2.png"
+dest_files=[ "res://.import/crystalad2.png-08d412e42677a67c4359788c6c3761a5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box_C.png-e9bfb9e3d29697d33e17d86215feb873.stex"
+path="res://.import/box_A.png-1c057543a4419ced42ac3c68b23bc70b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/box_C.png"
-dest_files=[ "res://.import/box_C.png-e9bfb9e3d29697d33e17d86215feb873.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/box_A.png"
+dest_files=[ "res://.import/box_A.png-1c057543a4419ced42ac3c68b23bc70b.stex" ]
 
 [params]
 

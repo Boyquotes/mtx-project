@@ -1,24 +1,36 @@
 extends Control
 
+var result
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var animation_player
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	# Find the AnimationPlayer node in the scene
-	animation_player = get_node("AnimationPlayer")
-
-	# Start playing the animation
-	animation_player.play("Lootbox_Open_Anim")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+	$AnimationPlayer.play("Lootbox_Open_Anim")
+	result = Lootbox.open_lootbox()
+	UnitTypes.units_unlocked[result] = true
+	
+	$Box/LbTop/BoxA.texture = load("res://src/scenes/lootbox_scene/assets/box_" + Lootbox.get_unit_rarity_by_name(result) + ".png")
+	$Box/LbTop/BoxA/Label.text = UnitTypes.name_to_in_game_name[result]
+	
+	match(result):
+		"PLAIN_BAGEL": 
+			$Box/LbTop/BoxA/PlainBagel.visible = true
+		"NEW_YORK_BAGEL": 
+			$Box/LbTop/BoxA/NewYork.visible = true
+		"POPPY_SEED_BAGEL": 
+			$Box/LbTop/BoxA/Poppy.visible = true			
+		"CYMBAGEL": 
+			$Box/LbTop/BoxA/Cymbagel.visible = true			
+		"BAGELATINE": 
+			$Box/LbTop/BoxA/Bagelatine.visible = true
+		"GRENADEL": 
+			$Box/LbTop/BoxA/Grenadel.visible = true			
+		"BAEGEL": 
+			$Box/LbTop/BoxA/Baegel.visible = true			
+		"TREBUCHAGEL": 
+			$Box/LbTop/BoxA/Trebuchagel.visible = true			
+		"EVERYTHING_BAGEL": 
+			$Box/LbTop/BoxA/Everything.visible = true
+	
 func _on_Button_button_up():
 	get_tree().change_scene("res://src/scenes/lootbox_scene/LootboxMenu.tscn")
 

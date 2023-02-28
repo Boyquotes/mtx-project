@@ -26,6 +26,19 @@ var name_to_unit_dict = {
 	"EVERYTHING_BAGEL": MELEE_UNIT,
 }
 
+var name_to_in_game_name = {
+	"PLAIN_BAGEL": "Plain Bagel",
+	"NEW_YORK_BAGEL": "New York Bagel",
+	"POPPY_SEED_BAGEL": "Poppy Seed Bagel",
+	"CYMBAGEL": "Cymbagel",
+	"BAGELATINE": "Bagelatine",
+	"GRENADEL": "Grenadel",
+	"BAEGEL": "Baegel",
+	"TREBUCHAGEL": "Trebuchagel",
+	"EVERYTHING_BAGEL": "Everything Bagel",
+	"JEBAGEL": "Jebageled"
+}
+
 var units_unlocked = {
 	"PLAIN_BAGEL": true,
 	"NEW_YORK_BAGEL": true,
@@ -37,6 +50,7 @@ var units_unlocked = {
 	"TREBUCHAGEL": false,
 	"BLANK": false,
 	"EVERYTHING_BAGEL": false,
+	"JEBAGEL": false
 }
 
 var selected_units: Array = [TANKY_UNIT, GRENADE_RANGED_UNIT, FAST_UNIT]

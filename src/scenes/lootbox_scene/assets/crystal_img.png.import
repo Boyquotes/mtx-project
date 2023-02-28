@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glow.png-d8a1bed5b4f0855381cbc842b0b00d03.stex"
+path="res://.import/crystal_img.png-2131b87642f267c22199d9b2e8a9f8e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/glow.png"
-dest_files=[ "res://.import/glow.png-d8a1bed5b4f0855381cbc842b0b00d03.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/crystal_img.png"
+dest_files=[ "res://.import/crystal_img.png-2131b87642f267c22199d9b2e8a9f8e8.stex" ]
 
 [params]
 

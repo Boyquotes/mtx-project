@@ -43,5 +43,8 @@ max_money_on_death = 50
 damage_frame = 3
 
 [node name="AnimatedSprite" parent="." index="4"]
-modulate = Color( 1, 0.772549, 0, 1 )
+modulate = Color( 1, 0.607843, 0, 1 )
+position = Vector2( 846, 149 )
 frames = SubResource( 3 )
+frame = 1
+offset = Vector2( -1680, -310 )

@@ -11,12 +11,13 @@ var _intervals: Array
 var _test: Dictionary
 
 func _ready():
+	randomize()
 	_parse_unit_rarity_data_file()
 	_parse_lootbox_data_file()
 	
 	_make_intervals()
-	
-	#_test_rng(1000000)
+
+	_test_rng(100000)
 
 func _make_intervals():
 	var total = 0
@@ -81,3 +82,9 @@ func _test_rng(amount: int):
 	print("Opened " + str(amount) + " lootboxes:")
 	for unit in _test.keys():
 		print("Got " + str(_test[unit]) + " = " + str((float(_test[unit])/float(amount))*100) + "% of unit " + unit)
+
+func get_unit_rarity_by_name(name: String):
+	for key in _units.keys():
+		if name in _units[key]:
+			return key
+	

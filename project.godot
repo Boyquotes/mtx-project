@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 UnitTypes="*res://src/utility/UnitTypes.gd"
 Global="*res://src/utility/Global.gd"
 Lootbox="*res://src/utility/Lootbox.gd"
+Currency="*res://src/utility/Currency.gd"
 
 [display]
 

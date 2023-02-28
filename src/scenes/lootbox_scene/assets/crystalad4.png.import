@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lb_bottom_b.png-1e3ce14c4256d7c1efb9a0a9395b1462.stex"
+path="res://.import/crystalad4.png-da720120842d54c7b01b553cc55ad30c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/lb_bottom_b.png"
-dest_files=[ "res://.import/lb_bottom_b.png-1e3ce14c4256d7c1efb9a0a9395b1462.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/crystalad4.png"
+dest_files=[ "res://.import/crystalad4.png-da720120842d54c7b01b553cc55ad30c.stex" ]
 
 [params]
 

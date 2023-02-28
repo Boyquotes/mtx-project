@@ -1,13 +1,19 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://src/scenes/lootbox_scene/glow.png" type="Texture" id=1]
-[ext_resource path="res://src/scenes/lootbox_scene/lb_top.png" type="Texture" id=2]
-[ext_resource path="res://src/scenes/lootbox_scene/lb_bottom_f.png" type="Texture" id=3]
-[ext_resource path="res://src/scenes/lootbox_scene/lb_bottom_b.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/glow.png" type="Texture" id=1]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/lb_top.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/lb_bottom_f.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/lb_bottom_b.png" type="Texture" id=4]
 [ext_resource path="res://data/Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://src/scenes/lootbox_scene/box_C.png" type="Texture" id=6]
-[ext_resource path="res://src/scenes/lootbox_scene/bagelpng.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/box_C.png" type="Texture" id=6]
+[ext_resource path="res://src/objects/units/assets/cymbagel_attack1.png" type="Texture" id=7]
 [ext_resource path="res://src/scenes/lootbox_scene/LootBoxOpen.gd" type="Script" id=8]
+[ext_resource path="res://src/objects/units/assets/bageltest2.png" type="Texture" id=9]
+[ext_resource path="res://src/objects/units/assets/bae-gel_seduce2.png" type="Texture" id=10]
+[ext_resource path="res://src/objects/units/assets/poppyattack2.png" type="Texture" id=11]
+[ext_resource path="res://src/objects/units/assets/bageltest1.png" type="Texture" id=12]
+[ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=13]
+[ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=4]
 particles_animation = true
@@ -40,7 +46,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="DynamicFont" id=3]
-size = 27
+size = 21
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
@@ -419,11 +425,6 @@ position = Vector2( 3.8147e-06, 80.0002 )
 scale = Vector2( 1.10502, 1.10502 )
 texture = ExtResource( 6 )
 
-[node name="Bagelpng" type="Sprite" parent="Box/LbTop/BoxA"]
-position = Vector2( 3.05176e-05, -19.3333 )
-scale = Vector2( 0.897817, 0.897817 )
-texture = ExtResource( 7 )
-
 [node name="Label" type="Label" parent="Box/LbTop/BoxA"]
 margin_left = -91.7305
 margin_top = 70.3404
@@ -432,6 +433,66 @@ margin_bottom = 104.34
 custom_fonts/font = SubResource( 3 )
 text = "BAGEL NAME"
 align = 1
+valign = 1
+
+[node name="Poppy" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+position = Vector2( 10.8595, -19.9093 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 14 )
+
+[node name="Cymbagel" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+position = Vector2( 9.04961, -14.4796 )
+scale = Vector2( 0.608599, 0.54446 )
+texture = ExtResource( 7 )
+
+[node name="Baegel" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+position = Vector2( 3.61984, -23.5292 )
+scale = Vector2( 0.54377, 0.55262 )
+texture = ExtResource( 10 )
+
+[node name="NewYork" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+modulate = Color( 1, 0.607843, 0, 1 )
+position = Vector2( -1.80993, -21.7192 )
+scale = Vector2( 0.651794, 0.655535 )
+texture = ExtResource( 12 )
+
+[node name="PlainBagel" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+position = Vector2( -4.52481, -31.6738 )
+scale = Vector2( 0.738258, 0.731386 )
+texture = ExtResource( 9 )
+
+[node name="Everything" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+modulate = Color( 0.968627, 1, 0, 1 )
+position = Vector2( -1.80993, -21.7192 )
+scale = Vector2( 0.651794, 0.655535 )
+texture = ExtResource( 12 )
+
+[node name="Bagelatine" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+modulate = Color( 0, 1, 0.623529, 1 )
+position = Vector2( -1.80993, -21.7192 )
+scale = Vector2( 0.651794, 0.655535 )
+texture = ExtResource( 12 )
+
+[node name="Grenadel" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+modulate = Color( 0.0627451, 0.368627, 0.0196078, 1 )
+position = Vector2( -3.61985, -33.4837 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 13 )
+
+[node name="Trebuchagel" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
+position = Vector2( -16.2893, -38.9135 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Box")

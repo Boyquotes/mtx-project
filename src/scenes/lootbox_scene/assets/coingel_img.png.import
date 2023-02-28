@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bagelboxad.png-ab4b45192e50f938e7cf06a4e78dd8a2.stex"
+path="res://.import/coingel_img.png-de7b9705762ae2c52a6db65780654e2c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/bagelboxad.png"
-dest_files=[ "res://.import/bagelboxad.png-ab4b45192e50f938e7cf06a4e78dd8a2.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/coingel_img.png"
+dest_files=[ "res://.import/coingel_img.png-de7b9705762ae2c52a6db65780654e2c.stex" ]
 
 [params]
 

@@ -1,12 +1,25 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/scenes/BuyScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/TitleScreen.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+export var TitleScreen : PackedScene
+
+export var lootboxCostC0 = 100
+export var lootboxCostC1 = 50
+
+
+func _on_Buyc0_pressed():
+	print(\"result: \", Lootbox.open_lootbox())
+	get_tree().change_scene(\"res://src/scenes/lootbox_scene/LootBoxOpen.tscn\")
+"
 
 [node name="BuyScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = SubResource( 1 )
 TitleScreen = ExtResource( 2 )
 
 [node name="MainSelect" type="ColorRect" parent="."]

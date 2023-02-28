@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/currency.png-86001ca85806b55c8b175afb7870bf5d.stex"
+path="res://.import/crystalad.png-8a18c92851c0e04b51b1f66b1521cdde.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/lootbox_scene/currency.png"
-dest_files=[ "res://.import/currency.png-86001ca85806b55c8b175afb7870bf5d.stex" ]
+source_file="res://src/scenes/lootbox_scene/assets/crystalad.png"
+dest_files=[ "res://.import/crystalad.png-8a18c92851c0e04b51b1f66b1521cdde.stex" ]
 
 [params]
 

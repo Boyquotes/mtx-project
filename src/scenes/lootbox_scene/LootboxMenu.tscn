@@ -1,21 +1,24 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://src/scenes/BuyScreen.gd" type="Script" id=1]
-[ext_resource path="res://src/scenes/TitleScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scenes/lootbox_scene/LootboxMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/lootbox_scene/LootboxManager.gd" type="Script" id=3]
 [ext_resource path="res://data/Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/objects/Styles/RoundRed.tres" type="StyleBox" id=5]
-[ext_resource path="res://src/scenes/lootbox_scene/bagelboxad.png" type="Texture" id=6]
-[ext_resource path="res://src/scenes/lootbox_scene/crystalad.png" type="Texture" id=7]
-[ext_resource path="res://src/scenes/lootbox_scene/crystalad4.png" type="Texture" id=8]
-[ext_resource path="res://src/scenes/lootbox_scene/crystalad3.png" type="Texture" id=9]
-[ext_resource path="res://src/scenes/lootbox_scene/crystalad2.png" type="Texture" id=10]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/bagelboxad.png" type="Texture" id=6]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/crystalad.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/crystalad4.png" type="Texture" id=8]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/crystalad3.png" type="Texture" id=9]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/crystalad2.png" type="Texture" id=10]
 [ext_resource path="res://src/objects/Styles/RoundPrpl.tres" type="StyleBox" id=11]
 [ext_resource path="res://data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://src/objects/Styles/RoundOrange.tres" type="StyleBox" id=13]
-[ext_resource path="res://src/scenes/lootbox_scene/coingel_img.png" type="Texture" id=14]
-[ext_resource path="res://src/scenes/lootbox_scene/crystal_img.png" type="Texture" id=15]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/coingel_img.png" type="Texture" id=14]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/crystal_img.png" type="Texture" id=15]
 [ext_resource path="res://src/scenes/CurrencyMonitor.tscn" type="PackedScene" id=16]
+
+[sub_resource type="DynamicFont" id=5]
+size = 98
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 42
@@ -39,7 +42,6 @@ font_data = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-TitleScreen = ExtResource( 2 )
 
 [node name="MainSelect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -126,7 +128,21 @@ position = Vector2( 232, 109 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 7 )
 
+[node name="EuroSpent" type="Control" parent="MainSelect"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="MainSelect/EuroSpent"]
+margin_left = 852.0
+margin_top = 954.0
+margin_right = 1852.0
+margin_bottom = 1069.0
+custom_fonts/font = SubResource( 5 )
+text = "Total euro spent:"
+align = 1
+
 [node name="LootBox_Purchase" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 294.0
@@ -137,10 +153,10 @@ rect_scale = Vector2( 0.854587, 0.854587 )
 color = Color( 0.580392, 0.27451, 0.807843, 0.952941 )
 
 [node name="BuyLB_c0" type="Button" parent="LootBox_Purchase"]
-margin_left = 102.0
-margin_top = 112.0
-margin_right = 777.0
-margin_bottom = 781.0
+margin_left = 774.643
+margin_top = 114.675
+margin_right = 1449.64
+margin_bottom = 783.675
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
@@ -166,10 +182,10 @@ custom_fonts/font = SubResource( 4 )
 text = "X50"
 
 [node name="BuyLB_c1" type="Button" parent="LootBox_Purchase"]
-margin_left = 777.0
-margin_top = 112.0
-margin_right = 1452.0
-margin_bottom = 781.0
+margin_left = 99.4633
+margin_top = 114.675
+margin_right = 774.463
+margin_bottom = 783.675
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
@@ -195,7 +211,7 @@ margin_top = 268.0
 margin_right = 670.0
 margin_bottom = 466.0
 custom_fonts/font = SubResource( 4 )
-text = "X100"
+text = "X700"
 
 [node name="LB_close" type="Button" parent="LootBox_Purchase"]
 margin_left = 1460.0
@@ -228,9 +244,12 @@ text = "<<<"
 [node name="LootboxManager" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[connection signal="button_up" from="MainSelect/BuyLB" to="." method="_on_BuyLB_button_up"]
-[connection signal="button_up" from="LootBox_Purchase/BuyLB_c0" to="." method="_on_BuyLB_c0_button_up"]
-[connection signal="pressed" from="LootBox_Purchase/BuyLB_c0" to="LootboxManager" method="_on_BuyLB_c0_pressed"]
-[connection signal="button_up" from="LootBox_Purchase/BuyLB_c1" to="." method="_on_BuyLB_c1_button_up"]
-[connection signal="button_up" from="LootBox_Purchase/LB_close" to="." method="_on_LB_close_button_up"]
-[connection signal="button_up" from="Back" to="." method="_on_Back_button_up"]
+[connection signal="pressed" from="MainSelect/BuyLB" to="." method="_on_BuyLB_pressed"]
+[connection signal="pressed" from="MainSelect/Buy20" to="." method="_on_Buy20_pressed"]
+[connection signal="pressed" from="MainSelect/Buy10" to="." method="_on_Buy10_pressed"]
+[connection signal="pressed" from="MainSelect/Buy5" to="." method="_on_Buy5_pressed"]
+[connection signal="pressed" from="MainSelect/Buy2" to="." method="_on_Buy2_pressed"]
+[connection signal="pressed" from="LootBox_Purchase/BuyLB_c0" to="." method="_on_BuyLB_c0_pressed"]
+[connection signal="pressed" from="LootBox_Purchase/BuyLB_c1" to="." method="_on_BuyLB_c1_pressed"]
+[connection signal="pressed" from="LootBox_Purchase/LB_close" to="." method="_on_LB_close_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
