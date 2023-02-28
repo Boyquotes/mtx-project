@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/objects/units/ranged_units/BasicRangedUnit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/objects/units/ranged_units/HeavyRangedUnit.gd" type="Script" id=2]
 [ext_resource path="res://src/objects/units/ranged_units/HeavyRangedProjectile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=4]
 [ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=5]
@@ -14,7 +13,7 @@ extents = Vector2( 414, 16 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "attack",
 "speed": 2.0
@@ -31,12 +30,14 @@ animations = [ {
 } ]
 
 [node name="HeavyRangedUnit" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
-move_speed = 70
-attack_damage = 3
-max_health_points = 10
+move_speed = 50
+attack_damage = 5
+max_health_points = 20
+cost = 300
+min_money_on_death = 200
+max_money_on_death = 400
 no_collision_with_allies = true
-shoot_projectile_frame = 5
+shoot_projectile_frame = 4
 projectile = ExtResource( 3 )
 
 [node name="CheckEnemies" parent="." index="1"]
@@ -49,3 +50,4 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
 frames = SubResource( 2 )
+frame = 0

@@ -2,6 +2,7 @@ extends Node2D
 
 export var starting_money = 1000
 
+
 var _money
 
 signal money_changed
@@ -16,6 +17,8 @@ func get_current_money():
 	
 func change_money_by(value):
 	_money += value
+	if value > 0: 
+		Currency.current_coinels += value*2
 	emit_signal("money_changed")
 
 func add_unit(unit: UnitTypes.UNIT_TYPE):

@@ -6,7 +6,7 @@ export var rotation_speed = 0.05
 
 var _acceleration = Vector2.ZERO
 
-func shoot(damage: int, target: KinematicBody2D, is_enemy: bool):
+func shoot(damage: int, target: Node2D, is_enemy: bool):
 	if target == null: 
 		queue_free()
 	else:

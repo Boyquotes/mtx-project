@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/scenes/battle_scene/StartBattleText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/battle_scene/MoneyTracker.gd" type="Script" id=2]
@@ -11,7 +11,16 @@
 [ext_resource path="res://src/scenes/battle_scene/GameOver.gd" type="Script" id=9]
 [ext_resource path="res://src/scenes/battle_scene/Queue.gd" type="Script" id=10]
 [ext_resource path="res://src/scenes/battle_scene/assets/bagelbkg_mountn.png" type="Texture" id=11]
+[ext_resource path="res://data/Fonts/SmallerInGameText.tres" type="DynamicFont" id=12]
+[ext_resource path="res://src/objects/units/assets/poppyattack2.png" type="Texture" id=13]
 [ext_resource path="res://src/scenes/battle_scene/assets/bagelbkg_cloud.png" type="Texture" id=14]
+[ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=15]
+[ext_resource path="res://src/objects/units/assets/cymbagel_attack1.png" type="Texture" id=16]
+[ext_resource path="res://src/objects/units/assets/bageltest2.png" type="Texture" id=17]
+[ext_resource path="res://src/objects/units/assets/bageltest1.png" type="Texture" id=18]
+[ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=19]
+[ext_resource path="res://src/objects/units/assets/bae-gel_seduce2.png" type="Texture" id=20]
+[ext_resource path="res://src/scenes/battle_scene/UnitMenu.gd" type="Script" id=21]
 
 [node name="BattleScene" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -29,10 +38,140 @@ health_points = 100
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
 position = Vector2( 190, 951 )
+health_points = 100
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 100
+
+[node name="UnitMenu" type="Node2D" parent="UserInterface"]
+position = Vector2( 1281, 172 )
+script = ExtResource( 21 )
+
+[node name="POPPY_SEED_BAGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 19 )
+
+[node name="CYMBAGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+position = Vector2( 9.04961, -14.4796 )
+scale = Vector2( 0.608599, 0.54446 )
+texture = ExtResource( 16 )
+
+[node name="BAEGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+position = Vector2( 3.61984, -23.5292 )
+scale = Vector2( 0.54377, 0.55262 )
+texture = ExtResource( 20 )
+
+[node name="NEW_YORK_BAGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+modulate = Color( 1, 0.607843, 0, 1 )
+position = Vector2( -1.80993, -21.7192 )
+scale = Vector2( 0.651794, 0.655535 )
+texture = ExtResource( 18 )
+
+[node name="PLAIN_BAGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+position = Vector2( -4.52481, -31.6738 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 17 )
+
+[node name="EVERYTHING_BAGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+modulate = Color( 0.968627, 1, 0, 1 )
+position = Vector2( -1.80993, -21.7192 )
+scale = Vector2( 0.651794, 0.655535 )
+texture = ExtResource( 18 )
+
+[node name="BAGELATINE" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+modulate = Color( 0, 1, 0.623529, 1 )
+position = Vector2( -1.80993, -21.7192 )
+scale = Vector2( 0.651794, 0.655535 )
+texture = ExtResource( 18 )
+
+[node name="GRENADEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+modulate = Color( 0.0627451, 0.368627, 0.0196078, 1 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 15 )
+
+[node name="TREBUCHAGEL" type="Sprite" parent="UserInterface/UnitMenu"]
+visible = false
+modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
+position = Vector2( 0, -14 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 13 )
+
+[node name="P0" type="Node2D" parent="UserInterface/UnitMenu"]
+position = Vector2( 17, -27 )
+
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P0"]
+margin_left = -28.0
+margin_top = 81.0
+margin_right = 31.0
+margin_bottom = 129.0
+custom_fonts/font = ExtResource( 12 )
+text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P0"]
+margin_left = -30.0
+margin_top = -108.0
+margin_right = 29.0
+margin_bottom = -60.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+
+[node name="P1" type="Node2D" parent="UserInterface/UnitMenu"]
+position = Vector2( 251, -27 )
+
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P1"]
+margin_left = -28.0
+margin_top = 82.0
+margin_right = 31.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 12 )
+text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P1"]
+margin_left = -33.0
+margin_top = -109.0
+margin_right = 26.0
+margin_bottom = -61.0
+custom_fonts/font = ExtResource( 12 )
+text = "2"
+align = 1
+
+[node name="P2" type="Node2D" parent="UserInterface/UnitMenu"]
+position = Vector2( 450, -23 )
+
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P2"]
+margin_left = -25.0001
+margin_top = 78.0
+margin_right = 33.9999
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 12 )
+text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P2"]
+margin_left = -30.0001
+margin_top = -113.0
+margin_right = 28.9999
+margin_bottom = -65.0
+custom_fonts/font = ExtResource( 12 )
+text = "3"
+align = 1
+
+[node name="Label" type="Label" parent="UserInterface/UnitMenu"]
+margin_left = -339.0
+margin_top = -164.0
+margin_right = -123.0
+margin_bottom = -68.0
+custom_fonts/font = ExtResource( 3 )
+text = "Units:"
 
 [node name="MoneyTracker" type="Label" parent="UserInterface"]
 anchor_left = 0.5
@@ -67,10 +206,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -279.0
-margin_top = -50.0
-margin_right = 279.0
-margin_bottom = 52.0
+margin_left = -299.0
+margin_top = -47.0
+margin_right = 317.0
+margin_bottom = 59.0
 custom_fonts/font = ExtResource( 3 )
 text = "Return to menu"
 
@@ -79,12 +218,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.5
-margin_top = -150.0
-margin_right = 160.5
-margin_bottom = -54.0
+margin_left = -161.0
+margin_top = -197.0
+margin_right = 160.0
+margin_bottom = -101.0
 custom_fonts/font = ExtResource( 3 )
 text = "You lost!"
+align = 1
+
+[node name="Coinels" type="Label" parent="UserInterface/GameOver"]
+margin_left = -255.0
+margin_top = 63.0
+margin_right = 245.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 12 )
+text = "Coinels earned"
 align = 1
 
 [node name="StartBattleText" parent="." instance=ExtResource( 1 )]

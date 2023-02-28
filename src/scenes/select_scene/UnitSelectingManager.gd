@@ -21,11 +21,10 @@ func unselect_unit(unit_name: int):
 			_selected_units.erase(unit_name)
 	$PlayButton.visible = _selected_units.size() > 0 
 
-func _on_PlayButton_pressed():
-	var selected_units: Array
+func _on_PlayButton_pressed():	
+	var units: Array
+	for unit in _selected_units:
+		units.append(UnitTypes.unit_names[unit])	
+	UnitTypes.selected_units = units
 	
-	for unit_type in _selected_units:
-		selected_units.append(UnitTypes.name_to_unit_dict[UnitTypes.unit_names[unit_type]])
-		
-	UnitTypes.selected_units = selected_units
 	get_tree().change_scene("res://src/scenes/battle_scene/BattleScene.tscn")

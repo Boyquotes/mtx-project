@@ -5,7 +5,7 @@ export var gravity_strenght = 0.01
 
 var _acceleration = Vector2.ZERO
 
-func shoot(damage: int, target: KinematicBody2D, is_enemy: bool):
+func shoot(damage: int, target: Node2D, is_enemy: bool):
 	.shoot(damage, target, is_enemy)
 	if target == null: 
 		queue_free()

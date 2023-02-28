@@ -9,7 +9,7 @@
 [ext_resource path="res://src/objects/units/assets/bae-gel_seduce.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 60.0
+radius = 55.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -33,10 +33,10 @@ animations = [ {
 z_as_relative = true
 script = ExtResource( 3 )
 attack_damage = 0
+cost = 50
+min_money_on_death = 40
+max_money_on_death = 60
 damage_frame = 11
-
-[node name="CheckEnemies" parent="." index="1"]
-position = Vector2( 12, 0 )
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]
 shape = SubResource( 1 )

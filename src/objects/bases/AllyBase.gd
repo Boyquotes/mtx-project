@@ -3,9 +3,14 @@ extends "res://src/objects/bases/Base.gd"
 var _units: Array
 var _unit_queue : Array
 var _can_spawn_unit = true
+var _selected_units : Array
 
 signal game_over	
 signal queue_changed
+
+func _ready():
+	for unit_type in UnitTypes.selected_units:
+		_selected_units.append(UnitTypes.name_to_unit_dict[unit_type])	
 
 func _add_unit_to_queue(unit: UnitTypes.UNIT_TYPE):
 	_unit_queue.append(unit)
@@ -35,11 +40,11 @@ func _create_unit(unit: PackedScene):
 
 func _process(delta):
 	if Input.is_action_just_pressed("spawn_1"):
-		_create_unit(UnitTypes.selected_units[0]);
-	elif Input.is_action_just_pressed("spawn_2") and UnitTypes.selected_units.size() > 1:
-		_create_unit(UnitTypes.selected_units[1]);
-	elif Input.is_action_just_pressed("spawn_3") and UnitTypes.selected_units.size() > 2:
-		_create_unit(UnitTypes.selected_units[2]);
+		_create_unit(_selected_units[0]);
+	elif Input.is_action_just_pressed("spawn_2") and _selected_units.size() > 1:
+		_create_unit(_selected_units[1]);
+	elif Input.is_action_just_pressed("spawn_3") and _selected_units.size() > 2:
+		_create_unit(_selected_units[2]);
 		
 func _check_if_room_for_unit():
 	for unit in $CheckForAllyUnits.get_overlapping_bodies():

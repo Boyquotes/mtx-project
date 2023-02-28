@@ -43,7 +43,6 @@ projectile = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="0"]
 visible = true
-position = Vector2( 0, -16 )
 shape = ExtResource( 7 )
 
 [node name="CheckEnemies" parent="." index="1"]

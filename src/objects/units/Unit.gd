@@ -21,6 +21,7 @@ var _dead = false
 # INITIALIZING
 func _ready():
 	_current_health_points = max_health_points
+
 	
 # STATE MACHINE
 func _take_action():
@@ -33,7 +34,8 @@ func _take_action():
 				$AnimatedSprite.play("attack")
 		# else idle
 		else:	
-			pass
+			if $AnimatedSprite.animation != "move": 
+				$AnimatedSprite.play("move")
 	# else move
 	else:
 		if $AnimatedSprite.animation != "move": 
@@ -76,7 +78,7 @@ func _find_closest_target():
 func _check_if_unit_in_front():
 	$CheckForAlliesInFront.update()
 	var collider = $CheckForAlliesInFront.get_collider()
-	if collider == null: return
+	if collider == null: return false
 	
 	var same_side = is_enemy() == collider.is_enemy()
 
@@ -112,13 +114,24 @@ func make_unit_enemy():
 	move_speed = abs(move_speed) * -1
 	scale.x = abs(scale.x) * -1
 
+
 		
 func switch_sides():
-	if not is_enemy():
-		make_unit_enemy()
-	else:
-		make_unit_ally()
+	var enemy = is_enemy()
+	
+	set_collision_layer_bit(2, enemy)
+	set_collision_layer_bit(3, not enemy)
+	$CheckEnemies.set_collision_mask_bit(3, enemy)
+	$CheckEnemies.set_collision_mask_bit(2, not enemy)
+	$CheckForAlliesInFront.set_collision_mask_bit(3, enemy)
+	$CheckForAlliesInFront.set_collision_mask_bit(2, not enemy)
+	move_speed *= -1
 	scale.x *= -1
+	
+
+	$ColorRect.color = Color.green if enemy else Color.red
+
+		
 
 # DYING
 func _die():

@@ -7,6 +7,7 @@ const TANKY_UNIT = preload("res://src/objects/units/melee_units/TankySoldier.tsc
 const HEAVY_UNIT = preload("res://src/objects/units/melee_units/HeavyHitter.tscn")
 const FAST_UNIT = preload("res://src/objects/units/melee_units/FastBoi.tscn")
 const SEDUCE_UNIT = preload("res://src/objects/units/melee_units/SeduceUnit.tscn")
+const STRONGEST_UNIT = preload("res://src/objects/units/melee_units/EverythingBagel.tscn")
 
 const BASIC_RANGED_UNIT = preload("res://src/objects/units/ranged_units/BasicRangedUnit.tscn")
 const GRENADE_RANGED_UNIT = preload("res://src/objects/units/ranged_units/GrenadeRangedUnit.tscn")
@@ -23,7 +24,7 @@ var name_to_unit_dict = {
 	"GRENADEL": GRENADE_RANGED_UNIT,
 	"BAEGEL": SEDUCE_UNIT,
 	"TREBUCHAGEL": HEAVY_RANGED_UNIT,
-	"EVERYTHING_BAGEL": MELEE_UNIT,
+	"EVERYTHING_BAGEL": STRONGEST_UNIT,
 }
 
 var name_to_in_game_name = {
@@ -49,8 +50,8 @@ var units_unlocked = {
 	"BAEGEL": false,
 	"TREBUCHAGEL": false,
 	"BLANK": false,
-	"EVERYTHING_BAGEL": false,
+	"EVERYTHING_BAGEL": true,
 	"JEBAGEL": false
 }
 
-var selected_units: Array = [SEDUCE_UNIT, HEAVY_UNIT, FAST_UNIT]
+var selected_units: Array = ["BAEGEL", "POPPY_SEED_BAGEL", "BAGELATINE"]
