@@ -41,7 +41,7 @@ var name_to_in_game_name = {
 
 var units_unlocked = {
 	"PLAIN_BAGEL": true,
-	"NEW_YORK_BAGEL": true,
+	"NEW_YORK_BAGEL": false,
 	"POPPY_SEED_BAGEL": true,
 	"CYMBAGEL": false,
 	"BAGELATINE": false,

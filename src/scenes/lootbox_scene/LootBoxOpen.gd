@@ -30,6 +30,8 @@ func _ready():
 			$Box/LbTop/BoxA/Trebuchagel.visible = true			
 		"EVERYTHING_BAGEL": 
 			$Box/LbTop/BoxA/Everything.visible = true
+		"JEBAGEL": 
+			$Box/LbTop/BoxA/Jebagel.visible = true
 	
 func _on_Button_button_up():
 	get_tree().change_scene("res://src/scenes/lootbox_scene/LootboxMenu.tscn")

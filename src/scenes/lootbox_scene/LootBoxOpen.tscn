@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/scenes/lootbox_scene/assets/glow.png" type="Texture" id=1]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/lb_top.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/objects/units/assets/bageltest1.png" type="Texture" id=12]
 [ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=13]
 [ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=14]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/jebagel.png" type="Texture" id=15]
 
 [sub_resource type="CanvasItemMaterial" id=4]
 particles_animation = true
@@ -493,6 +494,12 @@ modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
 position = Vector2( -16.2893, -38.9135 )
 scale = Vector2( 0.693274, 0.601577 )
 texture = ExtResource( 11 )
+
+[node name="Jebagel" type="Sprite" parent="Box/LbTop/BoxA"]
+visible = false
+position = Vector2( -3.61985, -21.7192 )
+scale = Vector2( 0.693274, 0.601577 )
+texture = ExtResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Box")

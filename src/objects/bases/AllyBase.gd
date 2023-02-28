@@ -36,9 +36,9 @@ func _create_unit(unit: PackedScene):
 func _process(delta):
 	if Input.is_action_just_pressed("spawn_1"):
 		_create_unit(UnitTypes.selected_units[0]);
-	elif Input.is_action_just_pressed("spawn_2"):
+	elif Input.is_action_just_pressed("spawn_2") and UnitTypes.selected_units.size() > 1:
 		_create_unit(UnitTypes.selected_units[1]);
-	elif Input.is_action_just_pressed("spawn_3"):
+	elif Input.is_action_just_pressed("spawn_3") and UnitTypes.selected_units.size() > 2:
 		_create_unit(UnitTypes.selected_units[2]);
 		
 func _check_if_room_for_unit():
