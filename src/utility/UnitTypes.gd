@@ -50,7 +50,7 @@ var units_unlocked = {
 	"BAEGEL": false,
 	"TREBUCHAGEL": false,
 	"BLANK": false,
-	"EVERYTHING_BAGEL": true,
+	"EVERYTHING_BAGEL": false,
 	"JEBAGEL": false
 }
 

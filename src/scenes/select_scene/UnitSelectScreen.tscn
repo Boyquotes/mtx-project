@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/scenes/select_scene/UnitSelectButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/select_scene/UnitSelectingManager.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/scenes/lootbox_scene/assets/box_A.png" type="Texture" id=15]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/box_SR.png" type="Texture" id=16]
 [ext_resource path="res://src/scenes/select_scene/UnitSelectScreen.gd" type="Script" id=17]
+[ext_resource path="res://src/objects/Styles/RoundRed.tres" type="StyleBox" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 59
@@ -43,6 +44,10 @@ font_data = ExtResource( 12 )
 [sub_resource type="DynamicFont" id=6]
 size = 98
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 53
+font_data = ExtResource( 12 )
 
 [node name="UnitSelectScreen" type="Node2D"]
 position = Vector2( 0, 1 )
@@ -401,14 +406,29 @@ scale = Vector2( 0.651794, 0.655535 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -890.0
-margin_top = -485.0
-margin_right = -38.0
-margin_bottom = -370.0
+margin_left = -724.0
+margin_top = -494.0
+margin_right = 128.0
+margin_bottom = -379.0
 custom_fonts/font = SubResource( 6 )
 text = "Select up to 3 units"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
+[node name="Back" type="Button" parent="."]
+margin_left = -896.0
+margin_top = -487.0
+margin_right = -799.0
+margin_bottom = -389.0
+hint_tooltip = "Return to Menu"
+focus_mode = 0
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 18 )
+custom_styles/normal = ExtResource( 18 )
+enabled_focus_mode = 0
+text = "<<<"
+
 [connection signal="pressed" from="UnitSelectingManager/PlayButton" to="UnitSelectingManager" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

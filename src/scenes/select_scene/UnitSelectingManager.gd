@@ -28,3 +28,4 @@ func _on_PlayButton_pressed():
 	UnitTypes.selected_units = units
 	
 	get_tree().change_scene("res://src/scenes/battle_scene/BattleScene.tscn")
+

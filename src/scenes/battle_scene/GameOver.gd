@@ -25,4 +25,5 @@ func _on_EnemyBase_game_over():
 	_end_game()
 
 func _on_BackToMenuButton_pressed():
+	get_tree().paused = false
 	get_tree().change_scene("res://src/scenes/title_screen/TitleScreen.tscn")

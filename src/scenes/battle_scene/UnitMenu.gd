@@ -11,6 +11,7 @@ func _ready():
 	for i in range(UnitTypes.selected_units.size()):
 		var sprite = get_node(UnitTypes.selected_units[i])
 		var point: Node2D = get_node("P" + str(i))
+		point.visible = true
 		sprite.visible = true
 		sprite.global_position = point.global_position
 		

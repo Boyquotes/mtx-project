@@ -106,6 +106,7 @@ scale = Vector2( 0.693274, 0.601577 )
 texture = ExtResource( 13 )
 
 [node name="P0" type="Node2D" parent="UserInterface/UnitMenu"]
+visible = false
 position = Vector2( 17, -27 )
 
 [node name="Cost" type="Label" parent="UserInterface/UnitMenu/P0"]
@@ -126,6 +127,7 @@ text = "1"
 align = 1
 
 [node name="P1" type="Node2D" parent="UserInterface/UnitMenu"]
+visible = false
 position = Vector2( 251, -27 )
 
 [node name="Cost" type="Label" parent="UserInterface/UnitMenu/P1"]
@@ -146,6 +148,7 @@ text = "2"
 align = 1
 
 [node name="P2" type="Node2D" parent="UserInterface/UnitMenu"]
+visible = false
 position = Vector2( 450, -23 )
 
 [node name="Cost" type="Label" parent="UserInterface/UnitMenu/P2"]
