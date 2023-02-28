@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/objects/units/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/units/assets/bageltest_attack1.png" type="Texture" id=2]
@@ -10,16 +10,6 @@
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 55.0
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 342, 305 )
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 342, 305 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -33,7 +23,7 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 1 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "move",
 "speed": 5.0
@@ -71,6 +61,7 @@ position = Vector2( 6, -6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 5 )
 animation = "move"
+frame = 1
 playing = true
 
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

@@ -1,9 +1,10 @@
 extends "res://src/objects/units/melee_units/BasicMeleeUnit.gd"
 
-var _has_seduced = false
+func _on_AnimatedSprite_frame_changed():
+	if $AnimatedSprite.animation == "attack" and $AnimatedSprite.frame == damage_frame:
+		var target = _find_closest_target()
+		if target == null: return
+		target.switch_sides()
 		
-func _process(delta):
-	if not _has_seduced and _enemy_in_range():
-		_find_closest_target().switch_sides()
-		_has_seduced = true
+
 

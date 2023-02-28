@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bagelbkg_g.png-bcc995f3d8d7e167f071a762caca971a.stex"
+path="res://.import/bagelbkg_mountn.png-e465f57fd99fd5ef8e7cc9d0458e93b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/battle_scene/bagelbkg_g.png"
-dest_files=[ "res://.import/bagelbkg_g.png-bcc995f3d8d7e167f071a762caca971a.stex" ]
+source_file="res://src/scenes/battle_scene/assets/bagelbkg_mountn.png"
+dest_files=[ "res://.import/bagelbkg_mountn.png-e465f57fd99fd5ef8e7cc9d0458e93b7.stex" ]
 
 [params]
 

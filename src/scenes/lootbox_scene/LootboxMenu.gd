@@ -46,4 +46,4 @@ func _on_LB_close_pressed():
 	$LootBox_Purchase.visible = false
 
 func _on_Back_pressed():
-	get_tree().change_scene("res://src/scenes/TitleScreen.tscn")
+	get_tree().change_scene("res://src/scenes/title_screen/TitleScreen.tscn")

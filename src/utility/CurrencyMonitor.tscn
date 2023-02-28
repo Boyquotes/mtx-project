@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/scenes/lootbox_scene/assets/CurrencyFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/currency.png" type="Texture" id=2]
-[ext_resource path="res://src/scenes/CurrencyMonitor.gd" type="Script" id=3]
+[ext_resource path="res://src/utility/CurrencyMonitor.gd" type="Script" id=3]
 
 [node name="CurrencyMonitor" type="Control"]
 anchor_right = 1.0

@@ -79,7 +79,7 @@ func _check_if_unit_in_front():
 	if collider == null: return
 	
 	var same_side = is_enemy() == collider.is_enemy()
-	print($CheckEnemies.get_overlapping_bodies(), ", ", same_side)
+
 	if collider is UnitTypes.UNIT_TYPE:
 		# return true if enemy or same side and ally with collision
 		return not same_side or (not collider.no_collision_with_allies and same_side)

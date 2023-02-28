@@ -14,7 +14,7 @@
 [ext_resource path="res://src/objects/Styles/RoundOrange.tres" type="StyleBox" id=13]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/coingel_img.png" type="Texture" id=14]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/crystal_img.png" type="Texture" id=15]
-[ext_resource path="res://src/scenes/CurrencyMonitor.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/utility/CurrencyMonitor.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=5]
 size = 98

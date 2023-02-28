@@ -46,5 +46,5 @@ damage_frame = 3
 modulate = Color( 1, 0.607843, 0, 1 )
 position = Vector2( 846, 149 )
 frames = SubResource( 3 )
-frame = 1
+frame = 0
 offset = Vector2( -1680, -310 )

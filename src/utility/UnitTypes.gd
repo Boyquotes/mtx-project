@@ -53,4 +53,4 @@ var units_unlocked = {
 	"JEBAGEL": false
 }
 
-var selected_units: Array = [TANKY_UNIT, GRENADE_RANGED_UNIT, FAST_UNIT]
+var selected_units: Array = [SEDUCE_UNIT, HEAVY_UNIT, FAST_UNIT]

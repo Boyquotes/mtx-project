@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Age of Gacha"
-run/main_scene="res://src/scenes/TitleScreen.tscn"
+run/main_scene="res://src/scenes/title_screen/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

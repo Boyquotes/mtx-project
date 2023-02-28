@@ -10,8 +10,8 @@
 [ext_resource path="res://src/scenes/battle_scene/Clouds.gd" type="Script" id=8]
 [ext_resource path="res://src/scenes/battle_scene/GameOver.gd" type="Script" id=9]
 [ext_resource path="res://src/scenes/battle_scene/Queue.gd" type="Script" id=10]
-[ext_resource path="res://src/scenes/battle_scene/bagelbkg_mountn.png" type="Texture" id=11]
-[ext_resource path="res://src/scenes/battle_scene/bagelbkg_cloud.png" type="Texture" id=14]
+[ext_resource path="res://src/scenes/battle_scene/assets/bagelbkg_mountn.png" type="Texture" id=11]
+[ext_resource path="res://src/scenes/battle_scene/assets/bagelbkg_cloud.png" type="Texture" id=14]
 
 [node name="BattleScene" type="Node2D"]
 position = Vector2( -1, 0 )

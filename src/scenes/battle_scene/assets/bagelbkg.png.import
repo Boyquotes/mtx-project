@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bagelbkg_cloud.png-d771f5bd68c9338aec8ab5312fd6682e.stex"
+path="res://.import/bagelbkg.png-a4801987ad32dc48e0d2ba8d9c56870d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/battle_scene/bagelbkg_cloud.png"
-dest_files=[ "res://.import/bagelbkg_cloud.png-d771f5bd68c9338aec8ab5312fd6682e.stex" ]
+source_file="res://src/scenes/battle_scene/assets/bagelbkg.png"
+dest_files=[ "res://.import/bagelbkg.png-a4801987ad32dc48e0d2ba8d9c56870d.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
