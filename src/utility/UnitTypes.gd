@@ -54,4 +54,4 @@ var units_unlocked = {
 	"JEBAGEL": false
 }
 
-var selected_units: Array = ["BAEGEL", "POPPY_SEED_BAGEL", "BAGELATINE"]
+var selected_units: Array = ["BAEGEL", "CYMBAGEL", "GRENADEL"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/scenes/lootbox_scene/LootboxMenu.gd" type="Script" id=1]
-[ext_resource path="res://src/scenes/lootbox_scene/LootboxManager.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/redsun.png" type="Texture" id=2]
 [ext_resource path="res://data/Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/objects/Styles/RoundRed.tres" type="StyleBox" id=5]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/bagelboxad.png" type="Texture" id=6]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/scenes/lootbox_scene/assets/coingel_img.png" type="Texture" id=14]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/crystal_img.png" type="Texture" id=15]
 [ext_resource path="res://src/utility/CurrencyMonitor.tscn" type="PackedScene" id=16]
+[ext_resource path="res://data/Fonts/StoreValueFont.tres" type="DynamicFont" id=17]
 
 [sub_resource type="DynamicFont" id=5]
 size = 98
@@ -50,6 +51,53 @@ color = Color( 0.168627, 0.807843, 0.584314, 1 )
 
 [node name="CurrencyMonitor" parent="MainSelect" instance=ExtResource( 16 )]
 
+[node name="Buy2" type="Button" parent="MainSelect"]
+margin_left = 884.0
+margin_top = 351.0
+margin_right = 1341.0
+margin_bottom = 570.0
+rect_pivot_offset = Vector2( 227, 116 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy2Eur"
+flat = true
+
+[node name="Crystalad" type="Sprite" parent="MainSelect/Buy2"]
+position = Vector2( 232, 109 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 7 )
+
+[node name="Buy5" type="Button" parent="MainSelect"]
+margin_left = 1374.0
+margin_top = 351.0
+margin_right = 1831.0
+margin_bottom = 570.0
+rect_pivot_offset = Vector2( 227, -141 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy5Eur"
+flat = true
+
+[node name="Crystalad2" type="Sprite" parent="MainSelect/Buy5"]
+position = Vector2( 235, 111 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 10 )
+
+[node name="Redsun" type="Sprite" parent="MainSelect/Buy5"]
+position = Vector2( 439, 9.5 )
+scale = Vector2( 0.84, 0.785 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="MainSelect/Buy5/Redsun"]
+margin_left = -92.8572
+margin_top = -51.5923
+margin_right = 97.1428
+margin_bottom = 57.4077
+custom_fonts/font = ExtResource( 17 )
+text = "+5%
+value"
+align = 1
+
 [node name="BuyLB" type="Button" parent="MainSelect"]
 margin_left = 113.0
 margin_top = 271.0
@@ -80,6 +128,21 @@ position = Vector2( 238, 122 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 8 )
 
+[node name="Redsun" type="Sprite" parent="MainSelect/Buy20"]
+position = Vector2( 439, 9.5 )
+scale = Vector2( 0.84, 0.785 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="MainSelect/Buy20/Redsun"]
+margin_left = -92.8572
+margin_top = -51.5923
+margin_right = 97.1428
+margin_bottom = 57.4077
+custom_fonts/font = ExtResource( 17 )
+text = "+15%
+value"
+align = 1
+
 [node name="Buy10" type="Button" parent="MainSelect"]
 margin_left = 884.0
 margin_top = 606.0
@@ -96,47 +159,30 @@ position = Vector2( 242, 113 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 9 )
 
-[node name="Buy5" type="Button" parent="MainSelect"]
-margin_left = 1374.0
-margin_top = 351.0
-margin_right = 1831.0
-margin_bottom = 570.0
-rect_pivot_offset = Vector2( 227, -141 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Buy5Eur"
-flat = true
+[node name="Redsun" type="Sprite" parent="MainSelect/Buy10"]
+position = Vector2( 439, 9.5 )
+scale = Vector2( 0.84, 0.785 )
+texture = ExtResource( 2 )
 
-[node name="Crystalad2" type="Sprite" parent="MainSelect/Buy5"]
-position = Vector2( 235, 111 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 10 )
-
-[node name="Buy2" type="Button" parent="MainSelect"]
-margin_left = 884.0
-margin_top = 351.0
-margin_right = 1341.0
-margin_bottom = 570.0
-rect_pivot_offset = Vector2( 227, 116 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Buy2Eur"
-flat = true
-
-[node name="Crystalad" type="Sprite" parent="MainSelect/Buy2"]
-position = Vector2( 232, 109 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 7 )
+[node name="Label" type="Label" parent="MainSelect/Buy10/Redsun"]
+margin_left = -92.8572
+margin_top = -51.5923
+margin_right = 97.1428
+margin_bottom = 57.4077
+custom_fonts/font = ExtResource( 17 )
+text = "+10%
+value"
+align = 1
 
 [node name="EuroSpent" type="Control" parent="MainSelect"]
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="MainSelect/EuroSpent"]
-margin_left = 852.0
-margin_top = 954.0
-margin_right = 1852.0
-margin_bottom = 1069.0
+margin_left = 854.0
+margin_top = 933.0
+margin_right = 1854.0
+margin_bottom = 1048.0
 custom_fonts/font = SubResource( 5 )
 text = "Total euro spent:"
 align = 1
@@ -241,14 +287,11 @@ custom_styles/normal = ExtResource( 5 )
 enabled_focus_mode = 0
 text = "<<<"
 
-[node name="LootboxManager" type="Node" parent="."]
-script = ExtResource( 3 )
-
+[connection signal="pressed" from="MainSelect/Buy2" to="." method="_on_Buy2_pressed"]
+[connection signal="pressed" from="MainSelect/Buy5" to="." method="_on_Buy5_pressed"]
 [connection signal="pressed" from="MainSelect/BuyLB" to="." method="_on_BuyLB_pressed"]
 [connection signal="pressed" from="MainSelect/Buy20" to="." method="_on_Buy20_pressed"]
 [connection signal="pressed" from="MainSelect/Buy10" to="." method="_on_Buy10_pressed"]
-[connection signal="pressed" from="MainSelect/Buy5" to="." method="_on_Buy5_pressed"]
-[connection signal="pressed" from="MainSelect/Buy2" to="." method="_on_Buy2_pressed"]
 [connection signal="pressed" from="LootBox_Purchase/BuyLB_c0" to="." method="_on_BuyLB_c0_pressed"]
 [connection signal="pressed" from="LootBox_Purchase/BuyLB_c1" to="." method="_on_BuyLB_c1_pressed"]
 [connection signal="pressed" from="LootBox_Purchase/LB_close" to="." method="_on_LB_close_pressed"]

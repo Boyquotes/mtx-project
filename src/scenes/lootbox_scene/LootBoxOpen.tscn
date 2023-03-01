@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/scenes/lootbox_scene/assets/glow.png" type="Texture" id=1]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/lb_top.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=13]
 [ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=14]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/jebagel.png" type="Texture" id=15]
+[ext_resource path="res://data/Fonts/LootBoxOpen.tres" type="DynamicFont" id=16]
 
 [sub_resource type="CanvasItemMaterial" id=4]
 particles_animation = true
@@ -46,15 +47,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="DynamicFont" id=3]
-size = 21
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 5 )
-
 [sub_resource type="Animation" id=1]
 resource_name = "Lootbox_Open_Anim"
-length = 20.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
@@ -345,6 +340,55 @@ tracks/11/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="DynamicFont" id=9]
+size = 50
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Jebageld"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -431,7 +475,7 @@ margin_left = -91.7305
 margin_top = 70.3404
 margin_right = 91.2695
 margin_bottom = 104.34
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 16 )
 text = "BAGEL NAME"
 align = 1
 valign = 1
@@ -505,5 +549,18 @@ texture = ExtResource( 15 )
 root_node = NodePath("../Box")
 anims/Lootbox_Open_Anim = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 763.0
+margin_top = 818.0
+margin_right = 1165.0
+margin_bottom = 878.0
+custom_fonts/font = SubResource( 9 )
+text = "You got nothing..."
+
+[node name="Jebageld" type="AnimationPlayer" parent="."]
+anims/Jebageld = SubResource( 10 )
+anims/RESET = SubResource( 11 )
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
