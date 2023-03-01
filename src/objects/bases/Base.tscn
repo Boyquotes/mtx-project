@@ -8,6 +8,7 @@
 extents = Vector2( 190, 128.5 )
 
 [node name="Base" type="StaticBody2D"]
+pause_mode = 1
 z_index = -1
 z_as_relative = false
 collision_layer = 0
@@ -30,9 +31,9 @@ position = Vector2( 1, -35 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -46.0
-margin_top = -284.0
+margin_top = -333.0
 margin_right = 44.0
-margin_bottom = -188.0
+margin_bottom = -237.0
 custom_fonts/font = ExtResource( 3 )
 text = "50"
 align = 1

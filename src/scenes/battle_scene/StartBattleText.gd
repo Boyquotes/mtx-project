@@ -7,8 +7,9 @@ var _stage = 0
 func _ready():
 	$AnimationPlayer.play("Play")
 	if disable_countdown:
-		visible = false
+		queue_free()
 		return
+		
 	get_tree().paused = true
 	
 

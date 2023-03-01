@@ -59,6 +59,7 @@ func _spawn_next_unit_in_queue():
 	var unit = _unit_queue.front()
 	_spawn_unit(unit)
 	_unit_queue.remove(0)
+
 	
 func _update_possible_waves():
 	_current_possible_waves = []
@@ -68,7 +69,6 @@ func _update_possible_waves():
 		
 func _send_out_wave():
 	if _current_possible_waves.size() == 0: 
-		print("no wave to send out at level ", _current_level)
 		return
 	
 	# we discard any units left from the previous wave

@@ -8,6 +8,7 @@ func _ready():
 func _end_game():
 	get_tree().paused = true
 	$Coinels.text = "Coinels earned: " + str(Currency.current_coinels - _start_coinels)
+	Global.first_time = false
 	visible = true
 	
 func _defeat():

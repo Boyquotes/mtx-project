@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/scenes/battle_scene/StartBattleText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/battle_scene/MoneyTracker.gd" type="Script" id=2]
@@ -21,8 +21,10 @@
 [ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=19]
 [ext_resource path="res://src/objects/units/assets/bae-gel_seduce2.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/battle_scene/UnitMenu.gd" type="Script" id=21]
+[ext_resource path="res://src/scenes/battle_scene/Tutorial.gd" type="Script" id=22]
 
 [node name="BattleScene" type="Node2D"]
+pause_mode = 1
 position = Vector2( -1, 0 )
 
 [node name="Ground" parent="." instance=ExtResource( 5 )]
@@ -37,6 +39,7 @@ position = Vector2( 1742, 951 )
 health_points = 100
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
+pause_mode = 0
 position = Vector2( 190, 951 )
 health_points = 100
 
@@ -193,11 +196,12 @@ margin_left = 23.0
 margin_right = 243.0
 margin_bottom = 195.0
 custom_fonts/font = ExtResource( 3 )
-text = "Queue
+text = "Units in Queue
 "
 script = ExtResource( 10 )
 
 [node name="GameOver" type="Control" parent="UserInterface"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -238,8 +242,79 @@ custom_fonts/font = ExtResource( 12 )
 text = "Coinels earned"
 align = 1
 
-[node name="StartBattleText" parent="." instance=ExtResource( 1 )]
-position = Vector2( 968, 442 )
+[node name="Tutorial" type="Node2D" parent="UserInterface"]
+position = Vector2( -1, 0 )
+script = ExtResource( 22 )
+
+[node name="PressLeft" type="Label" parent="UserInterface/Tutorial"]
+margin_left = 701.0
+margin_top = 472.0
+margin_right = 1593.0
+margin_bottom = 568.0
+custom_fonts/font = ExtResource( 12 )
+text = "Press left click to continue"
+
+[node name="0" type="Label" parent="UserInterface/Tutorial"]
+margin_left = 517.0
+margin_top = 378.0
+margin_right = 1409.0
+margin_bottom = 474.0
+custom_fonts/font = ExtResource( 3 )
+text = "Welcome to Bagel of War!"
+
+[node name="1" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 37.0
+margin_top = 934.0
+margin_right = 929.0
+margin_bottom = 1030.0
+custom_fonts/font = ExtResource( 12 )
+text = "This is your base"
+
+[node name="2" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 1521.0
+margin_top = 935.0
+margin_right = 1944.0
+margin_bottom = 1034.0
+custom_fonts/font = ExtResource( 12 )
+text = "And the enemy base"
+align = 1
+
+[node name="3" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 22.0
+margin_top = 184.0
+margin_right = 813.0
+margin_bottom = 283.0
+custom_fonts/font = ExtResource( 12 )
+text = "You can create bagels with dough
+Dough is obtained by defeating enemy bagels"
+
+[node name="4" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 899.0
+margin_top = 277.0
+margin_right = 1877.0
+margin_bottom = 376.0
+custom_fonts/font = ExtResource( 12 )
+text = "These are the different bagels and their costs
+Press 1 to 3  to create them during the game"
+align = 1
+
+[node name="5" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 528.0
+margin_top = 378.0
+margin_right = 1420.0
+margin_bottom = 474.0
+custom_fonts/font = ExtResource( 3 )
+text = "Thats it! Good luck!"
+align = 1
+
+[node name="StartBattleText" parent="UserInterface" instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 967, 442 )
 disable_countdown = true
 
 [node name="BackGround" type="CanvasLayer" parent="."]
@@ -251,6 +326,7 @@ scale = Vector2( 1.01818, 1.01818 )
 texture = ExtResource( 11 )
 
 [node name="Clouds" type="ParallaxBackground" parent="."]
+pause_mode = 2
 layer = 1
 script = ExtResource( 8 )
 
