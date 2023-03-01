@@ -37,7 +37,9 @@ move_speed = 125
 attack_damage = 2
 max_health_points = 4
 cost = 25
+min_money_on_death = 15
 max_money_on_death = 25
+shoot_projectile_frame = 1
 projectile = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="0"]

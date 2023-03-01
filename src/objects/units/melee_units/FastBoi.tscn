@@ -36,8 +36,9 @@ animations = [ {
 
 [node name="FastBoi" instance=ExtResource( 1 )]
 move_speed = 175
-min_money_on_death = 15
-max_money_on_death = 40
+cost = 75
+min_money_on_death = 50
+max_money_on_death = 75
 
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0, 1, 0.623529, 1 )

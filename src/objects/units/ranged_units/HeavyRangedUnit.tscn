@@ -33,9 +33,9 @@ animations = [ {
 move_speed = 50
 attack_damage = 5
 max_health_points = 20
-cost = 300
+cost = 250
 min_money_on_death = 200
-max_money_on_death = 400
+max_money_on_death = 300
 no_collision_with_allies = true
 shoot_projectile_frame = 4
 projectile = ExtResource( 3 )
@@ -50,4 +50,3 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
 frames = SubResource( 2 )
-frame = 0

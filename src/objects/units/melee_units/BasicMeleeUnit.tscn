@@ -33,7 +33,8 @@ animations = [ {
 [node name="BasicMeleeUnit" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 move_speed = 125
-cost = 25
+cost = 20
+min_money_on_death = 15
 max_money_on_death = 25
 damage_frame = 1
 

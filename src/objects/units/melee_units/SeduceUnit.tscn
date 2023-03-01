@@ -34,9 +34,8 @@ animations = [ {
 z_as_relative = true
 script = ExtResource( 3 )
 attack_damage = 0
-cost = 50
-min_money_on_death = 40
-max_money_on_death = 60
+min_money_on_death = 15
+max_money_on_death = 25
 damage_frame = 11
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]

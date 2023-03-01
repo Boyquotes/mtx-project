@@ -28,14 +28,15 @@ animations = [ {
 [node name="EverythingBagel" instance=ExtResource( 1 )]
 move_speed = 350
 attack_damage = 10
-max_health_points = 50
+max_health_points = 100
 cost = 500
-min_money_on_death = 100
-max_money_on_death = 200
+min_money_on_death = 400
+max_money_on_death = 600
 
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0.968627, 1, 0, 1 )
 frames = SubResource( 1 )
+frame = 0
 
 [node name="Attack" parent="." index="7"]
 stream = ExtResource( 6 )

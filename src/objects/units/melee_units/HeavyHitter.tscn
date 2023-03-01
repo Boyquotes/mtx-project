@@ -28,12 +28,14 @@ animations = [ {
 [node name="HeavyHitter" instance=ExtResource( 1 )]
 move_speed = 100
 attack_damage = 15
-cost = 100
-max_money_on_death = 100
+cost = 75
+min_money_on_death = 50
+max_money_on_death = 75
 damage_frame = 6
 
 [node name="AnimatedSprite" parent="." index="4"]
 frames = SubResource( 5 )
+frame = 0
 
 [node name="Attack" parent="." index="7"]
 stream = ExtResource( 2 )
