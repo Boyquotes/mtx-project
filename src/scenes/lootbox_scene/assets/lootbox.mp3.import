@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lootbox.mp3-7ab73e7c4de96e2918deb0b87a0f92f3.mp3str"
+
+[deps]
+
+source_file="res://src/scenes/lootbox_scene/assets/lootbox.mp3"
+dest_files=[ "res://.import/lootbox.mp3-7ab73e7c4de96e2918deb0b87a0f92f3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

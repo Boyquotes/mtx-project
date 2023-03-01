@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/scenes/lootbox_scene/assets/glow.png" type="Texture" id=1]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/lb_top.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=14]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/jebagel.png" type="Texture" id=15]
 [ext_resource path="res://data/Fonts/LootBoxOpen.tres" type="DynamicFont" id=16]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/lootbox.mp3" type="AudioStream" id=17]
 
 [sub_resource type="CanvasItemMaterial" id=4]
 particles_animation = true
@@ -558,6 +559,10 @@ margin_right = 1165.0
 margin_bottom = 878.0
 custom_fonts/font = SubResource( 9 )
 text = "You got nothing..."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+autoplay = true
 
 [node name="Jebageld" type="AnimationPlayer" parent="."]
 anims/Jebageld = SubResource( 10 )

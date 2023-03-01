@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/scenes/lootbox_scene/LootboxMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/redsun.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/Space Jazz.mp3" type="AudioStream" id=3]
 [ext_resource path="res://data/Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/objects/Styles/RoundRed.tres" type="StyleBox" id=5]
 [ext_resource path="res://src/scenes/lootbox_scene/assets/bagelboxad.png" type="Texture" id=6]
@@ -272,6 +273,10 @@ custom_styles/disabled = ExtResource( 5 )
 custom_styles/normal = ExtResource( 5 )
 enabled_focus_mode = 0
 text = "X"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
 
 [node name="Back" type="Button" parent="."]
 margin_left = 16.0
