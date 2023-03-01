@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/select_scene/UnitSelectButton.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/select_scene/assets/question_mark_PNG60.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/lootbox_scene/assets/box_C.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
 
 [node name="UnitSelectButton" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,13 +17,12 @@ margin_top = -9.0
 margin_right = 245.0
 margin_bottom = 263.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = -4.0
-margin_top = -9.0
-margin_right = 247.0
-margin_bottom = 263.0
-mouse_filter = 2
+[node name="ColorRect" type="Sprite" parent="."]
+modulate = Color( 1, 0.607843, 0, 1 )
+material = SubResource( 1 )
+position = Vector2( 123.5, 130.5 )
+scale = Vector2( 1.17167, 1.16797 )
+texture = ExtResource( 3 )
 
 [node name="QuestionMark" type="Sprite" parent="."]
 position = Vector2( 119.6, 122.8 )
