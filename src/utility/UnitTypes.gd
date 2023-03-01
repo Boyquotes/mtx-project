@@ -42,16 +42,16 @@ var name_to_in_game_name = {
 
 var units_unlocked = {
 	"PLAIN_BAGEL": true,
-	"NEW_YORK_BAGEL": false,
+	"NEW_YORK_BAGEL": true,
 	"POPPY_SEED_BAGEL": true,
-	"CYMBAGEL": false,
-	"BAGELATINE": false,
-	"GRENADEL": false,
-	"BAEGEL": false,
-	"TREBUCHAGEL": false,
-	"BLANK": false,
-	"EVERYTHING_BAGEL": false,
-	"JEBAGEL": false
+	"CYMBAGEL": true,
+	"BAGELATINE": true,
+	"GRENADEL": true,
+	"BAEGEL": true,
+	"TREBUCHAGEL": true,
+	"BLANK": true,
+	"EVERYTHING_BAGEL": true,
+	"JEBAGEL": true
 }
 
 var selected_units: Array = ["BAEGEL", "CYMBAGEL", "GRENADEL"]

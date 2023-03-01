@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/objects/units/assets/poppyattack2.png" type="Texture" id=1]
 [ext_resource path="res://src/objects/units/assets/poppies.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/scenes/title_screen/TitleScreen.gd" type="Script" id=7]
 [ext_resource path="res://src/scenes/title_screen/assets/Western-streets-by-Kevin-Macleod.mp3" type="AudioStream" id=8]
+[ext_resource path="res://data/Fonts/EricaOne-Regular.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 60
@@ -57,6 +58,14 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+outline_size = 5
+outline_color = Color( 0.290196, 0.129412, 0.376471, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -188,6 +197,14 @@ texture = ExtResource( 4 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="Music" type="Label" parent="."]
+margin_left = 1489.0
+margin_top = 1028.0
+margin_right = 1906.0
+margin_bottom = 1076.0
+custom_fonts/font = SubResource( 8 )
+text = "Music by Kevin MacLeod"
 
 [connection signal="button_up" from="PlayButton" to="." method="_on_PlayButton_button_up"]
 [connection signal="button_up" from="BuyUnitButton" to="." method="_on_BuyUnitButton_button_up"]
