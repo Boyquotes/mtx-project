@@ -8,6 +8,7 @@ var _money
 signal money_changed
 
 func _ready():
+	MainMenuMusic.stop_main_music()
 	Global.GameManager = self
 	_money = starting_money
 	emit_signal("money_changed")

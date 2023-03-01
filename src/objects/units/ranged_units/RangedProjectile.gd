@@ -10,7 +10,7 @@ var _direction = 1
 func _ready():
 	$Timer.start(max_lifespan)
 
-func shoot(damage: int, target: Node2D, is_enemy: bool):
+func shoot(damage: int, target: Vector2, is_enemy: bool):
 	_damage = damage
 	if is_enemy: 
 		_direction = -1

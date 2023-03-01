@@ -6,6 +6,7 @@ func _update_text():
 	
 func _ready():
 	_update_text()
+	MainMenuMusic.stop_main_music()
 
 func _on_BuyLB_c0_pressed():
 	if Currency.current_crystals < 50: return

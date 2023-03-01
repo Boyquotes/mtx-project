@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Western-streets-by-Kevin-Macleod.mp3-89ae38a8441b047dab107dffb4a7725f.mp3str"
+
+[deps]
+
+source_file="res://src/scenes/title_screen/assets/Western-streets-by-Kevin-Macleod.mp3"
+dest_files=[ "res://.import/Western-streets-by-Kevin-Macleod.mp3-89ae38a8441b047dab107dffb4a7725f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

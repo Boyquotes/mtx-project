@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/objects/units/Unit.gd" type="Script" id=1]
+[ext_resource path="res://src/objects/units/assets/grunt0.wav" type="AudioStream" id=3]
 
 [node name="Unit" type="KinematicBody2D"]
 z_as_relative = false
@@ -35,4 +36,8 @@ color = Color( 0.427451, 0.992157, 0, 1 )
 [node name="DeathTextSpawnPoint" type="Node2D" parent="."]
 position = Vector2( 0, -76 )
 
+[node name="Deathsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="finished" from="Deathsound" to="." method="_on_Deathsound_finished"]

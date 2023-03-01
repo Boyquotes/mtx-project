@@ -20,6 +20,7 @@ UnitTypes="*res://src/utility/UnitTypes.gd"
 Global="*res://src/utility/Global.gd"
 Lootbox="*res://src/utility/Lootbox.gd"
 Currency="*res://src/utility/Currency.gd"
+MainMenuMusic="*res://src/utility/MainMenuMusic.tscn"
 
 [display]
 

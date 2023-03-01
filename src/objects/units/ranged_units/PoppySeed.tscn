@@ -9,7 +9,6 @@ radius = 14.0
 
 [node name="PoppySeed" instance=ExtResource( 1 )]
 z_index = -5
-z_as_relative = false
 script = ExtResource( 2 )
 hspeed = 5
 max_lifespan = 3

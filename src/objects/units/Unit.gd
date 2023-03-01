@@ -17,6 +17,8 @@ onready var _initial_hp_bar_size = $ColorRect.rect_size.x
 
 var _current_health_points 
 var _dead = false
+var _target: Node2D
+var _target_pos: Vector2
 
 # INITIALIZING
 func _ready():
@@ -32,6 +34,8 @@ func _take_action():
 			if $AnimatedSprite.animation != "attack": 
 				set_physics_process(false)
 				$AnimatedSprite.play("attack")
+				_target = _find_closest_target()
+				_target_pos = _target.global_position
 		# else idle
 		else:	
 			if $AnimatedSprite.animation != "move": 
@@ -52,8 +56,8 @@ func _on_AnimatedSprite_animation_finished():
 		
 # COMBAT
 func _deal_damage():
-	if _enemy_in_range():
-		_find_closest_target().take_damage(attack_damage)
+	if not is_instance_valid(_target): return
+	else: _target.take_damage(attack_damage)
 	
 func take_damage(damage):
 	_current_health_points -= damage
@@ -138,11 +142,18 @@ func _die():
 	if _dead: return
 	_dead = true
 	
+	visible = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	$CheckEnemies/CollisionShape2D.set_deferred("disabled", true)
+	set_physics_process(false)
+	
 	# drop money if unit is an enemy aka moves left
 	if move_speed < 0:
 		_drop_money()
+
+	$Deathsound.play()
+
 	
-	queue_free()
 	
 func _drop_money():
 	var new_text = DEATH_TEXT_SCENE.instance()
@@ -154,3 +165,7 @@ func _drop_money():
 
 func is_enemy():
 	return true if sign(move_speed) == -1 else false
+
+
+func _on_Deathsound_finished():
+	queue_free()

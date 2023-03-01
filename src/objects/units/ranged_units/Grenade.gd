@@ -6,12 +6,12 @@ export var rotation_speed = 0.05
 
 var _acceleration = Vector2.ZERO
 
-func shoot(damage: int, target: Node2D, is_enemy: bool):
+func shoot(damage: int, target: Vector2, is_enemy: bool):
 	if target == null: 
 		queue_free()
 	else:
 		var frames_before_hitting_ground = (curve_height/gravity_strenght)*2
-		hspeed = (target.global_position.x - global_position.x)/frames_before_hitting_ground
+		hspeed = (target.x - global_position.x)/frames_before_hitting_ground
 		_acceleration = Vector2(hspeed, curve_height*-1)
 		$Sprite.rotation_degrees += randi()%180
 		
@@ -26,6 +26,8 @@ func shoot(damage: int, target: Node2D, is_enemy: bool):
 		$ExplosionHitbox.visible = false
 		$Sprite.visible = true
 		
+
+		
 func _move():
 	global_position += _acceleration
 	_acceleration.y += gravity_strenght
@@ -38,6 +40,7 @@ func _hit():
 func _on_GroundDetector_body_entered(body):
 	set_physics_process(false)
 	$Explode.play("explode")
+	$Explosion.play()
 	for body in $ExplosionHitbox.get_overlapping_bodies():
 		body.take_damage(_damage)
 

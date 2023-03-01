@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/objects/units/assets/poppyattack2.png" type="Texture" id=1]
 [ext_resource path="res://src/objects/units/assets/poppies.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://data/Fonts/TitleScreen.tres" type="DynamicFont" id=5]
 [ext_resource path="res://data/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/scenes/title_screen/TitleScreen.gd" type="Script" id=7]
+[ext_resource path="res://src/scenes/title_screen/assets/Western-streets-by-Kevin-Macleod.mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 60
@@ -183,6 +184,10 @@ texture = ExtResource( 3 )
 position = Vector2( 1685.2, 802.652 )
 rotation = 0.261799
 texture = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [connection signal="button_up" from="PlayButton" to="." method="_on_PlayButton_button_up"]
 [connection signal="button_up" from="BuyUnitButton" to="." method="_on_BuyUnitButton_button_up"]
