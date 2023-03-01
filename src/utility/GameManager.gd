@@ -18,7 +18,7 @@ func get_current_money():
 func change_money_by(value):
 	_money += value
 	if value > 0: 
-		Currency.current_coinels += value*2
+		Currency.current_coinels += value*4
 	emit_signal("money_changed")
 
 func add_unit(unit: UnitTypes.UNIT_TYPE):

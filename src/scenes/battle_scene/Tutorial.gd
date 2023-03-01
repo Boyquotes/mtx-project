@@ -17,7 +17,6 @@ func _process(delta):
 		if _frame > 5:
 			get_tree().paused = false
 			queue_free()	
-			print("hi")
 		else:
 			get_node(str(_frame)).visible = true
 		

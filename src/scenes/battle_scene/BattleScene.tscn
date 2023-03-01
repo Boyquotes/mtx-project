@@ -36,12 +36,12 @@ script = ExtResource( 4 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1742, 951 )
-health_points = 100
+health_points = 60
 
 [node name="AllyBase" parent="." instance=ExtResource( 6 )]
 pause_mode = 0
 position = Vector2( 190, 951 )
-health_points = 100
+health_points = 60
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 pause_mode = 2
