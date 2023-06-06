@@ -35,6 +35,7 @@ animations = [ {
 } ]
 
 [node name="FastBoi" instance=ExtResource( 1 )]
+unit_name = "BAGELATINE"
 move_speed = 175
 cost = 75
 min_money_on_death = 50
@@ -43,3 +44,4 @@ max_money_on_death = 75
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0, 1, 0.623529, 1 )
 frames = SubResource( 3 )
+frame = 1

@@ -1,6 +1,6 @@
 extends "res://src/objects/units/ranged_units/RangedProjectile.gd"
 
-export var curve_height = 2
+export var curve_height = 1.5
 export var gravity_strenght = 0.01
 export var rotation_speed = 0.05
 
@@ -29,8 +29,8 @@ func shoot(damage: int, target: Vector2, is_enemy: bool):
 
 		
 func _move():
-	global_position += _acceleration
-	_acceleration.y += gravity_strenght
+	global_position += _acceleration * Global.time_scale
+	_acceleration.y += gravity_strenght * Global.time_scale
 	$Sprite.rotation_degrees += rotation_speed
 
 func _hit():

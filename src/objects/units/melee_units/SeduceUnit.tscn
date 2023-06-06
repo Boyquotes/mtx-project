@@ -14,7 +14,7 @@ radius = 55.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "attack",
 "speed": 4.0
@@ -34,9 +34,9 @@ animations = [ {
 z_as_relative = true
 script = ExtResource( 3 )
 attack_damage = 0
-min_money_on_death = 15
-max_money_on_death = 25
-damage_frame = 11
+max_health_points = 5
+cost = 75
+damage_frame = 3
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]
 shape = SubResource( 1 )

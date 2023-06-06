@@ -26,6 +26,7 @@ animations = [ {
 } ]
 
 [node name="HeavyHitter" instance=ExtResource( 1 )]
+unit_name = "NEW_YORK_BAGEL"
 move_speed = 100
 attack_damage = 15
 cost = 75
@@ -35,7 +36,6 @@ damage_frame = 6
 
 [node name="AnimatedSprite" parent="." index="4"]
 frames = SubResource( 5 )
-frame = 0
 
 [node name="Attack" parent="." index="7"]
 stream = ExtResource( 2 )

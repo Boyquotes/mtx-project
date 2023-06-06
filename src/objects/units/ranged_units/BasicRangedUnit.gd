@@ -10,7 +10,6 @@ export(PackedScene) var projectile
 func _ready():
 	_base_type = load("res://src/objects/bases/Base.gd")
 	
-	
 func _shoot_projectile():
 	var new_projectile: PROJECTILE = projectile.instance()
 	new_projectile.global_position = global_position

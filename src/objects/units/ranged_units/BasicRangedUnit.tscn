@@ -33,6 +33,7 @@ animations = [ {
 
 [node name="BasicRangedUnit" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+unit_name = "POPPY_SEED_BAGEL"
 move_speed = 125
 attack_damage = 2
 max_health_points = 4

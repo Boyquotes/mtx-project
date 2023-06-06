@@ -3,6 +3,8 @@ extends KinematicBody2D
 const DEATH_TEXT_SCENE = preload("res://src/scenes/battle_scene/DeathText.tscn")
 const BASE = preload("res://src/objects/bases/Base.gd")
 
+export var unit_name = ""
+
 export var move_speed = 100
 export var attack_damage = 1
 export var max_health_points = 10;
@@ -44,10 +46,11 @@ func _take_action():
 	else:
 		if $AnimatedSprite.animation != "move": 
 			$AnimatedSprite.play("move")
-		move_and_slide(Vector2(move_speed, 0))
+		move_and_slide(Vector2(move_speed*Global.time_scale, 0))
 		
 func _physics_process(delta):
 	_take_action()
+	$AnimatedSprite.speed_scale = Global.time_scale
 		
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "attack":

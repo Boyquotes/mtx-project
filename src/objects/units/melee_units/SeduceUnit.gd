@@ -7,12 +7,13 @@ func _ready():
 
 func _on_AnimatedSprite_frame_changed():
 	if $AnimatedSprite.animation == "attack":
+		if $AnimatedSprite.frame == 0:
+			$Attack.play()
 		if $AnimatedSprite.frame == damage_frame:
 			var target = _find_closest_target()
 			if target == null or target is _base_type: return
 			target.switch_sides()
-		elif $AnimatedSprite.frame == 8:
-			$Attack.play()
+			
 			
 		
 

@@ -14,6 +14,11 @@ var _current_possible_waves: Array
 var _levels: Dictionary
 var _unit_queue: Array
 
+var _next_wave_time = 1
+var _level_time = 0
+var _time = 0
+var _is_sending = false
+var t = 0
 signal game_over
 
 
@@ -32,7 +37,33 @@ class Wave:
 		self.time_to_next_wave_average = time_to_next_wave_average
 		self.enemies = enemies
 	
+	
+# FUNCTION
+func _ready():
+	randomize()
+	
+	_parse_level_data()
+	_parse_wave_data()
 
+	_current_level = 0
+	_increase_level()
+	
+	_update_possible_waves()
+	
+	$ColorRect.color = Color.red
+
+func _physics_process(delta):
+	_time += delta * Global.time_scale
+	
+	if _time > _level_time:
+		_increase_level()
+	
+	if not _is_sending and _time > _next_wave_time:
+		_send_out_wave()
+	
+	if not _unit_queue.empty() and _check_if_room_for_unit():
+		_spawn_next_unit_in_queue()
+		
 func _parse_wave_data():
 	var file = File.new()
 	file.open(_wave_data_file, file.READ)
@@ -68,6 +99,7 @@ func _update_possible_waves():
 			_current_possible_waves.append(wave)
 		
 func _send_out_wave():
+	_is_sending = true
 	if _current_possible_waves.size() == 0: 
 		return
 	
@@ -84,9 +116,9 @@ func _send_out_wave():
 		_unit_queue.append(unit)
 		yield(get_tree().create_timer(wave.delay_between_enemies), "timeout")
 	
-	
-	var time_until_next_wave = (2 - randi()%4) + wave.time_to_next_wave_average
-	$WaveTimer.start(time_until_next_wave)
+	var time_until_next_wave = max(0.5, (1 - randi()%3) + wave.time_to_next_wave_average)
+	_next_wave_time += time_until_next_wave
+	_is_sending = false
 
 
 func _create_unit_from_name(unit_name: String) -> UnitTypes.UNIT_TYPE:
@@ -95,39 +127,17 @@ func _create_unit_from_name(unit_name: String) -> UnitTypes.UNIT_TYPE:
 	new_unit.global_position = $Spawnpoint.global_position
 	return new_unit
 	
-	
-# FUNCTION
-func _ready():
-	randomize()
-	
-	_parse_level_data()
-	_parse_wave_data()
-	
-	$LevelIncreaseTimer.one_shot = false
-	$LevelIncreaseTimer.start(_levels[1])
-	_current_level = 1
-	
-	_update_possible_waves()
-		
-	$WaveTimer.one_shot = true
-	$WaveTimer.start(0.5)
-	
-	
-func _on_WaveTimer_timeout():
-	_send_out_wave()
-	
-	
 func _die():
 	emit_signal("game_over")
 	queue_free()
 
 
-func _on_LevelIncreaseTimer_timeout():
+func _increase_level():
 	_current_level += 1
 	if _current_level == _levels.keys().size():
-		print("max level reached!")
-		$LevelIncreaseTimer.stop()
+		_level_time = INF
 	else:
+		_level_time += _levels[_current_level]
 		_update_possible_waves()
 
 func _check_if_room_for_unit():
@@ -135,9 +145,7 @@ func _check_if_room_for_unit():
 		if not unit.no_collision_with_allies: return false
 	return true
 	
-func _process(delta):
-	if not _unit_queue.empty() and _check_if_room_for_unit():
-		_spawn_next_unit_in_queue()
+
 
 func is_enemy():
 	return true

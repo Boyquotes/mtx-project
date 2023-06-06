@@ -30,13 +30,13 @@ bg_color = Color( 0.152941, 0.384314, 0.223529, 1 )
 bg_color = Color( 0.337255, 0.803922, 0.466667, 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 21
+size = 25
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 15
+size = 25
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 12 )
@@ -59,10 +59,10 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -964.0
-margin_top = -546.0
-margin_right = 967.0
-margin_bottom = 547.0
+margin_left = -960.0
+margin_top = -529.0
+margin_right = 971.0
+margin_bottom = 564.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.141176, 0.443137, 0.337255, 1 )
@@ -108,14 +108,14 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Plainbagel/BoxA"]
-margin_left = -89.5912
-margin_top = 121.265
-margin_right = 93.4088
-margin_bottom = 155.264
+margin_left = -111.31
+margin_top = 126.695
+margin_right = 106.69
+margin_bottom = 242.695
 custom_fonts/font = SubResource( 5 )
-text = "The kind that pilots like"
+text = "Your bread and butter, cheap and melee"
 align = 1
-valign = 1
+autowrap = true
 
 [node name="PlainBagel" type="Sprite" parent="UnitSelectingManager/Plainbagel/BoxA"]
 position = Vector2( -4.52481, -28.9588 )
@@ -142,14 +142,14 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/PoppySeed/BoxA"]
-margin_left = -89.5912
-margin_top = 121.265
-margin_right = 93.4088
-margin_bottom = 155.264
+margin_left = -117.0
+margin_top = 127.0
+margin_right = 115.0
+margin_bottom = 243.0
 custom_fonts/font = SubResource( 5 )
-text = "Can attack from a distance"
+text = "Attacks from a distance, but squishy. "
 align = 1
-valign = 1
+autowrap = true
 
 [node name="Poppy" type="Sprite" parent="UnitSelectingManager/PoppySeed/BoxA"]
 position = Vector2( 10.8595, -19.9093 )
@@ -176,15 +176,14 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/NewYork/BoxA"]
-margin_left = -89.5912
-margin_top = 121.265
-margin_right = 93.4088
-margin_bottom = 155.264
+margin_left = -114.0
+margin_top = 127.0
+margin_right = 110.0
+margin_bottom = 260.0
 custom_fonts/font = SubResource( 5 )
-text = "Moves slow and deals 
-low damage, but has high HP"
+text = "This hardened bagel can tank a lot of damage, a good frontline"
 align = 1
-valign = 1
+autowrap = true
 
 [node name="NewYork" type="Sprite" parent="UnitSelectingManager/NewYork/BoxA"]
 modulate = Color( 1, 0.607843, 0, 1 )
@@ -212,15 +211,14 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Cymbagel/BoxA"]
-margin_left = -89.5912
-margin_top = 121.265
-margin_right = 93.4088
-margin_bottom = 155.264
+margin_left = -113.12
+margin_top = 126.695
+margin_right = 110.88
+margin_bottom = 259.695
 custom_fonts/font = SubResource( 5 )
-text = "Deals extremely high damage,
-but attacks very slow"
+text = "Smashes its cymbals after a long windup for high damage. "
 align = 1
-valign = 1
+autowrap = true
 
 [node name="Cymbagel" type="Sprite" parent="UnitSelectingManager/Cymbagel/BoxA"]
 position = Vector2( 8.14459, -15.3843 )
@@ -247,14 +245,14 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Bagelatine/BoxA"]
-margin_left = -89.5912
-margin_top = 121.265
-margin_right = 93.4088
-margin_bottom = 155.264
+margin_left = -114.025
+margin_top = 126.695
+margin_right = 109.975
+margin_bottom = 262.695
 custom_fonts/font = SubResource( 5 )
-text = "Moves and attacks very fast"
+text = "Moves and attacks extremely fast"
 align = 1
-valign = 1
+autowrap = true
 
 [node name="Bagelatine" type="Sprite" parent="UnitSelectingManager/Bagelatine/BoxA"]
 modulate = Color( 0, 1, 0.623529, 1 )
@@ -282,14 +280,15 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Baegel/BoxA"]
-margin_left = -90.4961
-margin_top = 119.455
-margin_right = 92.5039
-margin_bottom = 158.455
+margin_left = -118.55
+margin_top = 123.075
+margin_right = 106.45
+margin_bottom = 188.075
 custom_fonts/font = SubResource( 5 )
-text = "Charms enemies"
+text = "Charms enemies in melee range"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Baegel" type="Sprite" parent="UnitSelectingManager/Baegel/BoxA"]
 position = Vector2( 10.8596, -21.719 )
@@ -316,15 +315,15 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Grenadel2/BoxA"]
-margin_left = -90.4961
-margin_top = 121.265
-margin_right = 92.5039
-margin_bottom = 160.265
+margin_left = -131.0
+margin_top = 130.0
+margin_right = 122.0
+margin_bottom = 263.0
 custom_fonts/font = SubResource( 5 )
 text = "Throws grenades that 
 hit can multiple enemies"
 align = 1
-valign = 1
+autowrap = true
 
 [node name="Grenadel" type="Sprite" parent="UnitSelectingManager/Grenadel2/BoxA"]
 modulate = Color( 0.0627451, 0.368627, 0.0196078, 1 )
@@ -352,17 +351,15 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Trebuchagel/BoxA"]
-margin_left = -94.1159
-margin_top = 122.17
-margin_right = 88.8841
-margin_bottom = 224.17
+margin_left = -121.265
+margin_top = 123.075
+margin_right = 124.735
+margin_bottom = 392.075
 custom_fonts/font = SubResource( 5 )
-text = "Shoots heavy projectiles 
-that pierce enemies.
-Other units can move
-through Trebuchagel"
+text = "Other units can move
+through, shoots piercing arrows. Protect this unit!"
 align = 1
-valign = 1
+autowrap = true
 
 [node name="Trebuchagel" type="Sprite" parent="UnitSelectingManager/Trebuchagel/BoxA"]
 modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
@@ -390,14 +387,15 @@ align = 1
 valign = 1
 
 [node name="Description" type="Label" parent="UnitSelectingManager/Everything Bagel/BoxA"]
-margin_left = -89.5912
-margin_top = 121.265
-margin_right = 93.4088
-margin_bottom = 155.264
+margin_left = -91.4011
+margin_top = 130.314
+margin_right = 94.5989
+margin_bottom = 195.314
 custom_fonts/font = SubResource( 5 )
 text = "What do you want more?"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Everything" type="Sprite" parent="UnitSelectingManager/Everything Bagel/BoxA"]
 modulate = Color( 0.968627, 1, 0, 1 )
@@ -414,6 +412,7 @@ custom_fonts/font = SubResource( 6 )
 text = "Select up to 3 units"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 23 )
 current = true
 
 [node name="Back" type="Button" parent="."]

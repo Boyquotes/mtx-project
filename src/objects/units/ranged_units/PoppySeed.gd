@@ -15,8 +15,8 @@ func shoot(damage: int, target: Vector2, is_enemy: bool):
 		_acceleration = Vector2(hspeed, curve_height*-1)
 		
 func _move():
-	global_position += _acceleration
-	_acceleration.y += gravity_strenght
+	global_position += _acceleration * Global.time_scale
+	_acceleration.y += gravity_strenght * Global.time_scale
 
 func _hit():
 	queue_free()

@@ -8,7 +8,7 @@ extents = Vector2( 25.5, 4 )
 
 [node name="HeavyRangedProjectile" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-hspeed = 40
+hspeed = 20
 max_lifespan = 2
 pierce = 5
 

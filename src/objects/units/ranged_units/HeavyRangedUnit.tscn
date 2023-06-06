@@ -30,6 +30,7 @@ animations = [ {
 } ]
 
 [node name="HeavyRangedUnit" instance=ExtResource( 1 )]
+unit_name = "TREBUCHAGEL"
 move_speed = 50
 attack_damage = 5
 max_health_points = 20

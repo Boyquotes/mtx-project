@@ -45,6 +45,7 @@ projectile = ExtResource( 7 )
 [node name="AnimatedSprite" parent="." index="4"]
 modulate = Color( 0.0627451, 0.368627, 0.0196078, 1 )
 frames = SubResource( 1 )
+frame = 0
 
 [node name="DeathSounds" type="Node2D" parent="." index="6"]
 
