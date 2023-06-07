@@ -1,17 +1,14 @@
 extends Node2D
 
-export var starting_money = 150
-
-
-var _money
+var _money = 0
 
 signal money_changed
 
 func _ready():
 	MainMenuMusic.stop_main_music()
 	Global.GameManager = self
-	_money = starting_money
 	emit_signal("money_changed")
+
 
 func get_current_money():
 	return _money
