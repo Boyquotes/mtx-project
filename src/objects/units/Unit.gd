@@ -15,6 +15,8 @@ export var cost = 100;
 export var min_money_on_death = 10;
 export var max_money_on_death = 100;
 
+export var corner_turn_time = 0.8;
+
 export var no_collision_with_allies = false
 
 onready var _initial_hp_bar_size = $ColorRect.rect_size.x
@@ -24,14 +26,20 @@ var _dead = false
 var _target: Node2D
 var _target_pos: Vector2
 var _current_dir = DIR.SIDE
-var _can_switch_dir = true
-	
+var _moving_sideways = true
+var _switch_disabled = false
+var _switch_disabled_timer = 0
+
 # INITIALIZING
 func _ready():
 	randomize()
 	_current_health_points = max_health_points
 	
 func _physics_process(delta):
+	_switch_disabled_timer += delta * Global.time_scale 
+	if _switch_disabled and _switch_disabled_timer > corner_turn_time: 
+		_switch_disabled = false
+	
 	if _enemy_in_range():
 		_attack()
 	elif _check_if_unit_in_front():
@@ -56,62 +64,69 @@ func _attack():
 func _can_move_in_dir(direction):
 	match(direction):
 		DIR.SIDE:
-			return not $WallSideHigh.is_colliding() and not $WallSideLow.is_colliding()
+			return not $WallSide.is_colliding() and not $WallSide2.is_colliding()
 		DIR.UP:
 			return not $WallUp.is_colliding()
 		DIR.DOWN:
 			return not $WallDown.is_colliding()
 		_:
 			return false
-	
-func _switch_dir(direction):
-	_current_dir = direction
-	_can_switch_dir = false
-	yield(get_tree().create_timer(0.5), "timeout")
-	_can_switch_dir = true
+
+func _disable_switch():
+	_switch_disabled_timer = 0
+	_switch_disabled = true
 	
 func _move():
+	var movement = Vector2.ZERO
 	match(_current_dir):
-		DIR.SIDE:
-			move_and_slide(Vector2(move_speed, 0)*Global.time_scale)	
 		DIR.UP:
-			move_and_slide(Vector2(0, -abs(move_speed))*Global.time_scale)	
+			movement += Vector2(0, -abs(move_speed))
 		DIR.DOWN:
-			move_and_slide(Vector2(0, abs(move_speed))*Global.time_scale)	
+			movement += Vector2(0, abs(move_speed))
+	if _moving_sideways:
+		movement += Vector2(move_speed, 0)
+	print(movement)
+	move_and_slide(movement*Global.time_scale)	
 	
 func _movement():
 	if $AnimatedSprite.animation != "move": 
 		$AnimatedSprite.play("move")
 	
-	if not _can_switch_dir:
-		_move()
-		return
-	
 	var checks = [_can_move_in_dir(DIR.SIDE),_can_move_in_dir(DIR.UP),_can_move_in_dir(DIR.DOWN)]
-			
-	# check if we are not moving sideways and we can
-	if checks[0] and _current_dir != DIR.SIDE:
-		print("going to mooove sideways")
-		_switch_dir(DIR.SIDE)
+	var dir_checks = [_current_dir == DIR.SIDE, _current_dir == DIR.UP, _current_dir == DIR.DOWN]
+	if _switch_disabled:
 		_move()
 		return
 		
-	# continue moving if possible if we are moving up and down to avoid flickering
-	if (_current_dir == DIR.DOWN or _current_dir == DIR.UP) and _can_move_in_dir(_current_dir):
-		print("contintue up and down")
-		_move()
-		return
-
-	# else choose a random option
-	var options = []
-	if checks[0]: options.append(DIR.SIDE)
-	if checks[1]: options.append(DIR.UP)
-	if checks[2]: options.append(DIR.DOWN)
-	assert(options.size() > 0)
-	var i = randi()%options.size()
-	if options[i] != _current_dir:
-		_switch_dir(options[i])
-		print("random switch" + str(_current_dir))
+	if _current_dir != DIR.SIDE and checks[0]:
+		if not _can_move_in_dir(_current_dir):
+			_current_dir = DIR.SIDE
+		_moving_sideways = true
+		_disable_switch()
+	else:
+		# else choose a random option
+		var options = []
+		if checks[0]: options.append(DIR.SIDE)
+		if checks[1] and _current_dir != DIR.DOWN: options.append(DIR.UP)
+		if checks[2] and _current_dir != DIR.UP: options.append(DIR.DOWN)
+		
+		print(options)
+		if options.size() == 0:
+			if dir_checks[1]:
+				_disable_switch()
+				_current_dir = DIR.DOWN
+			elif dir_checks[2]:
+				_disable_switch()
+				_current_dir = DIR.UP
+			elif dir_checks[0]:
+				pass
+		else:
+			var dir = options[randi()%options.size()]
+			if _current_dir != dir: 
+				_disable_switch()
+				_current_dir = options[randi()%options.size()]
+				if _current_dir != DIR.SIDE:
+					_moving_sideways = false	
 	_move()
 	
 
@@ -168,13 +183,11 @@ func make_unit_ally():
 	$CheckForAlliesInFront.set_collision_mask_bit(3, true)
 	$CheckForAlliesInFront.set_collision_mask_bit(2, false)
 	$WallDown.set_collision_mask_bit(4, true)
-	$WallSideHigh.set_collision_mask_bit(4, true)
-	$WallSideLow.set_collision_mask_bit(4, true)
 	$WallUp.set_collision_mask_bit(4, true)
+	$WallSide.set_collision_mask_bit(4, true)
 	$WallDown.set_collision_mask_bit(5, false)
-	$WallSideHigh.set_collision_mask_bit(5, false)
-	$WallSideLow.set_collision_mask_bit(5, false)
 	$WallUp.set_collision_mask_bit(5, false)
+	$WallSide.set_collision_mask_bit(5, false)
 	$ColorRect.color = Color.green
 	move_speed = abs(move_speed)
 	scale.x = abs(scale.x)
@@ -188,13 +201,11 @@ func make_unit_enemy():
 	$CheckForAlliesInFront.set_collision_mask_bit(2, true)
 	$CheckForAlliesInFront.set_collision_mask_bit(3, false)
 	$WallDown.set_collision_mask_bit(4, false)
-	$WallSideHigh.set_collision_mask_bit(4, false)
-	$WallSideLow.set_collision_mask_bit(4, false)
 	$WallUp.set_collision_mask_bit(4, false)
+	$WallSide.set_collision_mask_bit(4, false)
 	$WallDown.set_collision_mask_bit(5, true)
-	$WallSideHigh.set_collision_mask_bit(5, true)
-	$WallSideLow.set_collision_mask_bit(5, true)
 	$WallUp.set_collision_mask_bit(5, true)
+	$WallSide.set_collision_mask_bit(5, true)
 	$ColorRect.color = Color.red
 	move_speed = abs(move_speed) * -1
 	scale.x = abs(scale.x) * -1

@@ -6,8 +6,11 @@
 [ext_resource path="res://src/objects/units/assets/bageltest2.png" type="Texture" id=4]
 [ext_resource path="res://src/objects/units/assets/bageltest_attack2.png" type="Texture" id=5]
 [ext_resource path="res://src/objects/units/assets/bageltest1.png" type="Texture" id=6]
-[ext_resource path="res://src/objects/units/melee_units/BasicBagelHitbox.tres" type="Shape2D" id=7]
 [ext_resource path="res://src/objects/units/assets/slash.wav" type="AudioStream" id=8]
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+custom_solver_bias = 1.0
+points = PoolVector2Array( 30, 0, 4, 30, -4, 30, -30, 0, -4, -30, 4, -30 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 38.0
@@ -31,6 +34,8 @@ animations = [ {
 } ]
 
 [node name="BasicMeleeUnit" instance=ExtResource( 1 )]
+collision_layer = 3
+collision_mask = 1
 script = ExtResource( 3 )
 unit_name = "PLAIN_BAGEL"
 move_speed = 75
@@ -41,10 +46,7 @@ damage_frame = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 visible = true
-shape = ExtResource( 7 )
-
-[node name="CheckEnemies" parent="." index="1"]
-visible = true
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]
 z_as_relative = false
@@ -60,28 +62,29 @@ margin_right = 27.0
 margin_bottom = -69.0
 
 [node name="AnimatedSprite" parent="." index="4"]
-position = Vector2( 6, -6 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 6, -5 )
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 5 )
 animation = "move"
-frame = 1
 playing = true
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource( 8 )
 
-[node name="WallSideHigh" parent="." index="8"]
-position = Vector2( 0, -32 )
-
-[node name="WallSideLow" parent="." index="9"]
-position = Vector2( 0, 31 )
-
-[node name="WallUp" parent="." index="10"]
+[node name="WallUp" parent="." index="8"]
 position = Vector2( -32, 0 )
-cast_to = Vector2( 0, -36 )
+cast_to = Vector2( 0, -40 )
 
-[node name="WallDown" parent="." index="11"]
+[node name="WallDown" parent="." index="9"]
 position = Vector2( -32, 0 )
-cast_to = Vector2( 0, 36 )
+cast_to = Vector2( 0, 40 )
+
+[node name="WallSide" parent="." index="10"]
+enabled = true
+cast_to = Vector2( 34, 0 )
+
+[node name="WallSide2" parent="." index="11"]
+enabled = true
+cast_to = Vector2( 34, 0 )
 
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
