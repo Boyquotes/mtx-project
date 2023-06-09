@@ -43,7 +43,15 @@ stream = ExtResource( 3 )
 enabled = true
 cast_to = Vector2( 0, -32 )
 
+[node name="WallUp2" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -32 )
+
 [node name="WallDown" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 32 )
+
+[node name="WallDown2" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 32 )
 

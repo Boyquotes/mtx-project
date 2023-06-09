@@ -66,9 +66,9 @@ func _can_move_in_dir(direction):
 		DIR.SIDE:
 			return not $WallSide.is_colliding() and not $WallSide2.is_colliding()
 		DIR.UP:
-			return not $WallUp.is_colliding()
+			return not $WallUp.is_colliding() and not $WallUp2.is_colliding()
 		DIR.DOWN:
-			return not $WallDown.is_colliding()
+			return not $WallDown.is_colliding() and not $WallDown2.is_colliding()
 		_:
 			return false
 
@@ -83,8 +83,8 @@ func _move():
 			movement += Vector2(0, -abs(move_speed))
 		DIR.DOWN:
 			movement += Vector2(0, abs(move_speed))
-	if _moving_sideways:
-		movement += Vector2(move_speed, 0)
+		DIR.SIDE:
+			movement += Vector2(move_speed, 0)
 	print(movement)
 	move_and_slide(movement*Global.time_scale)	
 	
@@ -98,17 +98,14 @@ func _movement():
 		_move()
 		return
 		
-	if _current_dir != DIR.SIDE and checks[0]:
-		if not _can_move_in_dir(_current_dir):
-			_current_dir = DIR.SIDE
+	if checks[0]:
+		_current_dir = DIR.SIDE
 		_moving_sideways = true
-		_disable_switch()
 	else:
 		# else choose a random option
 		var options = []
-		if checks[0]: options.append(DIR.SIDE)
-		if checks[1] and _current_dir != DIR.DOWN: options.append(DIR.UP)
-		if checks[2] and _current_dir != DIR.UP: options.append(DIR.DOWN)
+		if checks[1] and not dir_checks[2]: options.append(DIR.UP)
+		if checks[2] and not dir_checks[1]: options.append(DIR.DOWN)
 		
 		print(options)
 		if options.size() == 0:
