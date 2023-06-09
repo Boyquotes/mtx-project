@@ -25,24 +25,24 @@ var _target_pos: Vector2
 # INITIALIZING
 func _ready():
 	_current_health_points = max_health_points
-
+	
 	
 # STATE MACHINE
 func _take_action():
 	# if there is a unit in front we stop moving
-	if _check_if_unit_in_front():
-		# check if we can attack
-		if _enemy_in_range():
-			if $AnimatedSprite.animation != "attack": 
-				set_physics_process(false)
-				$AnimatedSprite.play("attack")
-				_target = _find_closest_target()
-				_target_pos = _target.global_position
+	
+	if _enemy_in_range():
+		if $AnimatedSprite.animation != "attack": 
+			set_physics_process(false)
+			$AnimatedSprite.play("attack")
+			_target = _find_closest_target()
+			_target_pos = _target.global_position
 		# else idle
 		else:	
 			if $AnimatedSprite.animation != "move": 
 				$AnimatedSprite.play("move")
-	# else move
+	elif _check_if_unit_in_front():
+		return
 	else:
 		if $AnimatedSprite.animation != "move": 
 			$AnimatedSprite.play("move")
@@ -156,7 +156,6 @@ func _die():
 
 	$Deathsound.play()
 
-	
 	
 func _drop_money():
 	var new_text = DEATH_TEXT_SCENE.instance()

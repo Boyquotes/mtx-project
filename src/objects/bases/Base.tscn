@@ -4,7 +4,7 @@
 [ext_resource path="res://src/objects/bases/Base.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 190, 128.5 )
+extents = Vector2( 60, 636 )
 
 [node name="Base" type="StaticBody2D"]
 pause_mode = 1
@@ -24,9 +24,6 @@ position = Vector2( -1, -119.5 )
 z_index = -1
 z_as_relative = false
 shape = SubResource( 1 )
-
-[node name="Spawnpoint" type="Node2D" parent="."]
-position = Vector2( 1, -35 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -136.0

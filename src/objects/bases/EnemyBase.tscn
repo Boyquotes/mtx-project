@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/objects/bases/Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/bases/EnemyBase.gd" type="Script" id=2]
 [ext_resource path="res://src/objects/bases/assets/bad_bagelscastle.png" type="Texture" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 38.5, 24.5 )
 
 [node name="EnemyBase" instance=ExtResource( 1 )]
 collision_layer = 8
@@ -13,17 +10,15 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.921569, 0.921569, 0.921569, 1 )
-scale = Vector2( 1, 1 )
+position = Vector2( 8, 0 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
-[node name="Spawnpoint" parent="." index="2"]
-position = Vector2( 82, -30 )
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 24 )
 
-[node name="CheckForUnits" type="Area2D" parent="." index="4"]
-position = Vector2( 81, 0 )
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckForUnits" index="0"]
-position = Vector2( -0.5, -24.5 )
-shape = SubResource( 1 )
+[node name="ColorRect" parent="." index="2"]
+margin_left = 72.0
+margin_top = -56.0
+margin_right = 89.0
+margin_bottom = 40.0

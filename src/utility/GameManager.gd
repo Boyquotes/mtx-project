@@ -9,7 +9,6 @@ func _ready():
 	Global.GameManager = self
 	emit_signal("money_changed")
 
-
 func get_current_money():
 	return _money
 	

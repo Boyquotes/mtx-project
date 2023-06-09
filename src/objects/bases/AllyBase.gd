@@ -1,67 +1,7 @@
 extends "res://src/objects/bases/Base.gd"
 
-var _units: Array
-var _unit_queue : Array
-var _can_spawn_unit = true
-var _selected_units : Array
-
-signal game_over	
-signal queue_changed
-signal queue_increased
-signal queue_decreased
-
 func _ready():
-	for unit_type in UnitTypes.selected_units:
-		_selected_units.append(UnitTypes.name_to_unit_dict[unit_type])	
 	$ColorRect.color = Color.green
-		
-func _add_unit_to_queue(unit: UnitTypes.UNIT_TYPE):
-	_unit_queue.append(unit)
-	emit_signal("queue_changed")
-	emit_signal("queue_increased")
-	
-func _pop_unit_from_queue() -> UnitTypes.UNIT_TYPE:
-	var unit = _unit_queue.front()
-	_unit_queue.remove(0)
-	emit_signal("queue_changed")
-	emit_signal("queue_decreased")
-	return unit
-
-func _spawn_next_unit_in_queue():
-	_spawn_unit(_pop_unit_from_queue())
-	
-func get_unit_queue() -> Array:
-	return _unit_queue
-	
-func _create_unit(unit: PackedScene):
-	var new_unit : UnitTypes.UNIT_TYPE = unit.instance()
-	if Global.GameManager.get_current_money() >= new_unit.cost:
-		Global.GameManager.change_money_by(-new_unit.cost)
-		new_unit.make_unit_ally()
-		new_unit.global_position = $Spawnpoint.global_position
-		if _unit_queue.empty() and _check_if_room_for_unit():
-			_spawn_unit(new_unit)
-		else:
-			_add_unit_to_queue(new_unit)
-	else:
-		new_unit.queue_free()
-
-func _physics_process(delta):
-	if Input.is_action_just_pressed("spawn_1"):
-		_create_unit(_selected_units[0]);
-	elif Input.is_action_just_pressed("spawn_2") and _selected_units.size() > 1:
-		_create_unit(_selected_units[1]);
-	elif Input.is_action_just_pressed("spawn_3") and _selected_units.size() > 2:
-		_create_unit(_selected_units[2]);
-	elif Input.is_action_just_pressed("spawn_4") and _selected_units.size() > 3:
-		_create_unit(_selected_units[3]);
-	elif not _unit_queue.empty() and _check_if_room_for_unit():
-		_spawn_next_unit_in_queue()
-		
-func _check_if_room_for_unit():
-	for unit in $CheckForAllyUnits.get_overlapping_bodies():
-		if not unit.no_collision_with_allies: return false
-	return true
 		
 func _die():
 	emit_signal("game_over")

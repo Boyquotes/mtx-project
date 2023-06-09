@@ -11,7 +11,7 @@
 [ext_resource path="res://src/objects/units/assets/poppywalk2.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 202, 16 )
+extents = Vector2( 192, 192 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -51,7 +51,7 @@ shape = ExtResource( 7 )
 visible = true
 
 [node name="CollisionShape2D" parent="CheckEnemies" index="0"]
-position = Vector2( 202, -16 )
+position = Vector2( 192, 0 )
 shape = SubResource( 5 )
 
 [node name="CheckForAlliesInFront" parent="." index="2"]
@@ -69,6 +69,7 @@ position = Vector2( 6, -6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
 animation = "move"
+frame = 1
 playing = true
 
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

@@ -1,15 +1,15 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/scenes/battle_scene/StartBattleText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/battle_scene/MoneyTracker.gd" type="Script" id=2]
 [ext_resource path="res://data/Fonts/InGameFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/utility/GameManager.gd" type="Script" id=4]
-[ext_resource path="res://src/scenes/battle_scene/assets/bagelbkg_g.png" type="Texture" id=5]
+[ext_resource path="res://src/objects/enviroment/Ground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/objects/bases/AllyBase.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/objects/bases/EnemyBase.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/scenes/battle_scene/Clouds.gd" type="Script" id=8]
 [ext_resource path="res://src/scenes/battle_scene/GameOver.gd" type="Script" id=9]
-[ext_resource path="res://src/scenes/battle_scene/EnemyUnitManager.gd" type="Script" id=10]
+[ext_resource path="res://src/scenes/battle_scene/EnemySpawnerLevel.gd" type="Script" id=10]
 [ext_resource path="res://src/scenes/battle_scene/assets/bagelbkg_mountn.png" type="Texture" id=11]
 [ext_resource path="res://data/Fonts/SmallerInGameText.tres" type="DynamicFont" id=12]
 [ext_resource path="res://src/objects/units/assets/poppyattack2.png" type="Texture" id=13]
@@ -21,45 +21,36 @@
 [ext_resource path="res://src/objects/units/assets/poppywalk1.png" type="Texture" id=19]
 [ext_resource path="res://src/objects/units/assets/bae-gel_seduce2.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/battle_scene/UnitMenu.gd" type="Script" id=21]
-[ext_resource path="res://src/scenes/battle_scene/Lane.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/scenes/battle_scene/Tutorial.gd" type="Script" id=22]
 [ext_resource path="res://src/scenes/battle_scene/assets/Tikopia-by-Kevin-Macleod.mp3" type="AudioStream" id=23]
 [ext_resource path="res://src/scenes/battle_scene/UnitQueue.gd" type="Script" id=24]
-[ext_resource path="res://src/scenes/battle_scene/AllyUnitManager.gd" type="Script" id=27]
-[ext_resource path="res://src/scenes/battle_scene/Lanes.gd" type="Script" id=28]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
 
 [node name="BattleScene" type="Node2D"]
 pause_mode = 1
 position = Vector2( -1, 0 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 961, 544 )
-current = true
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
-[node name="BackGround" type="CanvasLayer" parent="."]
-layer = -1
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource( 10 )
 
-[node name="BagelbkgMountn" type="Sprite" parent="BackGround"]
-position = Vector2( 964, 537 )
-scale = Vector2( 1.01818, 1.01818 )
-texture = ExtResource( 11 )
+[node name="Ground" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1011, 960 )
+z_index = -5
 
-[node name="BagelbkgG" type="Sprite" parent="BackGround"]
-visible = false
-position = Vector2( 1296, -1120 )
-scale = Vector2( 5, 5 )
-texture = ExtResource( 5 )
+[node name="EnemyBase" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1742, 951 )
+max_health_points = 200
+
+[node name="AllyBase" parent="." instance=ExtResource( 6 )]
+pause_mode = 0
+position = Vector2( 190, 951 )
+max_health_points = 2000
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 100
-
-[node name="ColorRect" type="ColorRect" parent="UserInterface"]
-margin_right = 1920.0
-margin_bottom = 200.0
-color = Color( 0.545098, 0.568627, 0.968627, 1 )
 
 [node name="UnitMenu" type="Node2D" parent="UserInterface"]
 position = Vector2( 1376, 168 )
@@ -123,51 +114,83 @@ scale = Vector2( 0.693274, 0.601577 )
 texture = ExtResource( 13 )
 
 [node name="P0" type="Node2D" parent="UserInterface/UnitMenu"]
-position = Vector2( -416, -56 )
+position = Vector2( -129, -44 )
 
-[node name="Info" type="Label" parent="UserInterface/UnitMenu/P0"]
-margin_left = -168.0
-margin_top = -112.0
-margin_right = -109.0
-margin_bottom = -64.0
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P0"]
+margin_left = -28.0
+margin_top = 81.0
+margin_right = 31.0
+margin_bottom = 129.0
 custom_fonts/font = ExtResource( 12 )
 text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P0"]
+margin_left = -30.0
+margin_top = -108.0
+margin_right = 29.0
+margin_bottom = -60.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
 align = 1
 
 [node name="P1" type="Node2D" parent="UserInterface/UnitMenu"]
-position = Vector2( -160, -56 )
+position = Vector2( 63, -44 )
 
-[node name="Info" type="Label" parent="UserInterface/UnitMenu/P1"]
-margin_left = -160.0
-margin_top = -108.0
-margin_right = -101.0
-margin_bottom = -60.0
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P1"]
+margin_left = -28.0
+margin_top = 82.0
+margin_right = 31.0
+margin_bottom = 130.0
 custom_fonts/font = ExtResource( 12 )
 text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P1"]
+margin_left = -33.0
+margin_top = -109.0
+margin_right = 26.0
+margin_bottom = -61.0
+custom_fonts/font = ExtResource( 12 )
+text = "2"
 align = 1
 
 [node name="P2" type="Node2D" parent="UserInterface/UnitMenu"]
-position = Vector2( 96, -56 )
+position = Vector2( 255, -44 )
 
-[node name="Info" type="Label" parent="UserInterface/UnitMenu/P2"]
-margin_left = -157.0
-margin_top = -112.0
-margin_right = -98.0001
-margin_bottom = -64.0
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P2"]
+margin_left = -25.0001
+margin_top = 78.0
+margin_right = 33.9999
+margin_bottom = 126.0
 custom_fonts/font = ExtResource( 12 )
 text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P2"]
+margin_left = -30.0001
+margin_top = -113.0
+margin_right = 28.9999
+margin_bottom = -65.0
+custom_fonts/font = ExtResource( 12 )
+text = "3"
 align = 1
 
 [node name="P3" type="Node2D" parent="UserInterface/UnitMenu"]
-position = Vector2( 352, -56 )
+position = Vector2( 447, -44 )
 
-[node name="Info" type="Label" parent="UserInterface/UnitMenu/P3"]
-margin_left = -157.0
-margin_top = -112.0
-margin_right = -98.0001
-margin_bottom = -64.0
+[node name="Cost" type="Label" parent="UserInterface/UnitMenu/P3"]
+margin_left = -25.0001
+margin_top = 78.0
+margin_right = 33.9999
+margin_bottom = 126.0
 custom_fonts/font = ExtResource( 12 )
 text = "100"
+
+[node name="Number" type="Label" parent="UserInterface/UnitMenu/P3"]
+margin_left = -30.0001
+margin_top = -113.0
+margin_right = 28.9999
+margin_bottom = -65.0
+custom_fonts/font = ExtResource( 12 )
+text = "4"
 align = 1
 
 [node name="UnitQueue" type="Node2D" parent="UserInterface"]
@@ -279,10 +302,88 @@ custom_fonts/font = ExtResource( 12 )
 text = "Coinels earned"
 align = 1
 
+[node name="Tutorial" type="Node2D" parent="UserInterface"]
+position = Vector2( -1, 0 )
+script = ExtResource( 22 )
+
+[node name="PressLeft" type="Label" parent="UserInterface/Tutorial"]
+margin_left = 701.0
+margin_top = 472.0
+margin_right = 1593.0
+margin_bottom = 568.0
+custom_fonts/font = ExtResource( 12 )
+text = "Press left click to continue"
+
+[node name="0" type="Label" parent="UserInterface/Tutorial"]
+margin_left = 517.0
+margin_top = 378.0
+margin_right = 1409.0
+margin_bottom = 474.0
+custom_fonts/font = ExtResource( 3 )
+text = "Welcome to Bagel of War!"
+
+[node name="1" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 37.0
+margin_top = 934.0
+margin_right = 929.0
+margin_bottom = 1030.0
+custom_fonts/font = ExtResource( 12 )
+text = "This is your base"
+
+[node name="2" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 1521.0
+margin_top = 935.0
+margin_right = 1944.0
+margin_bottom = 1034.0
+custom_fonts/font = ExtResource( 12 )
+text = "And the enemy base"
+align = 1
+
+[node name="3" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 22.0
+margin_top = 184.0
+margin_right = 813.0
+margin_bottom = 283.0
+custom_fonts/font = ExtResource( 12 )
+text = "You can create bagels with dough
+Dough is obtained by defeating enemy bagels"
+
+[node name="4" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 899.0
+margin_top = 277.0
+margin_right = 1877.0
+margin_bottom = 376.0
+custom_fonts/font = ExtResource( 12 )
+text = "These are the different bagels and their costs
+Press 1 to 3  to create them during the game"
+align = 1
+
+[node name="5" type="Label" parent="UserInterface/Tutorial"]
+visible = false
+margin_left = 528.0
+margin_top = 378.0
+margin_right = 1420.0
+margin_bottom = 474.0
+custom_fonts/font = ExtResource( 3 )
+text = "Thats it! Good luck!"
+align = 1
+
 [node name="StartBattleText" parent="UserInterface" instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 967, 442 )
 disable_countdown = true
+
+[node name="BackGround" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BagelbkgMountn" type="Sprite" parent="BackGround"]
+position = Vector2( 964, 537 )
+scale = Vector2( 1.01818, 1.01818 )
+texture = ExtResource( 11 )
 
 [node name="Clouds" type="ParallaxBackground" parent="."]
 pause_mode = 2
@@ -301,103 +402,10 @@ pause_mode = 2
 stream = ExtResource( 23 )
 autoplay = true
 
-[node name="GameManager" type="Node2D" parent="."]
-script = ExtResource( 4 )
-
-[node name="AllyUnitManager" type="Node2D" parent="."]
-script = ExtResource( 27 )
-
-[node name="UnitSprites" type="Node2D" parent="AllyUnitManager"]
-z_index = 99
-z_as_relative = false
-
-[node name="POPPY_SEED_BAGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-position = Vector2( 385, 632 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 19 )
-
-[node name="CYMBAGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 16 )
-
-[node name="BAEGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 20 )
-
-[node name="NEW_YORK_BAGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-modulate = Color( 1, 0.607843, 0, 1 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 18 )
-
-[node name="PLAIN_BAGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 17 )
-
-[node name="EVERYTHING_BAGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-modulate = Color( 0.968627, 1, 0, 1 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 18 )
-
-[node name="BAGELATINE" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-modulate = Color( 0, 1, 0.623529, 1 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 18 )
-
-[node name="GRENADEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-modulate = Color( 0.0627451, 0.368627, 0.0196078, 1 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
-
-[node name="TREBUCHAGEL" type="Sprite" parent="AllyUnitManager/UnitSprites"]
-visible = false
-modulate = Color( 0.529412, 0.364706, 0.0156863, 1 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 13 )
-
-[node name="Cursor" type="Area2D" parent="AllyUnitManager"]
-collision_layer = 0
-collision_mask = 512
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AllyUnitManager/Cursor"]
-position = Vector2( 1, 0 )
-shape = SubResource( 1 )
-
-[node name="EnemyUnitManager" type="Node2D" parent="."]
-script = ExtResource( 10 )
-
-[node name="Lanes" type="Node2D" parent="."]
-script = ExtResource( 28 )
-
-[node name="Lane0" parent="Lanes" instance=ExtResource( 22 )]
-position = Vector2( 113, 400 )
-
-[node name="Lane1" parent="Lanes" instance=ExtResource( 22 )]
-position = Vector2( 113, 552 )
-
-[node name="Lane2" parent="Lanes" instance=ExtResource( 22 )]
-position = Vector2( 113, 704 )
-
-[node name="Lane3" parent="Lanes" instance=ExtResource( 22 )]
-position = Vector2( 113, 848 )
-
-[node name="Lane4" parent="Lanes" instance=ExtResource( 22 )]
-position = Vector2( 113, 1000 )
-
-[node name="AllyBase" parent="." instance=ExtResource( 6 )]
-position = Vector2( 113, 704 )
-max_health_points = 2000
-
-[node name="EnemyBase" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1809, 704 )
-max_health_points = 2000
-
-[connection signal="pressed" from="UserInterface/GameOver/BackToMenuButton" to="UserInterface/GameOver" method="_on_BackToMenuButton_pressed"]
 [connection signal="money_changed" from="GameManager" to="UserInterface/MoneyTracker" method="_on_GameManager_money_changed"]
+[connection signal="game_over" from="EnemyBase" to="UserInterface/GameOver" method="_on_EnemyBase_game_over"]
+[connection signal="hp_changed" from="EnemyBase" to="EnemySpawner" method="_on_EnemyBase_hp_changed"]
+[connection signal="game_over" from="AllyBase" to="UserInterface/GameOver" method="_on_AllyBase_game_over"]
+[connection signal="queue_decreased" from="AllyBase" to="UserInterface/UnitQueue" method="_on_AllyBase_queue_decreased"]
+[connection signal="queue_increased" from="AllyBase" to="UserInterface/UnitQueue" method="_on_AllyBase_queue_increased"]
+[connection signal="pressed" from="UserInterface/GameOver/BackToMenuButton" to="UserInterface/GameOver" method="_on_BackToMenuButton_pressed"]

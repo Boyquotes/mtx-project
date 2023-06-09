@@ -18,5 +18,5 @@ func _ready():
 		var new_unit : UnitTypes.UNIT_TYPE = UnitTypes.name_to_unit_dict[UnitTypes.selected_units[i]].instance()
 		var unit_cost = new_unit.cost
 		new_unit.queue_free()
-		point.get_node("Cost").text = str(unit_cost)
+		point.get_node("Info").text = "              "+ str(unit_cost) + "\n\n" + str(i+1) 
 		
