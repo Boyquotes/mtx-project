@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/objects/battlefield/AllySpawnZone.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="0" type="Area2D"]
+collision_layer = 512
+collision_mask = 4
+script = ExtResource( 1 )
+available_color = Color( 0.0941176, 0.717647, 0.0941176, 0.545098 )
+unavailable_color = Color( 1, 0, 0, 0.576471 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Rect" type="ColorRect" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+color = Color( 0.513726, 1, 0.0313726, 1 )

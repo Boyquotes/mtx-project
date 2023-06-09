@@ -3,6 +3,8 @@ extends KinematicBody2D
 const DEATH_TEXT_SCENE = preload("res://src/scenes/battle_scene/DeathText.tscn")
 const BASE = preload("res://src/objects/bases/Base.gd")
 
+enum DIR {SIDE,UP,DOWN}
+
 export var unit_name = ""
 
 export var move_speed = 100
@@ -21,40 +23,100 @@ var _current_health_points
 var _dead = false
 var _target: Node2D
 var _target_pos: Vector2
-
+var _current_dir = DIR.SIDE
+var _can_switch_dir = true
+	
 # INITIALIZING
 func _ready():
+	randomize()
 	_current_health_points = max_health_points
 	
-	
-# STATE MACHINE
-func _take_action():
-	# if there is a unit in front we stop moving
-	
+func _physics_process(delta):
 	if _enemy_in_range():
-		if $AnimatedSprite.animation != "attack": 
+		_attack()
+	elif _check_if_unit_in_front():
+		return
+	else:
+		_movement()
+	$AnimatedSprite.speed_scale = Global.time_scale
+		
+
+# ACTIONS
+func _attack():
+	if $AnimatedSprite.animation != "attack": 
 			set_physics_process(false)
 			$AnimatedSprite.play("attack")
 			_target = _find_closest_target()
 			_target_pos = _target.global_position
 		# else idle
-		else:	
-			if $AnimatedSprite.animation != "move": 
-				$AnimatedSprite.play("move")
-	elif _check_if_unit_in_front():
-		return
-	else:
+	else:	
 		if $AnimatedSprite.animation != "move": 
 			$AnimatedSprite.play("move")
-		move_and_slide(Vector2(move_speed*Global.time_scale, 0))
+
+func _can_move_in_dir(direction):
+	match(direction):
+		DIR.SIDE:
+			return not $WallSideHigh.is_colliding() and not $WallSideLow.is_colliding()
+		DIR.UP:
+			return not $WallUp.is_colliding()
+		DIR.DOWN:
+			return not $WallDown.is_colliding()
+		_:
+			return false
+	
+func _switch_dir(direction):
+	_current_dir = direction
+	_can_switch_dir = false
+	yield(get_tree().create_timer(0.5), "timeout")
+	_can_switch_dir = true
+	
+func _move():
+	match(_current_dir):
+		DIR.SIDE:
+			move_and_slide(Vector2(move_speed, 0)*Global.time_scale)	
+		DIR.UP:
+			move_and_slide(Vector2(0, -abs(move_speed))*Global.time_scale)	
+		DIR.DOWN:
+			move_and_slide(Vector2(0, abs(move_speed))*Global.time_scale)	
+	
+func _movement():
+	if $AnimatedSprite.animation != "move": 
+		$AnimatedSprite.play("move")
+	
+	if not _can_switch_dir:
+		_move()
+		return
+	
+	var checks = [_can_move_in_dir(DIR.SIDE),_can_move_in_dir(DIR.UP),_can_move_in_dir(DIR.DOWN)]
+			
+	# check if we are not moving sideways and we can
+	if checks[0] and _current_dir != DIR.SIDE:
+		print("going to mooove sideways")
+		_switch_dir(DIR.SIDE)
+		_move()
+		return
 		
-func _physics_process(delta):
-	_take_action()
-	$AnimatedSprite.speed_scale = Global.time_scale
-		
+	# continue moving if possible if we are moving up and down to avoid flickering
+	if (_current_dir == DIR.DOWN or _current_dir == DIR.UP) and _can_move_in_dir(_current_dir):
+		print("contintue up and down")
+		_move()
+		return
+
+	# else choose a random option
+	var options = []
+	if checks[0]: options.append(DIR.SIDE)
+	if checks[1]: options.append(DIR.UP)
+	if checks[2]: options.append(DIR.DOWN)
+	assert(options.size() > 0)
+	var i = randi()%options.size()
+	if options[i] != _current_dir:
+		_switch_dir(options[i])
+		print("random switch" + str(_current_dir))
+	_move()
+	
+
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "attack":
-		_take_action()
 		set_physics_process(true)
 		
 # COMBAT
@@ -105,6 +167,14 @@ func make_unit_ally():
 	$CheckEnemies.set_collision_mask_bit(2, false)
 	$CheckForAlliesInFront.set_collision_mask_bit(3, true)
 	$CheckForAlliesInFront.set_collision_mask_bit(2, false)
+	$WallDown.set_collision_mask_bit(4, true)
+	$WallSideHigh.set_collision_mask_bit(4, true)
+	$WallSideLow.set_collision_mask_bit(4, true)
+	$WallUp.set_collision_mask_bit(4, true)
+	$WallDown.set_collision_mask_bit(5, false)
+	$WallSideHigh.set_collision_mask_bit(5, false)
+	$WallSideLow.set_collision_mask_bit(5, false)
+	$WallUp.set_collision_mask_bit(5, false)
 	$ColorRect.color = Color.green
 	move_speed = abs(move_speed)
 	scale.x = abs(scale.x)
@@ -117,6 +187,14 @@ func make_unit_enemy():
 	$CheckEnemies.set_collision_mask_bit(3, false)
 	$CheckForAlliesInFront.set_collision_mask_bit(2, true)
 	$CheckForAlliesInFront.set_collision_mask_bit(3, false)
+	$WallDown.set_collision_mask_bit(4, false)
+	$WallSideHigh.set_collision_mask_bit(4, false)
+	$WallSideLow.set_collision_mask_bit(4, false)
+	$WallUp.set_collision_mask_bit(4, false)
+	$WallDown.set_collision_mask_bit(5, true)
+	$WallSideHigh.set_collision_mask_bit(5, true)
+	$WallSideLow.set_collision_mask_bit(5, true)
+	$WallUp.set_collision_mask_bit(5, true)
 	$ColorRect.color = Color.red
 	move_speed = abs(move_speed) * -1
 	scale.x = abs(scale.x) * -1

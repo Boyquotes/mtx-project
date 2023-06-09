@@ -39,5 +39,21 @@ position = Vector2( 0, -76 )
 [node name="Deathsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 
+[node name="WallSideHigh" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 32, 0 )
+
+[node name="WallSideLow" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 32, 0 )
+
+[node name="WallUp" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -32 )
+
+[node name="WallDown" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 32 )
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="finished" from="Deathsound" to="." method="_on_Deathsound_finished"]

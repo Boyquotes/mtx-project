@@ -1,9 +1,6 @@
 extends Node2D
 
-const LANE = preload("res://src/scenes/battle_scene/Lane.gd")
-const LANES = preload("res://src/scenes/battle_scene/Lanes.gd")
-
-onready var _lanes: LANES = get_parent().get_node("Lanes")
+onready var _zones = $PlaceAllySpawnZonesHere.get_children()
 onready var _hover_sprite: Sprite = $UnitSprites/PLAIN_BAGEL
 onready var _cursor = $Cursor
 
@@ -15,12 +12,11 @@ var _hover_area: Area2D
 func _ready():
 	for unit_type in UnitTypes.selected_units:
 		_selected_units.append(unit_type)	
-
 	
 func _process(delta):
 	if Input.is_action_just_pressed("right_mouse"):
 		_hover_sprite.visible = false
-		_lanes.hide()
+		_hide_zones()
 	elif Input.is_action_just_pressed("spawn_1"):
 		_hover_with_unit(_selected_units[0]);
 	elif Input.is_action_just_pressed("spawn_2") and _selected_units.size() > 1:
@@ -31,7 +27,7 @@ func _process(delta):
 		_hover_with_unit(_selected_units[3]);
 		
 	if _hover_sprite.visible:
-		var vec = get_viewport().get_mouse_position() - self.position # getting the vector from self to the mouse
+		var vec = get_viewport().get_mouse_position() - self.global_position # getting the vector from self to the mouse
 		_cursor.position = vec 
 		
 		var areas = _cursor.get_overlapping_areas()
@@ -43,7 +39,7 @@ func _process(delta):
 			
 		var area = areas[0]
 		
-		if not area.get_parent().ally_zone_is_available(): 
+		if not area.ally_zone_is_available(): 
 			_hover_sprite.position = vec
 			return
 			
@@ -51,13 +47,16 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("left_mouse"):
 			_hover_sprite.visible = false
-			_lanes.hide()
+			_hide_zones()
 			_spawn_unit(_hover_sprite.name, area.global_position)
 
-		
+func _show_zones():
+	for zone in _zones:
+		zone.show()
 
-func add_unit(unit: UnitTypes.UNIT_TYPE):
-	add_child(unit)
+func _hide_zones():
+	for zone in _zones:
+		zone.hide()
 	
 func _spawn_unit(unit_name: String, unit_position: Vector2):
 	var new_unit : UnitTypes.UNIT_TYPE = UnitTypes.name_to_unit_dict[unit_name].instance()
@@ -74,5 +73,5 @@ func _hover_with_unit(unit_name: String):
 	_hover_sprite.visible = false
 	_hover_sprite = get_node("UnitSprites/" + unit_name)
 	_hover_sprite.visible = true
-	_lanes.show()
+	_show_zones()
 

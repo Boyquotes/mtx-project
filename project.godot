@@ -88,10 +88,12 @@ space={
 
 [layer_names]
 
-2d_physics/layer_1="Ground"
+2d_physics/layer_1="Wall"
 2d_physics/layer_2="Units"
 2d_physics/layer_3="Allies"
 2d_physics/layer_4="Enemies"
+2d_physics/layer_5="AllyWall"
+2d_physics/layer_6="EnemyWall"
 2d_physics/layer_10="mouse_map"
 
 [physics]
