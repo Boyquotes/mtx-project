@@ -69,7 +69,6 @@ position = Vector2( 6, -5 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 5 )
 animation = "move"
-frame = 1
 playing = true
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="." index="7"]
